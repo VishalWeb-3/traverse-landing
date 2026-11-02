@@ -134,7 +134,7 @@ export default defineConfig({
             type: "object",
             name: "pricing",
             label: "Pricing",
-            fields: [stringField("heading", "Heading"), {
+            fields: [textField("heading", "Heading"), {
               type: "object", name: "plans", label: "Plans", list: true,
               fields: [stringField("name", "Plan name"), textField("audience", "Description"), stringField("monthly", "Monthly price"), stringField("annual", "Annual monthly price"), stringField("interval", "Billing interval"), listOfStrings("features", "Included features")],
             }],

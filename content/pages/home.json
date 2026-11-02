@@ -55,7 +55,7 @@
     ]
   },
   "pricing": {
-    "heading": "Packages",
+    "heading": "Predictable pricing.\nProtection that travels.",
     "plans": [
       { "name": "Weekly", "audience": "Quick protection for a short trip", "monthly": "1.49", "annual": "1.49", "interval": "week", "features": ["AES-256 encryption", "IP masking", "DNS leak protection", "No WebRTC leaks", "Public Wi-Fi protection", "Kill Switch", "Unlimited bandwidth"] },
       { "name": "Monthly", "audience": "Flexible month-to-month privacy", "monthly": "3.99", "annual": "1.99", "interval": "month", "features": ["AES-256 encryption", "IP masking", "DNS leak protection", "No WebRTC leaks", "Public Wi-Fi protection", "Kill Switch", "Unlimited bandwidth"] },

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import fallback from "../../../content/features/features.json";
+import FeatureBento from "./feature-bento";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,13 +18,13 @@ export default function FeaturesContent({ content = fallback }: { content?: Feat
     const page = pageRef.current;
     if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const context = gsap.context(() => {
-      gsap.fromTo(".feature-page-hero .feature-page-eyebrow, .feature-page-hero h1, .feature-page-hero-copy, .feature-page-hero .feature-page-cta",
+      gsap.fromTo(".feature-page-hero .feature-page-eyebrow, .feature-page-hero h1, .feature-page-hero-copy, .feature-page-hero .feature-page-cta, .feature-hero-visual, .feature-hero-proof > *",
         { autoAlpha: 0, y: 25, filter: "blur(7px)" },
         { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.9, stagger: 0.11, ease: "power3.out", delay: 0.12 },
       );
-      gsap.fromTo(".feature-highlight", { autoAlpha: 0, y: 28 }, {
-        autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.1, ease: "power3.out",
-        scrollTrigger: { trigger: ".feature-highlights", start: "top 82%", once: true },
+      gsap.fromTo("[data-feature-bento-card]", { autoAlpha: 0, y: 26, filter: "blur(5px)" }, {
+        autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.75, stagger: 0.1, ease: "power3.out",
+        scrollTrigger: { trigger: ".feature-bento-grid", start: "top 82%", once: true },
       });
       gsap.utils.toArray<HTMLElement>(".feature-story").forEach((story) => {
         gsap.fromTo(story.querySelectorAll(".feature-story-media, .feature-story-copy > *"),
@@ -45,22 +46,51 @@ export default function FeaturesContent({ content = fallback }: { content?: Feat
 
   return <section ref={pageRef} className="feature-page-content">
     <header className="feature-page-hero">
-      <div className="feature-page-glow" aria-hidden="true" />
-      <div className="feature-page-hero-copy">
-        <p className="blog-eyebrow feature-page-eyebrow"><span /> TRAVERSE VPN <i>/</i> FEATURES</p>
-        <h1>Browse privately<br /><span>and securely</span></h1>
-        <p className="feature-page-copy">Traverse VPN creates an encrypted tunnel between your device and the internet, so your traffic can’t be easily read or intercepted by others on the network.</p>
-        <p className="feature-page-copy feature-page-copy-secondary">Whether you are at home, on mobile data, or connected to public WiFi, Traverse VPN keeps your browsing, messages, and online activity much harder to snoop on or profile.</p>
-        <ul className="feature-hero-points"><li>Browse privately and securely, even on public WiFi</li><li>Make it harder for advertisers and trackers to follow you around the internet</li><li>Reduce how much of your data can be turned into a product for ad networks and data brokers</li></ul>
-        <p className="feature-page-copy feature-page-close">With Traverse VPN, you can also secure risky networks, minimize common IP and DNS leaks, and enjoy smoother, safer browsing wherever you go.</p>
-        <a className="feature-page-cta" href="https://links.traversevpn.com/s/Ugp0lRJV">Explore Traverse <span aria-hidden="true">↗</span></a>
+      <div className="feature-hero-grain" aria-hidden="true" />
+      <div className="feature-hero-layout">
+        <div className="feature-page-hero-copy">
+          <p className="blog-eyebrow feature-page-eyebrow"><span /> TRAVERSE VPN <i>/</i> FEATURES</p>
+          <h1>Browse privately<br /><span>and securely</span></h1>
+          <p className="feature-page-copy">Traverse VPN creates an encrypted tunnel between your device and the internet, so your traffic can’t be easily read or intercepted by others on the network.</p>
+          <a className="feature-page-cta" href="https://links.traversevpn.com/s/Ugp0lRJV">Explore Traverse <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className="feature-hero-visual" aria-hidden="true">
+          <div className="feature-hero-visual-top"><span>PRIVATE CONNECTION</span><span><i /> ACTIVE</span></div>
+          <svg className="feature-hero-map" viewBox="0 0 620 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="hero-globe-glow"><stop stopColor="#f22c59" stopOpacity=".18"/><stop offset="1" stopColor="#f22c59" stopOpacity="0"/></radialGradient>
+              <linearGradient id="hero-route" x1="110" y1="355" x2="500" y2="182"><stop stopColor="#f22c59" stopOpacity=".12"/><stop offset=".5" stopColor="#ff426b"/><stop offset="1" stopColor="#f22c59" stopOpacity=".2"/></linearGradient>
+            </defs>
+            <circle cx="345" cy="264" r="230" fill="url(#hero-globe-glow)"/>
+            <g className="feature-hero-orbit-lines" stroke="rgba(255,255,255,.15)" strokeWidth="1">
+              <circle cx="345" cy="264" r="163"/><ellipse cx="345" cy="264" rx="163" ry="62"/><ellipse cx="345" cy="264" rx="163" ry="112"/>
+              <ellipse cx="345" cy="264" rx="62" ry="163"/><ellipse cx="345" cy="264" rx="112" ry="163"/>
+              <path d="M183 264h324M210 202h270M210 326h270"/>
+            </g>
+            <path className="feature-hero-route" d="M213 321C240 155 351 390 474 204" stroke="url(#hero-route)" strokeWidth="2" strokeDasharray="5 10" strokeLinecap="round"/>
+            <circle className="feature-hero-node feature-hero-node-a" cx="213" cy="321" r="5" fill="#f22c59"/><circle className="feature-hero-node feature-hero-node-b" cx="474" cy="204" r="5" fill="#f22c59"/>
+            <circle cx="213" cy="321" r="12" stroke="#f22c59" strokeOpacity=".32"/><circle cx="474" cy="204" r="12" stroke="#f22c59" strokeOpacity=".32"/>
+          </svg>
+          <div className="feature-hero-endpoint feature-hero-endpoint-device"><span>01</span><b>Your device</b></div>
+          <div className="feature-hero-endpoint feature-hero-endpoint-web"><span>02</span><b>Open internet</b></div>
+          <div className="feature-hero-tunnel-label"><span /> ENCRYPTED TUNNEL</div>
+          <div className="feature-hero-visual-bottom"><span>YOUR TRAFFIC</span><i /><span>ENCRYPTED</span><i /><span>CONNECTED</span></div>
+        </div>
+        <div className="feature-hero-proof">
+          <p className="feature-page-copy feature-page-copy-secondary">Whether you are at home, on mobile data, or connected to public WiFi, Traverse VPN keeps your browsing, messages, and online activity much harder to snoop on or profile.</p>
+          <ul className="feature-hero-points"><li>Browse privately and securely, even on public WiFi</li><li>Make it harder for advertisers and trackers to follow you around the internet</li><li>Reduce how much of your data can be turned into a product for ad networks and data brokers</li></ul>
+          <p className="feature-page-copy feature-page-close">With Traverse VPN, you can also secure risky networks, minimize common IP and DNS leaks, and enjoy smoother, safer browsing wherever you go.</p>
+        </div>
       </div>
       <div className="feature-hero-note"><span>01</span><i /> BUILT FOR EVERYDAY CONNECTIONS</div>
     </header>
 
     <section className="feature-highlights" aria-labelledby="feature-highlights-title">
       <div className="feature-section-heading"><p className="blog-eyebrow"><span /> AT A GLANCE</p><h2 id="feature-highlights-title">Do more with<br />Traverse VPN</h2></div>
-      <div className="feature-highlight-grid">{content.highlights.map((item) => <article className="feature-highlight" key={item.number}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+      <FeatureBento features={content.features.slice(0, 5).map((feature) => ({
+        title: feature.title,
+        description: feature.points[0] || feature.copy,
+      }))} />
     </section>
 
     <section className="feature-stories" aria-label="Traverse VPN feature details">

@@ -28,17 +28,6 @@ function ScrollRevealWords({ text }: { text: string }) {
     : part)}</>;
 }
 
-const bottomBlurLayers = [
-  { blur: "0.3px", from: "0%", to: "8.75%" },
-  { blur: "1.3px", from: "8.75%", to: "17.5%" },
-  { blur: "2.8px", from: "17.5%", to: "26.25%" },
-  { blur: "5px", from: "26.25%", to: "35%" },
-  { blur: "7.8px", from: "35%", to: "43.75%" },
-  { blur: "11.3px", from: "43.75%", to: "52.5%" },
-  { blur: "15.3px", from: "52.5%", to: "61.25%" },
-  { blur: "20px", from: "61.25%", to: "70%" },
-];
-
 function JourneySection({ journey }: { journey: HomePageContent["journey"] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
@@ -138,6 +127,14 @@ function ProjectAnswers({ faq }: { faq: HomePageContent["faq"] }) {
 
 function HomePage({ content }: { content: HomePageContent }) {
   const [annualBilling, setAnnualBilling] = useState(false);
+  const pricingHeading = content.pricing.heading === "Packages"
+    ? ["Predictable pricing.", "Protection that travels."]
+    : content.pricing.heading.split("\n");
+  const maxAnnualSavings = Math.round(content.pricing.plans.reduce((maximum, plan) => {
+    const monthly = Number(plan.monthly);
+    const annual = Number(plan.annual);
+    return monthly > 0 ? Math.max(maximum, ((monthly - annual) / monthly) * 100) : maximum;
+  }, 0));
   const mainRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
@@ -224,7 +221,7 @@ function HomePage({ content }: { content: HomePageContent }) {
 
       const reveals = [
         [".features", ".features-intro p, .features-heading > h2, .feature-copy-bottom > *, .feature-visual > *, .feature-expertise > *, .feature-bottom-cards > *"],
-        [".n-pricing", ".n-pricing-toolbar > *, .n-plan-card"],
+        [".n-pricing", ".n-pricing-heading > *, .n-billing-control, .n-plan-card"],
         [".journey-section", ".journey-intro > *, .journey-quote > *, .journey-visual, .journey-step"],
         [".project-stories", ".stories-heading h2, .story-card"],
         [".visuvate-footer", ".visuvate-footer-top > *, .visuvate-social-grid > *, .visuvate-footer-group > *, .visuvate-copyright"],
@@ -270,19 +267,31 @@ function HomePage({ content }: { content: HomePageContent }) {
     return()=>{cancelAnimationFrame(frame);window.removeEventListener("scroll",updateParallax);window.removeEventListener("resize",updateParallax)};
   },[]);
   useEffect(() => {
-    const footer=document.querySelector(".visuvate-footer");
-    if(!footer)return;
-    const observer=new IntersectionObserver(([entry])=>document.body.classList.toggle("visuvate-footer-in-view",entry.isIntersecting),{threshold:.02});
-    observer.observe(footer);
-    return()=>{observer.disconnect();document.body.classList.remove("visuvate-footer-in-view")};
-  },[]);
-  useEffect(() => {
     const hero=document.querySelector(".hero-reference");
     if(!hero)return;
     const observer=new IntersectionObserver(([entry])=>document.body.classList.toggle("hero-in-view",entry.isIntersecting),{threshold:.01});
     observer.observe(hero);
     return()=>{observer.disconnect();document.body.classList.remove("hero-in-view")};
   },[]);
+  useEffect(() => {
+    const main = mainRef.current;
+    const pricing = main?.querySelector<HTMLElement>(".n-pricing");
+    const header = main?.querySelector<HTMLElement>(".site-header");
+    if (!pricing || !header) return;
+    const syncPricingHeader = () => {
+      const bounds = pricing.getBoundingClientRect();
+      const headerBottom = header.getBoundingClientRect().bottom;
+      header.classList.toggle("pricing-in-view", bounds.top <= headerBottom && bounds.bottom > headerBottom);
+    };
+    syncPricingHeader();
+    window.addEventListener("scroll", syncPricingHeader, { passive: true });
+    window.addEventListener("resize", syncPricingHeader);
+    return () => {
+      window.removeEventListener("scroll", syncPricingHeader);
+      window.removeEventListener("resize", syncPricingHeader);
+      header.classList.remove("pricing-in-view");
+    };
+  }, []);
   return <main ref={mainRef}>
     <SiteHeader />
     <section className="hero hero-reference" id="home">
@@ -293,8 +302,6 @@ function HomePage({ content }: { content: HomePageContent }) {
         <div className="ref-actions"><a className="ref-button ref-button-primary" href={content.hero.primaryCta.href}>{content.hero.primaryCta.label} <span aria-hidden="true">↗</span></a><a className="ref-button ref-button-secondary" href={content.hero.secondaryCta.href}>{content.hero.secondaryCta.label} <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
-    <div className="bottom-glass-bar" aria-hidden="true"><div className="bottom-glass-layers">{bottomBlurLayers.map((layer) => <div key={layer.blur} style={{ backdropFilter: `blur(${layer.blur}) saturate(120%)`, WebkitBackdropFilter: `blur(${layer.blur}) saturate(120%)`, maskImage: `linear-gradient(to bottom, transparent 0%, transparent ${layer.from}, black ${layer.to}, black 100%)`, WebkitMaskImage: `linear-gradient(to bottom, transparent 0%, transparent ${layer.from}, black ${layer.to}, black 100%)` }} />)}</div></div>
-
     <section className="about section" id="about" ref={aboutRef}>
       <GridLines/>
       <div className="about-images"><img loading="lazy" decoding="async" className="about-left" src="/images/vpn/photos/airport-work.webp" alt="Traveler working on a laptop at the airport"/><img loading="lazy" decoding="async" className="about-right" src="/images/vpn/photos/city-phone.webp" alt="Traveler using a phone in the city at night"/></div>
@@ -348,7 +355,8 @@ function HomePage({ content }: { content: HomePageContent }) {
     <section className="pricing section n-pricing" id="pricing">
       <GridLines />
       <div className="n-pricing-inner">
-        <div className="n-pricing-toolbar"><h2>{content.pricing.heading}</h2><div className={`n-billing-control${annualBilling ? " annual" : ""}`} role="group" aria-label="Billing period"><span className="n-billing-indicator" aria-hidden="true"/><button type="button" className={!annualBilling ? "active" : ""} aria-pressed={!annualBilling} onClick={() => setAnnualBilling(false)}>Monthly</button><button type="button" className={annualBilling ? "active" : ""} aria-pressed={annualBilling} onClick={() => setAnnualBilling(true)}>Annual</button></div></div>
+        <div className="n-pricing-heading"><h2>{pricingHeading.map((line, index) => <span className={index === 1 ? "n-pricing-heading-muted" : ""} key={`${line}-${index}`}>{line}</span>)}</h2><p>Simple, reliable protection for wherever you connect. Choose the billing option that works for you.</p></div>
+        <div className="n-pricing-toolbar"><div className={`n-billing-control${annualBilling ? " annual" : ""}`} role="group" aria-label="Billing period"><button type="button" className={!annualBilling ? "active" : ""} aria-pressed={!annualBilling} onClick={() => setAnnualBilling(false)}>Monthly</button><span className="n-billing-switch" aria-hidden="true"><i/></span><button type="button" className={annualBilling ? "active" : ""} aria-pressed={annualBilling} onClick={() => setAnnualBilling(true)}>Annually</button><span className="n-billing-savings">SAVE UP TO {maxAnnualSavings}%</span></div></div>
         <div className="n-plan-grid">{content.pricing.plans.map((plan, index) => {
           const price = annualBilling ? plan.annual : plan.monthly;
           const interval = plan.interval;
