@@ -52,7 +52,7 @@ export default function FaqContent({ content = fallback }: { content?: typeof fa
         {filtered.length === 0 && <p className="faq-no-results">No questions found. Try a different search.</p>}
       </div>
     </section>
-    <section className="faq-final"><p className="blog-eyebrow"><span/> READY WHEN YOU ARE</p><h2>Protect your privacy<br/><span>in seconds.</span></h2><p>Fast, secure, and private internet access across your devices.</p><a href="https://links.traversevpn.com/s/Ugp0lRJV">Download now <span aria-hidden="true">↗</span></a></section>
+    <section className="faq-final"><p className="blog-eyebrow"><span/> READY WHEN YOU ARE</p><h2>Protect your privacy<br/><span>in seconds.</span></h2><p>Fast, secure, and private internet access across your devices.</p><a href="/download">Download now <span aria-hidden="true">↗</span></a></section>
     <SiteFooter />
   </section>;
 }

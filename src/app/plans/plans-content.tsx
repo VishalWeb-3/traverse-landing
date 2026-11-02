@@ -105,7 +105,7 @@ export default function PlansContent({ content = fallback }: { content?: PlansPa
 
     <section className="plans-final-cta">
       <EditorialRails dark />
-      <div className="plans-final-inner"><p className="blog-eyebrow plans-reveal"><span /> READY TO CONNECT?</p><h2 className="plans-reveal">Take back your<br /><span>online privacy.</span></h2><p className="plans-reveal">Join thousands of secure users today.</p><a className="plans-reveal" href="https://links.traversevpn.com/s/Ugp0lRJV">Download Traverse VPN <span aria-hidden="true">↗</span></a></div>
+      <div className="plans-final-inner"><p className="blog-eyebrow plans-reveal"><span /> READY TO CONNECT?</p><h2 className="plans-reveal">Take back your<br /><span>online privacy.</span></h2><p className="plans-reveal">Join thousands of secure users today.</p><a className="plans-reveal" href="/download">Download Traverse VPN <span aria-hidden="true">↗</span></a></div>
     </section>
     <SiteFooter />
   </section>;

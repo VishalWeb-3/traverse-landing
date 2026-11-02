@@ -13,18 +13,20 @@ const sitemapPage = {
   sections: [],
 };
 
-const legalAliases = [
+const legalAliases: { slug: string; source: string; title?: string; kicker?: string; intro?: string; sectionCount?: number }[] = [
   { slug: "privacy", source: "privacy-policy" },
   { slug: "terms", source: "terms-of-use" },
   { slug: "terms-and-conditions", source: "terms-of-use" },
+  { slug: "no-logs-policy", source: "privacy-policy", title: "A clear commitment to no logs.", kicker: "NO-LOGS POLICY", intro: "Traverse’s published privacy policy explains which VPN activity it says it does not record, and what limited account information supports the service.", sectionCount: 4 },
+  { slug: "security-standards", source: "security", title: "Security standards for every connection.", kicker: "SECURITY STANDARDS", intro: "Explore the connection safeguards Traverse describes, including encryption, IP and DNS leak protection, and what happens if a VPN tunnel drops." },
 ];
 
 const pages = [
   ...infoPages,
   sitemapPage,
-  ...legalAliases.flatMap(({ slug, source }) => {
+  ...legalAliases.flatMap(({ slug, source, title, kicker, intro, sectionCount }) => {
     const page = infoPages.find((item) => item.slug === source);
-    return page ? [{ ...page, slug }] : [];
+    return page ? [{ ...page, slug, ...(title ? { title } : {}), ...(kicker ? { kicker } : {}), ...(intro ? { intro } : {}), ...(sectionCount ? { sections: page.sections.slice(0, sectionCount) } : {}) }] : [];
   }),
 ];
 

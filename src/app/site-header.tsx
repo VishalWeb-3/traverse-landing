@@ -68,7 +68,7 @@ export default function SiteHeader() {
       </div>
       <a href="/faqs" aria-current={pathname === "/faqs" ? "page" : undefined}>FAQs</a>
     </nav>
-    <a className="header-cta" href="https://links.traversevpn.com/s/Ugp0lRJV">Get protected <span aria-hidden="true">↗</span></a>
+    <a className="header-cta" href="/download">Get protected <span aria-hidden="true">↗</span></a>
     <button className="menu-button" type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><i/><i/></button>
     <nav className="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" hidden={!open}>
       <a onClick={() => setOpen(false)} href="/features" aria-current={pathname === "/features" ? "page" : undefined}>Features</a>

@@ -41,7 +41,7 @@ export default async function BlogPage() {
     <section className="blog-newsletter" id="newsletter">
       <div className="blog-newsletter-mark" aria-hidden="true">T<span>.</span></div>
       <div><p className="blog-eyebrow"><span /> THE TRAVERSE DISPATCH</p><h2>Good internet habits,<br />delivered occasionally.</h2><p>Get practical privacy tips and thoughtful reads for wherever you connect.</p></div>
-      <a href="https://links.traversevpn.com/s/Ugp0lRJV">Explore Traverse <span aria-hidden="true">↗</span></a>
+      <a href="/features">Explore Traverse <span aria-hidden="true">↗</span></a>
     </section>
     <SiteFooter />
   </main>;

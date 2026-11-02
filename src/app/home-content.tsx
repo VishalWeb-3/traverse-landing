@@ -22,6 +22,12 @@ function GridLines() {
 
 function Plus() { return <span className="plus" aria-hidden="true">+</span>; }
 
+function resolveCtaHref(label: string, href: string) {
+  const purchaseAction = /\b(buy|purchase|subscribe|checkout)\b/i.test(label);
+  if (!purchaseAction && href.startsWith("https://links.traversevpn.com/")) return "/download";
+  return href;
+}
+
 function ScrollRevealWords({ text }: { text: string }) {
   return <>{text.split(/(\s+)/).map((part, index) => part.trim()
     ? <span className="about-reveal-word" key={index}>{part}</span>
@@ -299,7 +305,7 @@ function HomePage({ content }: { content: HomePageContent }) {
       <div className="ref-copy">
         <h1>{content.hero.headlineLine1}<br/>on any <mark>{content.hero.headlineLine2}</mark></h1>
         <p>{content.hero.description}</p>
-        <div className="ref-actions"><a className="ref-button ref-button-primary" href={content.hero.primaryCta.href}>{content.hero.primaryCta.label} <span aria-hidden="true">↗</span></a><a className="ref-button ref-button-secondary" href={content.hero.secondaryCta.href}>{content.hero.secondaryCta.label} <span aria-hidden="true">↗</span></a></div>
+        <div className="ref-actions"><a className="ref-button ref-button-primary" href={resolveCtaHref(content.hero.primaryCta.label, content.hero.primaryCta.href)}>{content.hero.primaryCta.label} <span aria-hidden="true">↗</span></a><a className="ref-button ref-button-secondary" href={content.hero.secondaryCta.href}>{content.hero.secondaryCta.label} <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
     <section className="about section" id="about" ref={aboutRef}>
@@ -332,7 +338,7 @@ function HomePage({ content }: { content: HomePageContent }) {
       </div>
       <div className="features-cards">
         <article className="feature-copy">
-          <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><ul>{content.features.benefits.map((benefit,index)=><li key={benefit}><span>✓</span>{index===1?<details><summary>{benefit} <i>ⓘ</i></summary><p>Encryption can help protect your internet traffic when you use shared networks in cafés, hotels, airports, and other public places.</p></details>:benefit}</li>)}</ul></div>
+          <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><ul>{content.features.benefits.map((benefit,index)=><li key={benefit}><span>✓</span>{index===1?<details><summary>{benefit} <i>ⓘ</i></summary><p>Encryption can help protect your internet traffic when you use shared networks in cafés, hotels, airports, and other public places.</p></details>:benefit}</li>)}</ul><nav className="feature-policy-links" aria-label="Privacy and security information"><a href="/no-logs-policy">Read No Logs Policy <span aria-hidden="true">↗</span></a><a href="/security-standards">View Security Standards <span aria-hidden="true">↗</span></a></nav></div>
         </article>
         <article className="feature-visual" aria-label="Traverse VPN privacy features"><img loading="lazy" decoding="async" className="feature-phone" src="/images/vpn/photos/cafe-phone.webp" alt="Phone in use in a public indoor space"/>
           <div className="metric metric-retention"><span className="metric-icon red"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a6 6 0 0 1 12 0v1zM16 5a3 3 0 0 1 0 6M18 14a4 4 0 0 1 3 4v1h-3"/></svg></span><span><b>{content.features.usersMetric}</b><small>{content.features.usersLabel}</small></span></div>

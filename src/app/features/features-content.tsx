@@ -53,7 +53,7 @@ export default function FeaturesContent({ content = fallback }: { content?: Feat
           <p className="blog-eyebrow feature-page-eyebrow"><span /> TRAVERSE VPN <i>/</i> FEATURES</p>
           <h1>Browse privately<br /><span>and securely</span></h1>
           <p className="feature-page-copy">Traverse VPN creates an encrypted tunnel between your device and the internet, so your traffic can’t be easily read or intercepted by others on the network.</p>
-          <a className="feature-page-cta" href="https://links.traversevpn.com/s/Ugp0lRJV">Explore Traverse <span aria-hidden="true">↗</span></a>
+          <a className="feature-page-cta" href="/download">Explore Traverse <span aria-hidden="true">↗</span></a>
         </div>
         <div className="feature-hero-visual" aria-hidden="true">
           <div className="feature-hero-visual-top"><span>PRIVATE CONNECTION</span><span><i /> ACTIVE</span></div>
@@ -113,7 +113,7 @@ export default function FeaturesContent({ content = fallback }: { content?: Feat
       <a href="/support">Visit support <span aria-hidden="true">↗</span></a>
     </section>
 
-    <section className="feature-summary"><div><p className="blog-eyebrow"><span /> ONE APP, MULTIPLE LAYERS</p><h2>Protect your internet<br />with Traverse VPN</h2></div><div className="feature-summary-list"><p>Bring everything together in one app:</p><ul><li>IP masking + strong, modern encryption</li><li>DNS and WebRTC leak protection, plus digital fingerprint defenses</li><li>Kill Switch, WiFi Protection, Auto-connect, and Split Tunneling</li><li>Unlimited bandwidth on high-speed, premium servers</li><li>A privacy-centric design with no premium data-sharing and chat that isn’t used for model training</li></ul><p>Your internet stays yours — whether you’re on your home router, campus WiFi, or that random café hotspot your friend picked.</p></div><a href="https://links.traversevpn.com/s/Ugp0lRJV">Get Traverse VPN <span aria-hidden="true">↗</span></a></section>
+    <section className="feature-summary"><div><p className="blog-eyebrow"><span /> ONE APP, MULTIPLE LAYERS</p><h2>Protect your internet<br />with Traverse VPN</h2></div><div className="feature-summary-list"><p>Bring everything together in one app:</p><ul><li>IP masking + strong, modern encryption</li><li>DNS and WebRTC leak protection, plus digital fingerprint defenses</li><li>Kill Switch, WiFi Protection, Auto-connect, and Split Tunneling</li><li>Unlimited bandwidth on high-speed, premium servers</li><li>A privacy-centric design with no premium data-sharing and chat that isn’t used for model training</li></ul><p>Your internet stays yours — whether you’re on your home router, campus WiFi, or that random café hotspot your friend picked.</p></div><a href="/download">Get Traverse VPN <span aria-hidden="true">↗</span></a></section>
 
     <SiteFooter />
   </section>;
