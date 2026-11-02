@@ -1402,3 +1402,27 @@ body:not(.hero-in-view) .product-features .site-header.scrolled .menu-button i{b
 .product-faqs .faq-content{grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:66px 20px 78px}.product-faqs .faq-scroller-heading{grid-column:1/-1;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-bottom:27px;padding-bottom:21px}.product-faqs .faq-scroller-copy{grid-column:1/-1}.product-faqs .faq-scroller-copy .blog-eyebrow{margin-bottom:16px;font-size:9px}.product-faqs .faq-scroller-copy h2{font-size:clamp(49px,12vw,65px)}.product-faqs .faq-scroller-copy>p:last-child{margin-top:14px;font-size:13px}.product-faqs .faq-search-control{grid-column:1/-1;max-width:none;min-height:48px}.product-faqs .faq-browse-controls{position:static;grid-column:1/-1;gap:11px;margin:0 0 19px;padding:0}.product-faqs .faq-topic-filter{display:flex;gap:6px;margin-right:-20px;overflow-x:auto;padding:2px 20px 9px 0;scrollbar-width:none}.product-faqs .faq-topic-filter::-webkit-scrollbar{display:none}.product-faqs .faq-topic-filter button{display:flex;flex:none;min-height:40px;grid-template-columns:none;padding:0 12px;border:1px solid rgba(9,9,9,.16);font-size:9px;white-space:nowrap}.product-faqs .faq-topic-filter button:before,.product-faqs .faq-topic-filter button:after{display:none}.product-faqs .faq-topic-filter button.active{border-color:#090909;background:#090909;color:#fff}.product-faqs .faq-result-count{font-size:9px}.product-faqs .faq-question-list{grid-column:1/-1}.product-faqs .faq-question-item summary{grid-template-columns:26px minmax(0,1fr) 24px;gap:8px;min-height:68px;padding:9px 3px 9px 0;font-size:14px}.product-faqs .faq-question-category{grid-column:2;grid-row:2;justify-self:start;margin-top:-3px;font-size:8px}.product-faqs .faq-question-item summary i{grid-column:3;grid-row:1/3;width:24px;height:24px}.product-faqs .faq-answer p{padding:0 30px 18px 34px;font-size:13px}.product-faqs .faq-final{grid-template-columns:repeat(4,minmax(0,1fr));padding:72px 20px 80px}.product-faqs .faq-final:before{inset-inline:20px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(25% - 1px),rgba(255,255,255,.04) calc(25% - 1px),rgba(255,255,255,.04) 25%)}.product-faqs .faq-final>.blog-eyebrow{grid-column:1/-1;margin:0 0 20px}.product-faqs .faq-final h2{grid-column:1/-1;font-size:clamp(53px,12vw,70px)}.product-faqs .faq-final>p:not(.blog-eyebrow){grid-column:1/-1;margin-top:17px;font-size:13px}.product-faqs .faq-final>a{grid-column:1/-1;justify-self:start;margin-top:21px}.product-faqs .feature-page-footer{align-items:flex-start;flex-direction:column;padding:24px 20px}.product-faqs .feature-page-footer>p{order:3;line-height:1.5}}
 @media(max-width:360px){.blog-page .blog-hero,.blog-page .blog-stories,.blog-page .blog-newsletter,.product-faqs .faq-hero,.product-faqs .faq-content,.product-faqs .faq-final{padding-inline:16px}.blog-page .blog-hero h1{font-size:56px}.product-faqs .faq-hero h1{font-size:46px}.product-faqs .faq-topic-filter{margin-right:-16px;padding-right:16px}.blog-page .blog-stories:before,.product-faqs .faq-content:before{inset-inline:16px}}
 @media(prefers-reduced-motion:reduce){.blog-page .blog-card-image img,.blog-page .blog-scroll-link span,.blog-page .blog-card,.blog-page .blog-newsletter>a,.product-faqs .faq-answer,.product-faqs .faq-topic-filter button,.product-faqs .faq-question-item summary,.product-faqs .faq-hero>a,.product-faqs .faq-final>a{transition:none!important}.product-faqs .faq-question-item[open] .faq-answer{grid-template-rows:1fr}}
+
+/* Keep the homepage grid language off the standalone navigation pages. */
+.product-features .feature-highlights::before,
+.product-features .feature-stories::before,
+.product-features .feature-safeguards::before,
+.product-features .feature-summary::before,
+.product-enterprise .enterprise-light-field::before,
+.blog-page .blog-stories::before,
+.product-faqs .faq-content::before,
+.product-faqs .faq-final::before {
+  display: none !important;
+  background-image: none !important;
+}
+
+/* Remove the vertical guides inside feature artwork while retaining its horizontal detail. */
+.product-features .feature-hero-visual::before,
+.product-enterprise .enterprise-network::before {
+  background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px) !important;
+}
+
+/* The plans page uses explicit rail elements instead of pseudo-element grids. */
+.plans-page-content .plans-editorial-rails {
+  display: none !important;
+}
