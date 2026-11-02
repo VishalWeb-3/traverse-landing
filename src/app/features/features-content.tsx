@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import fallback from "../../../content/features/features.json";
 import FeatureBento from "./feature-bento";
+import SiteFooter from "../site-footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -109,11 +110,11 @@ export default function FeaturesContent({ content = fallback }: { content?: Feat
     <section className="feature-support">
       <div><p className="blog-eyebrow"><span /> HERE WHEN YOU NEED US</p><h2>Support when<br />you need it</h2></div>
       <div className="feature-support-copy"><p>If something doesn’t work the way you expect, Traverse VPN provides clear, in‑app and store‑listed support channels so you can get help with setup, billing, or troubleshooting. You don’t have to guess what’s wrong or fix complex issues alone.</p><ul><li>Access to help guides and support from inside the app</li><li>Assistance with configuration, connectivity, or account questions</li><li>A smoother path from “something’s wrong” to “back to protected”</li></ul></div>
-      <a href="https://traversevpn.com/support">Visit support <span aria-hidden="true">↗</span></a>
+      <a href="/support">Visit support <span aria-hidden="true">↗</span></a>
     </section>
 
     <section className="feature-summary"><div><p className="blog-eyebrow"><span /> ONE APP, MULTIPLE LAYERS</p><h2>Protect your internet<br />with Traverse VPN</h2></div><div className="feature-summary-list"><p>Bring everything together in one app:</p><ul><li>IP masking + strong, modern encryption</li><li>DNS and WebRTC leak protection, plus digital fingerprint defenses</li><li>Kill Switch, WiFi Protection, Auto-connect, and Split Tunneling</li><li>Unlimited bandwidth on high-speed, premium servers</li><li>A privacy-centric design with no premium data-sharing and chat that isn’t used for model training</li></ul><p>Your internet stays yours — whether you’re on your home router, campus WiFi, or that random café hotspot your friend picked.</p></div><a href="https://links.traversevpn.com/s/Ugp0lRJV">Get Traverse VPN <span aria-hidden="true">↗</span></a></section>
 
-    <footer className="feature-page-footer"><a className="feature-footer-brand" href="/#home"><span className="vpn-brand-icon" aria-hidden="true">T</span> Traverse</a><p>One app for a more private connection—at home, at work, and along the way.</p><a href="https://links.traversevpn.com/s/Ugp0lRJV">Get protected <span aria-hidden="true">↗</span></a></footer>
+    <SiteFooter />
   </section>;
 }

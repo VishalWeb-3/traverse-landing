@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import fallback from "../../../content/faqs/faqs.json";
+import SiteFooter from "../site-footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,6 +53,6 @@ export default function FaqContent({ content = fallback }: { content?: typeof fa
       </div>
     </section>
     <section className="faq-final"><p className="blog-eyebrow"><span/> READY WHEN YOU ARE</p><h2>Protect your privacy<br/><span>in seconds.</span></h2><p>Fast, secure, and private internet access across your devices.</p><a href="https://links.traversevpn.com/s/Ugp0lRJV">Download now <span aria-hidden="true">↗</span></a></section>
-    <footer className="feature-page-footer"><a className="feature-footer-brand" href="/#home"><span className="vpn-brand-icon" aria-hidden="true">T</span> Traverse</a><p>Clear answers. More confidence wherever you connect.</p><a href="https://traversevpn.com/support">Visit support <span aria-hidden="true">↗</span></a></footer>
+    <SiteFooter />
   </section>;
 }

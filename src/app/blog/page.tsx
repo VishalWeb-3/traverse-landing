@@ -5,6 +5,7 @@ import BlogMotion from "./blog-motion";
 import { client } from "../../../tina/__generated__/client";
 import { resolveTinaImageUrls } from "../tina-image-url";
 import fallback from "../../../content/blog/blog.json";
+import SiteFooter from "../site-footer";
 
 export const dynamic = "force-dynamic";
 
@@ -42,6 +43,6 @@ export default async function BlogPage() {
       <div><p className="blog-eyebrow"><span /> THE TRAVERSE DISPATCH</p><h2>Good internet habits,<br />delivered occasionally.</h2><p>Get practical privacy tips and thoughtful reads for wherever you connect.</p></div>
       <a href="https://links.traversevpn.com/s/Ugp0lRJV">Explore Traverse <span aria-hidden="true">↗</span></a>
     </section>
-    <footer className="blog-footer"><a href="/#home" className="blog-footer-brand"><span className="vpn-brand-icon" aria-hidden="true">T</span> Traverse</a><span>Browse with confidence, wherever you go.</span><a href="/#home">Back to Traverse <span aria-hidden="true">↗</span></a></footer>
+    <SiteFooter />
   </main>;
 }

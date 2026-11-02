@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FeatureSection } from "./core-features";
 import fallback from "../../../content/plans/plans.json";
+import SiteFooter from "../site-footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,7 +88,7 @@ export default function PlansContent({ content = fallback }: { content?: PlansPa
     <section className="plans-enterprise" aria-labelledby="plans-enterprise-title">
       <EditorialRails dark />
       <div className="plans-enterprise-copy plans-reveal"><p className="blog-eyebrow"><span /> FOR TEAMS</p><h2 id="plans-enterprise-title">Security<br />at every scale.</h2><p>Traverse VPN for your whole organization.</p></div>
-      <div className="enterprise-list plans-reveal"><p>Dedicated IP Addresses available for your team.</p><p>Centralized Admin Dashboard for easy account management.</p><p>Custom Deployments across our 10 global server locations.</p><p>Priority 24/7 Technical Support.</p><a href="https://traversevpn.com/contact-us">Contact Sales <span aria-hidden="true">↗</span></a></div>
+      <div className="enterprise-list plans-reveal"><p>Dedicated IP Addresses available for your team.</p><p>Centralized Admin Dashboard for easy account management.</p><p>Custom Deployments across our 10 global server locations.</p><p>Priority 24/7 Technical Support.</p><a href="/contact-us">Contact Sales <span aria-hidden="true">↗</span></a></div>
     </section>
 
     <section className="plans-testimonials" aria-labelledby="testimonials-title">
@@ -106,6 +107,6 @@ export default function PlansContent({ content = fallback }: { content?: PlansPa
       <EditorialRails dark />
       <div className="plans-final-inner"><p className="blog-eyebrow plans-reveal"><span /> READY TO CONNECT?</p><h2 className="plans-reveal">Take back your<br /><span>online privacy.</span></h2><p className="plans-reveal">Join thousands of secure users today.</p><a className="plans-reveal" href="https://links.traversevpn.com/s/Ugp0lRJV">Download Traverse VPN <span aria-hidden="true">↗</span></a></div>
     </section>
-    <footer className="plans-footer"><a href="/#home" className="feature-footer-brand"><span className="vpn-brand-icon" aria-hidden="true">T</span> Traverse</a><span>Take control of your digital identity.</span><a href="https://links.traversevpn.com/s/Ugp0lRJV">Get protected <span aria-hidden="true">↗</span></a></footer>
+    <SiteFooter />
   </section>;
 }

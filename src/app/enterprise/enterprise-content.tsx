@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import fallback from "../../../content/enterprise/enterprise.json";
+import SiteFooter from "../site-footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,7 +60,7 @@ export default function EnterpriseContent({ content = fallback }: { content?: ty
           <p className="blog-eyebrow enterprise-hero-kicker"><span /> TRAVERSE VPN <i>/</i> ENTERPRISE</p>
           <h1><span className="enterprise-title-first">Secure access for</span><span className="enterprise-title-accent">distributed teams.</span></h1>
           <p className="enterprise-hero-summary">Traverse VPN provides IT teams and security leaders with a secure, scalable foundation for remote access, multi-site connectivity, and centralized network control.</p>
-          <div className="enterprise-hero-actions"><a className="enterprise-hero-cta" href="https://traversevpn.com/contact-us">Talk to our team <span aria-hidden="true">↗</span></a><a className="enterprise-hero-secondary" href="#enterprise-model">Explore the model <span aria-hidden="true">↓</span></a></div>
+          <div className="enterprise-hero-actions"><a className="enterprise-hero-cta" href="/contact-us">Talk to our team <span aria-hidden="true">↗</span></a><a className="enterprise-hero-secondary" href="#enterprise-model">Explore the model <span aria-hidden="true">↓</span></a></div>
         </div>
         <EnterpriseNetwork />
         <div className="enterprise-hero-footnote"><span>FOR IT &amp; SECURITY LEADERS</span><span>ACCESS, DESIGNED TO SCALE</span></div>
@@ -89,7 +90,7 @@ export default function EnterpriseContent({ content = fallback }: { content?: ty
       </section>
 
       <section className="enterprise-support enterprise-reveal" aria-labelledby="enterprise-support-title">
-        <div className="enterprise-support-heading"><p className="blog-eyebrow enterprise-section-kicker"><span /> IMPLEMENTATION SUPPORT</p><h2 id="enterprise-support-title" className="enterprise-reveal-title">A team beside you, from planning through rollout.</h2><a href="https://traversevpn.com/contact-us">Discuss your deployment <span aria-hidden="true">↗</span></a></div>
+        <div className="enterprise-support-heading"><p className="blog-eyebrow enterprise-section-kicker"><span /> IMPLEMENTATION SUPPORT</p><h2 id="enterprise-support-title" className="enterprise-reveal-title">A team beside you, from planning through rollout.</h2><a href="/contact-us">Discuss your deployment <span aria-hidden="true">↗</span></a></div>
         <div className="enterprise-support-list">{content.support.map(({ title, text }, index) => <article className="enterprise-support-item" key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
       </section>
 
@@ -99,7 +100,7 @@ export default function EnterpriseContent({ content = fallback }: { content?: ty
       </section>
     </div>
 
-    <section className="enterprise-final" aria-labelledby="enterprise-final-title"><div className="enterprise-final-inner"><p className="blog-eyebrow"><span /> START WITH A CONVERSATION</p><h2 id="enterprise-final-title">Make secure access part of your infrastructure plan.</h2><p>Talk with our team about your organization’s requirements, deployment scope, and access architecture.</p><a href="https://traversevpn.com/contact-us">Talk to our team <span aria-hidden="true">↗</span></a><span className="enterprise-final-index" aria-hidden="true">TRAVERSE / ENTERPRISE</span></div></section>
-    <footer className="feature-page-footer"><a className="feature-footer-brand" href="/#home"><span className="vpn-brand-icon" aria-hidden="true">T</span> Traverse</a><p>Secure access planned around the way your organization works.</p><a href="https://traversevpn.com/contact-us">Contact sales <span aria-hidden="true">↗</span></a></footer>
+    <section className="enterprise-final" aria-labelledby="enterprise-final-title"><div className="enterprise-final-inner"><p className="blog-eyebrow"><span /> START WITH A CONVERSATION</p><h2 id="enterprise-final-title">Make secure access part of your infrastructure plan.</h2><p>Talk with our team about your organization’s requirements, deployment scope, and access architecture.</p><a href="/contact-us">Talk to our team <span aria-hidden="true">↗</span></a><span className="enterprise-final-index" aria-hidden="true">TRAVERSE / ENTERPRISE</span></div></section>
+    <SiteFooter />
   </section>;
 }

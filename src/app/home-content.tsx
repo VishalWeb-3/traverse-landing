@@ -10,7 +10,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SiteHeader from "./site-header";
 import GlobeStudy from "./globe-study";
-import FooterHands from "./footer-hands";
+import SiteFooter from "./site-footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -122,7 +122,7 @@ function ProjectAnswerItem({ item, index }: { item: FaqItem; index: number }) {
 }
 
 function ProjectAnswers({ faq }: { faq: HomePageContent["faq"] }) {
-  return <section className="project-answers section" id="faqs"><GridLines/><div className="answers-layout"><div className="answers-aside"><h2>{faq.headingLine1}<br/>{faq.headingLine2}</h2><p>{faq.intro}</p><div className="answers-contact"><span>MORE ABOUT TRAVERSE?</span><a href="https://traversevpn.com/">Visit Traverse VPN <b aria-hidden="true">↗</b></a></div></div><div className="answers-list">{faq.items.map((item,index)=><ProjectAnswerItem item={item} index={index} key={item.question}/>)}</div></div></section>;
+  return <section className="project-answers section" id="faqs"><GridLines/><div className="answers-layout"><div className="answers-aside"><h2>{faq.headingLine1}<br/>{faq.headingLine2}</h2><p>{faq.intro}</p><div className="answers-contact"><span>MORE ABOUT TRAVERSE?</span><a href="/about-us">Visit Traverse VPN <b aria-hidden="true">↗</b></a></div></div><div className="answers-list">{faq.items.map((item,index)=><ProjectAnswerItem item={item} index={index} key={item.question}/>)}</div></div></section>;
 }
 
 function HomePage({ content }: { content: HomePageContent }) {
@@ -356,7 +356,7 @@ function HomePage({ content }: { content: HomePageContent }) {
       <GridLines />
       <div className="n-pricing-inner">
         <div className="n-pricing-heading"><h2>{pricingHeading.map((line, index) => <span className={index === 1 ? "n-pricing-heading-muted" : ""} key={`${line}-${index}`}>{line}</span>)}</h2><p>Simple, reliable protection for wherever you connect. Choose the billing option that works for you.</p></div>
-        <div className="n-pricing-toolbar"><div className={`n-billing-control${annualBilling ? " annual" : ""}`} role="group" aria-label="Billing period"><button type="button" className={!annualBilling ? "active" : ""} aria-pressed={!annualBilling} onClick={() => setAnnualBilling(false)}>Monthly</button><span className="n-billing-switch" aria-hidden="true"><i/></span><button type="button" className={annualBilling ? "active" : ""} aria-pressed={annualBilling} onClick={() => setAnnualBilling(true)}>Annually</button><span className="n-billing-savings">SAVE UP TO {maxAnnualSavings}%</span></div></div>
+        <div className="n-pricing-toolbar"><div className={`n-billing-control${annualBilling ? " annual" : ""}`} role="group" aria-label="Billing period"><div className="n-billing-tabs"><span className="n-billing-indicator" aria-hidden="true"/><button type="button" className={!annualBilling ? "active" : ""} aria-pressed={!annualBilling} onClick={() => setAnnualBilling(false)}>Monthly</button><button type="button" className={annualBilling ? "active" : ""} aria-pressed={annualBilling} onClick={() => setAnnualBilling(true)}>Annually</button></div><span className="n-billing-savings">SAVE UP TO {maxAnnualSavings}%</span></div></div>
         <div className="n-plan-grid">{content.pricing.plans.map((plan, index) => {
           const price = annualBilling ? plan.annual : plan.monthly;
           const interval = plan.interval;
@@ -376,14 +376,7 @@ function HomePage({ content }: { content: HomePageContent }) {
     </section>
 
     <ProjectAnswers faq={content.faq} />
-    <footer className="visuvate-footer">
-      <div className="visuvate-footer-wordmark" aria-hidden="true">Traverse</div>
-      <div className="visuvate-footer-top"><p className="footer-eyebrow">{content.footer.eyebrow}</p><h2>{content.footer.headlineLine1}<br/>{content.footer.headlineLine2}</h2><div className="visuvate-footer-actions"><a className="footer-pill footer-pill-muted" href={content.footer.primaryCta.href}>{content.footer.primaryCta.label} <span>↗</span></a><a className="footer-pill footer-pill-light" href={content.footer.secondaryCta.href}>{content.footer.secondaryCta.label} <span>↗</span></a></div></div>
-      <FooterHands />
-      <div className="visuvate-footer-content"><div className="visuvate-social-grid"><a href="https://traversevpn.com/" aria-label="Traverse VPN">◎ <span>Traverse VPN</span><i>↗</i></a><a href="https://traversevpn.com/" aria-label="VPN apps">in <span>VPN apps</span><i>↗</i></a><a href="https://traversevpn.com/" aria-label="Privacy features">𝕏 <span>Privacy</span><i>↗</i></a><a href="https://traversevpn.com/" aria-label="VPN support">◉ <span>Support</span><i>↗</i></a></div>
-        <div className="visuvate-footer-columns"><div className="visuvate-footer-group"><h3>Traverse VPN</h3><a href="#about">About Traverse</a><a href="#services">VPN features</a><a href="https://traversevpn.com/">Privacy policy</a><a href="https://traversevpn.com/">Terms of service</a></div><div className="visuvate-footer-group"><h3>Protection</h3><a href="#services">AES-256 encryption</a><a href="#services">IP masking</a><a href="#services">Public Wi-Fi</a></div><div className="visuvate-footer-group"><h3>Resources</h3><a href="#faqs">VPN FAQs</a><a href="#pricing">Plans and pricing</a><a href="#journey">Getting started</a></div><div className="visuvate-footer-group visuvate-contact"><h3>Connect</h3><a href="https://traversevpn.com/">Visit traversevpn.com</a><a href="https://links.traversevpn.com/s/Ugp0lRJV">Get the app</a><span>Private connections</span><span>For your everyday devices</span></div></div><div className="visuvate-copyright">© 2026 Traverse VPN. All rights reserved.</div>
-      </div>
-    </footer>
+    <SiteFooter copy={content.footer} />
   </main>;
 }
 
