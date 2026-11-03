@@ -363,16 +363,17 @@ function HomePage({ content }: { content: HomePageContent }) {
       <div className="n-pricing-inner">
         <div className="n-pricing-heading"><h2>{pricingHeading.map((line, index) => <span className={index === 1 ? "n-pricing-heading-muted" : ""} key={`${line}-${index}`}>{line}</span>)}</h2><p>Simple, reliable protection for wherever you connect. Choose the billing option that works for you.</p></div>
         <div className="n-pricing-toolbar"><div className={`n-billing-control${annualBilling ? " annual" : ""}`} role="group" aria-label="Billing period"><div className="n-billing-tabs"><span className="n-billing-indicator" aria-hidden="true"/><button type="button" className={!annualBilling ? "active" : ""} aria-pressed={!annualBilling} onClick={() => setAnnualBilling(false)}>Monthly</button><button type="button" className={annualBilling ? "active" : ""} aria-pressed={annualBilling} onClick={() => setAnnualBilling(true)}>Annually</button></div><span className="n-billing-savings">SAVE UP TO {maxAnnualSavings}%</span></div></div>
-        <div className="n-plan-grid">{content.pricing.plans.map((plan, index) => {
-          const price = annualBilling ? plan.annual : plan.monthly;
-          const interval = plan.interval;
+        <div className={`n-plan-grid${annualBilling ? " annual-selection" : " monthly-selection"}`}>{content.pricing.plans.filter(plan => annualBilling ? plan.name === "Yearly" : plan.name !== "Yearly").map((plan, index) => {
+          const isAnnualPlan = plan.name === "Yearly";
+          const price = annualBilling ? (Number(plan.annual) * 12).toFixed(2) : plan.monthly;
+          const interval = annualBilling ? "year" : plan.interval;
           const annualSavings = Math.max(0, (Number(plan.monthly) - Number(plan.annual)) * 12);
-          return <article className={`n-plan-card${index === 1 ? " n-plan-card-featured" : ""}`} key={plan.name}>
+          return <article className={`n-plan-card${index === 1 || isAnnualPlan ? " n-plan-card-featured" : ""}`} key={plan.name}>
             <div className="n-plan-main">
               <div className="n-plan-kicker"><span>00{index + 1}. /</span><span>PRIVATE CONNECTION</span></div>
-              <div className="n-plan-title-row"><h3>{plan.name === "Yearly" ? "Annual" : plan.name} Plan</h3>{index === 1 && <span className="n-popular">Popular</span>}</div>
+              <div className="n-plan-title-row"><h3>{isAnnualPlan ? "Annual" : plan.name} Plan</h3>{isAnnualPlan ? <span className="n-popular">Best value</span> : index === 1 && <span className="n-popular">Popular</span>}</div>
               <p className="n-plan-description">{plan.audience}.</p>
-              <div className="n-plan-price"><span>$</span><strong>{price}</strong><small>/{interval}{annualBilling && interval === "month" ? ", billed annually" : ""}</small></div>
+              <div className="n-plan-price"><span>$</span><strong>{price}</strong><small>/{interval}{annualBilling ? ", billed upfront" : ""}</small></div>
             </div>
             <div className="n-plan-details"><span className="n-list-label">What's included</span><ul>{plan.features.slice(0, 4).map(feature => <li key={feature}>{feature}</li>)}</ul><span className="n-list-label n-extras-label">Extras</span><ul>{plan.features.slice(4).map(feature => <li key={feature}>{feature}</li>)}</ul></div>
             <div className="n-plan-footer"><a href="https://links.traversevpn.com/s/Ugp0lRJV">Buy plan <span aria-hidden="true">↗</span></a><p className={`n-plan-savings${annualSavings ? " has-savings" : ""}`}>{annualSavings ? <><strong>Save ${annualSavings.toFixed(2)}/year</strong><span>with annual billing</span></> : <span>No annual savings on this plan</span>}</p></div>
