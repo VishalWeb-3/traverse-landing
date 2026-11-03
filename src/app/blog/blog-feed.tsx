@@ -15,8 +15,8 @@ export default function BlogFeed({ content = fallback }: { content?: typeof fall
 
   return <section className="blog-stories" id="stories" aria-labelledby="stories-title">
     <div className="blog-stories-heading">
-      <div><p className="blog-eyebrow"><span /> NOTES FROM THE JOURNEY</p><h2 id="stories-title">The journal<span>.</span></h2></div>
-      <p>Thoughtful reads for a safer, more open internet.</p>
+      <div><p className="blog-eyebrow"><span /> FROM THE TRAVERSE BLOG</p><h2 id="stories-title">Latest posts<span>.</span></h2></div>
+      <p>Practical guides for a safer, more open internet.</p>
     </div>
     <div className="blog-controls">
       <div className="blog-categories" role="group" aria-label="Filter stories by category">
