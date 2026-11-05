@@ -77,7 +77,7 @@ export default function SiteHeader() {
       <a onClick={() => setOpen(false)} href="/blog" aria-current={pathname === "/blog" ? "page" : undefined}>Blog</a>
       <details className="mobile-download">
         <summary>Download <span aria-hidden="true">⌄</span></summary>
-        <div>{downloadGroups.flatMap((group) => group.items).map((item) => <a onClick={() => setOpen(false)} href={item.href} key={item.label}>{item.label}</a>)}</div>
+        <div>{downloadGroups.flatMap((group) => group.items).map((item) => <a className="mobile-platform-link" onClick={() => setOpen(false)} href={item.href} key={item.label}><i className={`platform-${item.icon}`}><PlatformIcon platform={item.icon}/></i><span>{item.label}</span></a>)}</div>
       </details>
       <a onClick={() => setOpen(false)} href="/faqs" aria-current={pathname === "/faqs" ? "page" : undefined}>FAQs</a>
     </nav>

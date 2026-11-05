@@ -5,7 +5,7 @@ import SiteFooter from "./site-footer";
 export default function BrandInfoContent({ page }: { page: InfoPage }) {
   const isSitemap = page.slug === "sitemap";
 
-  return <section className="brand-info-content">
+  return <section className={`brand-info-content brand-info-content--${page.slug}`}>
     <header className="brand-info-hero">
       <p className="blog-eyebrow"><span /> TRAVERSE VPN <i>/</i> {page.kicker}</p>
       <h1>{page.title}</h1>
@@ -13,6 +13,7 @@ export default function BrandInfoContent({ page }: { page: InfoPage }) {
       {page.actions?.length ? <nav className="brand-info-actions" aria-label={`${page.title} actions`}>
         {page.actions.map((action, index) => <a className={index === 0 ? "brand-info-action-primary" : "brand-info-action-secondary"} href={action.href} key={action.label}>{action.label}<span aria-hidden="true">↗</span></a>)}
       </nav> : null}
+      <div className="brand-info-hero-art" aria-hidden="true"><span className="brand-info-orbit brand-info-orbit-a"/><span className="brand-info-orbit brand-info-orbit-b"/><span className="brand-info-orbit brand-info-orbit-c"/><span className="brand-info-hero-node brand-info-hero-node-a"/><span className="brand-info-hero-node brand-info-hero-node-b"/><span className="brand-info-hero-status"><i/> PRIVATE CONNECTION <b>ACTIVE</b></span></div>
       <span className="brand-info-index" aria-hidden="true">TRAVERSE / {page.slug.toUpperCase()}</span>
     </header>
 
@@ -27,7 +28,7 @@ export default function BrandInfoContent({ page }: { page: InfoPage }) {
         <div className="brand-info-section-main"><h2>{section.title}</h2><div className="brand-info-section-copy">
           {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           {section.points?.length ? <ul className="brand-info-points">{section.points.map((point) => <li key={point.title}>
-            {point.href ? <a href={point.href}><span><b>{point.title}</b><small>{point.text}</small></span><i aria-hidden="true">↗</i></a> : <span><b>{point.title}</b><small>{point.text}</small></span>}
+            {point.href ? <a href={point.href} target={point.href.startsWith("https://") ? "_blank" : undefined} rel={point.href.startsWith("https://") ? "noreferrer" : undefined}><span><b>{point.title}</b><small>{point.text}</small></span><i aria-hidden="true">↗</i></a> : <span><b>{point.title}</b><small>{point.text}</small></span>}
           </li>)}</ul> : null}
         </div></div>
       </section>)}

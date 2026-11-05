@@ -95,8 +95,14 @@ export default function EnterpriseContent({ content = fallback }: { content?: ty
       </section>
 
       <section className="enterprise-faq enterprise-reveal" aria-labelledby="enterprise-faq-title">
-        <div className="enterprise-faq-heading"><p className="blog-eyebrow enterprise-section-kicker"><span /> YOUR QUESTIONS, COVERED</p><h2 id="enterprise-faq-title" className="enterprise-reveal-title">Good to know.</h2></div>
-        <div className="enterprise-faq-list">{content.questions.map(({ question, answer }, index) => <details className="enterprise-faq-item" key={question}><summary><span>{question}</span><i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i><b aria-hidden="true">+</b></summary><p>{answer}</p></details>)}</div>
+        <div className="enterprise-faq-heading"><p className="blog-eyebrow enterprise-section-kicker"><span /> YOUR QUESTIONS, COVERED</p><h2 id="enterprise-faq-title" className="enterprise-reveal-title">Good to know.</h2><a className="enterprise-faq-visit" href="/">Visit Traverse VPN <span aria-hidden="true">↗</span></a></div>
+        <div className="enterprise-faq-list">{content.questions.map(({ question, answer }, index) => <details className="enterprise-faq-item" key={question} onToggle={(event) => {
+          const current = event.currentTarget;
+          if (!current.open) return;
+          current.parentElement?.querySelectorAll<HTMLDetailsElement>("details[open]").forEach((other) => {
+            if (other !== current) other.open = false;
+          });
+        }}><summary><span>{question}</span><i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i><b aria-hidden="true">+</b></summary><p>{answer}</p></details>)}</div>
       </section>
     </div>
 

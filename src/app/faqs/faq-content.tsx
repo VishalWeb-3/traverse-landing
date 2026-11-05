@@ -45,7 +45,13 @@ export default function FaqContent({ content = fallback }: { content?: typeof fa
         <p className="faq-result-count" aria-live="polite">{filtered.length} {filtered.length === 1 ? "answer" : "answers"}</p>
       </div>
       <div className="faq-question-list" aria-live="polite">
-        {filtered.map((item, index) => <details className="faq-question-item" key={item.question}>
+        {filtered.map((item, index) => <details className="faq-question-item" key={item.question} onToggle={(event) => {
+          const current = event.currentTarget;
+          if (!current.open) return;
+          current.parentElement?.querySelectorAll<HTMLDetailsElement>("details[open]").forEach((other) => {
+            if (other !== current) other.open = false;
+          });
+        }}>
           <summary><span className="faq-question-number">{String(index + 1).padStart(2, "0")}</span><span className="faq-question-title">{item.question}</span><span className="faq-question-category">{item.category}</span><i aria-hidden="true">+</i></summary>
           <div className="faq-answer"><div><p>{item.answer}</p></div></div>
         </details>)}

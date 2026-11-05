@@ -81,54 +81,43 @@ function JourneySection({ journey }: { journey: HomePageContent["journey"] }) {
 }
 
 function ProjectStories({ testimonials }: { testimonials: HomePageContent["testimonials"] }) {
-  return <section className="project-stories section" id="stories"><GridLines/><div className="stories-inner"><div className="stories-heading"><h2>{testimonials.headingLine1}<br/>{testimonials.headingLine2}</h2></div>
-    <div className="story-cards">{testimonials.items.map((story,index)=><article className={`story-card testimonial-${story.accent}`} key={`${story.accent}-${index}`}><span className="testimonial-mark" aria-hidden="true">“</span><blockquote>{story.quote}</blockquote></article>)}</div>
+  return <section className="project-stories section" id="stories"><GridLines/><div className="stories-inner"><div className="stories-heading"><h2>{testimonials.headingLine1} {testimonials.headingLine2}</h2></div>
+    <div className="story-cards">{testimonials.items.map((story,index)=><article className={`story-card testimonial-${story.accent}`} key={`${story.accent}-${index}`}><span className="testimonial-mark" aria-hidden="true">“</span><blockquote>{story.quote.replace(/^@\s*/, "")}</blockquote></article>)}</div>
   </div></section>;
+}
+
+function FeatureBenefits({ benefits }: { benefits: string[] }) {
+  const [active, setActive] = useState<number | null>(null);
+  const explanations = [
+    "Your traffic is encrypted between your device and the VPN server while you are connected.",
+    "Add an encrypted connection on café, airport, hotel, and other shared Wi-Fi networks.",
+    "Choose from available server locations and switch routes as your day or destination changes.",
+  ];
+  return <ul className="home-feature-benefits">{benefits.map((benefit, index) => <li key={benefit} className={active === index ? "is-open" : ""}>
+    <span aria-hidden="true">✓</span><div><button type="button" aria-expanded={active === index} onClick={() => setActive(active === index ? null : index)}>{benefit}<i aria-hidden="true">{active === index ? "−" : "+"}</i></button><div className="home-benefit-detail" aria-hidden={active !== index}><p>{explanations[index] ?? "Explore the available settings and safeguards in the Traverse VPN app."}</p></div></div>
+  </li>)}</ul>;
 }
 
 type FaqItem = HomePageContent["faq"]["items"][number];
 
-function ProjectAnswerItem({ item, index }: { item: FaqItem; index: number }) {
-  const [open, setOpen] = useState(index === 0);
+function ProjectAnswerItem({ item, index, open, onToggle }: { item: FaqItem; index: number; open: boolean; onToggle: () => void }) {
   const panelId = `answer-panel-${index + 1}`;
 
-  const toggleAnswer = () => {
-    const panel = document.getElementById(panelId);
-    if (!panel) return;
-
-    const opening = !open;
-    const currentHeight = panel.getBoundingClientRect().height;
-    const currentOpacity = Number.parseFloat(window.getComputedStyle(panel).opacity);
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    gsap.killTweensOf(panel);
-    setOpen(opening);
-
-    gsap.fromTo(panel,
-      { height: currentHeight, autoAlpha: Number.isFinite(currentOpacity) ? currentOpacity : 0 },
-      {
-        height: opening ? panel.scrollHeight : 0,
-        autoAlpha: opening ? 1 : 0,
-        duration: reducedMotion ? 0 : opening ? 0.48 : 0.34,
-        ease: opening ? "power3.out" : "power2.inOut",
-        onComplete: () => { if (opening) gsap.set(panel, { height: "auto" }); },
-      },
-    );
-  };
-
   return <article className="answer-item" data-open={open}>
-    <button className="answer-trigger" type="button" aria-expanded={open} aria-controls={panelId} onClick={toggleAnswer}>
+    <button className="answer-trigger" type="button" aria-expanded={open} aria-controls={panelId} onClick={onToggle}>
       <span className="answer-number">{String(index + 1).padStart(2, "0")}</span>
       <span className="answer-question">{item.question}</span>
       <i aria-hidden="true"/>
     </button>
-    <div className="answer-panel" id={panelId} aria-hidden={!open} style={{ height: index === 0 ? "auto" : 0, opacity: index === 0 ? 1 : 0 }}>
-      <p>{item.answer}</p>
+    <div className={`answer-panel${open ? " is-open" : ""}`} id={panelId} aria-hidden={!open}>
+      <div><p>{item.answer}</p></div>
     </div>
   </article>;
 }
 
 function ProjectAnswers({ faq }: { faq: HomePageContent["faq"] }) {
-  return <section className="project-answers section" id="faqs"><GridLines/><div className="answers-layout"><div className="answers-aside"><h2>{faq.headingLine1}<br/>{faq.headingLine2}</h2><p>{faq.intro}</p><div className="answers-contact"><span>MORE ABOUT TRAVERSE?</span><a href="/about-us">Visit Traverse VPN <b aria-hidden="true">↗</b></a></div></div><div className="answers-list">{faq.items.map((item,index)=><ProjectAnswerItem item={item} index={index} key={item.question}/>)}</div></div></section>;
+  const [openIndex, setOpenIndex] = useState(0);
+  return <section className="project-answers section" id="faqs"><GridLines/><div className="answers-layout"><div className="answers-aside"><h2>{faq.headingLine1}<br/>{faq.headingLine2}</h2><p>{faq.intro}</p><div className="answers-contact"><span>MORE ABOUT TRAVERSE?</span><a href="/about-us">Visit Traverse VPN <b aria-hidden="true">↗</b></a></div></div><div className="answers-list">{faq.items.map((item,index)=><ProjectAnswerItem item={item} index={index} open={openIndex === index} onToggle={() => setOpenIndex(openIndex === index ? -1 : index)} key={item.question}/>)}</div></div></section>;
 }
 
 function HomePage({ content }: { content: HomePageContent }) {
@@ -338,7 +327,7 @@ function HomePage({ content }: { content: HomePageContent }) {
       </div>
       <div className="features-cards">
         <article className="feature-copy">
-          <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><ul>{content.features.benefits.map((benefit,index)=><li key={benefit}><span>✓</span>{index===1?<details><summary>{benefit} <i>ⓘ</i></summary><p>Encryption can help protect your internet traffic when you use shared networks in cafés, hotels, airports, and other public places.</p></details>:benefit}</li>)}</ul><nav className="feature-policy-links" aria-label="Privacy and security information"><a href="/no-logs-policy">Read No Logs Policy <span aria-hidden="true">↗</span></a><a href="/security-standards">View Security Standards <span aria-hidden="true">↗</span></a></nav></div>
+          <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><FeatureBenefits benefits={content.features.benefits}/><nav className="feature-policy-links" aria-label="Privacy and security information"><a href="/no-logs-policy">Read No Logs Policy <span aria-hidden="true">↗</span></a><a href="/security-standards">View Security Standards <span aria-hidden="true">↗</span></a></nav></div>
         </article>
         <article className="feature-visual" aria-label="Traverse VPN privacy features"><img loading="lazy" decoding="async" className="feature-phone" src="/images/vpn/photos/cafe-phone.webp" alt="Phone in use in a public indoor space"/>
           <div className="metric metric-retention"><span className="metric-icon red"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a6 6 0 0 1 12 0v1zM16 5a3 3 0 0 1 0 6M18 14a4 4 0 0 1 3 4v1h-3"/></svg></span><span><b>{content.features.usersMetric}</b><small>{content.features.usersLabel}</small></span></div>

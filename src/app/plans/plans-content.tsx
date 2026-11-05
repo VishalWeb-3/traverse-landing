@@ -94,12 +94,12 @@ export default function PlansContent({ content = fallback }: { content?: PlansPa
     <section className="plans-testimonials" aria-labelledby="testimonials-title">
       <EditorialRails />
       <div className="plans-testimonials-heading plans-reveal"><p className="blog-eyebrow"><span /> TESTIMONIALS</p><h2 id="testimonials-title">Trusted on<br />the move.</h2></div>
-      <div className="plans-testimonial-grid">{content.testimonials.map(({ quote, author }, index) => <article className="plans-testimonial plans-reveal" key={author}><span className="plans-quote-index">0{index + 1} /</span><p>“{quote}”</p><small>{author}</small></article>)}</div>
+      <div className="plans-testimonial-grid">{content.testimonials.map(({ quote, author }, index) => <article className="plans-testimonial plans-reveal" key={author}><span className="plans-quote-index">0{index + 1} /</span><p>“{quote.replace(/^@\s*/, "")}”</p><small>{author}</small></article>)}</div>
     </section>
 
     <section className="plans-faq" aria-labelledby="plans-faq-title">
       <EditorialRails />
-      <div className="plans-faq-heading plans-reveal"><p className="blog-eyebrow"><span /> YOUR QUESTIONS, COVERED</p><h2 id="plans-faq-title">Good to<br />know.</h2></div>
+      <div className="plans-faq-heading plans-reveal"><p className="blog-eyebrow"><span /> YOUR QUESTIONS, COVERED</p><h2 id="plans-faq-title">Good to<br />know.</h2><a className="plans-faq-visit" href="/">Visit Traverse VPN <span aria-hidden="true">↗</span></a></div>
       <div className="plans-faq-list">{content.faqItems.map(({ question, answer }, index) => <div className={`plans-faq-item plans-reveal${openFaq === index ? " open" : ""}`} key={question}><button type="button" aria-expanded={openFaq === index} onClick={() => setOpenFaq(openFaq === index ? -1 : index)}><span>{question}</span><i aria-hidden="true">+</i></button>{openFaq === index && <p>{answer}</p>}</div>)}</div>
     </section>
 

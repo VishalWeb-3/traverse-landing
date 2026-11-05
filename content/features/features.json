@@ -26,8 +26,8 @@
       "number": "01",
       "tag": "SCAM LINK SCANNER",
       "title": "Link scam scan",
-      "image": "/images/vpn/photos/cafe-phone.webp",
-      "alt": "Phone held in a public indoor space",
+      "image": "/images/vpn/photos/night-phone.webp",
+      "alt": "Phone being used on a city street after dark",
       "imageLabel": "LINK SCAM SCAN",
       "copy": "Quickly check sus links before you tap.",
       "points": [
@@ -54,8 +54,8 @@
       "number": "03",
       "tag": "LEAK SAFEGUARDS",
       "title": "Protection against common leaks",
-      "image": "/images/vpn/photos/night-phone.webp",
-      "alt": "Phone in use in a public space",
+      "image": "/images/vpn/photos/cafe-laptop.webp",
+      "alt": "Laptop connected on a café network",
       "imageLabel": "DNS · IP · CONNECTION",
       "copy": "Beyond basic encryption, Traverse VPN adds extra layers to reduce common ways your identity can slip through. These protections work together so your IP, DNS requests, and communication channels are harder to correlate and track in everyday use.",
       "points": [
@@ -138,8 +138,8 @@
       "number": "09",
       "tag": "PUBLIC WI-FI",
       "title": "Secure VPN for Public WiFi",
-      "image": "/images/vpn/photos/airport-work.webp",
-      "alt": "Traveler working on a laptop at an airport",
+      "image": "/images/vpn/photos/cafe-collaboration.webp",
+      "alt": "People using a shared café Wi-Fi network",
       "imageLabel": "AUTO-PROTECT",
       "copy": "Auto-protect activates the moment you join any public network, cafes, airports, hotels, anywhere. You do not have to remember to turn it on. Traverse VPN does it for you.",
       "points": [
