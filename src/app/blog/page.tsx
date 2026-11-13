@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import SiteHeader from "../site-header";
 import BlogFeed from "./blog-feed";
-import BlogMotion from "./blog-motion";
 import { client } from "../../../tina/__generated__/client";
 import { resolveTinaImageUrls } from "../tina-image-url";
 import fallback from "../../../content/blog/blog.json";
 import SiteFooter from "../site-footer";
+import "./blog.css";
 
 export const dynamic = "force-dynamic";
 
@@ -24,25 +24,9 @@ export default async function BlogPage() {
       // The bundled feed keeps the page usable until Tina Cloud content is available.
     }
   }
-  return <main className="blog-page">
+  return <main className="blog-page blog-neiden-page tv-blog">
     <SiteHeader />
-    <BlogMotion />
-    <section className="blog-hero" aria-labelledby="blog-title">
-      <div className="blog-hero-orbit" aria-hidden="true" />
-      <div className="blog-hero-content">
-        <p className="blog-eyebrow"><span /> TRAVERSE BLOG <span className="blog-eyebrow-slash">/</span> IDEAS FOR THE OPEN INTERNET</p>
-        <h1 id="blog-title">Go further.<br /><span>Browse safer.</span></h1>
-        <p className="blog-hero-copy">Practical blog posts for a more confident internet: privacy advice, travel-ready tips, and clear guides to how VPNs work.</p>
-        <a className="blog-scroll-link" href="#stories">Explore the blog <span aria-hidden="true">↓</span></a>
-      </div>
-      <div className="blog-hero-index" aria-hidden="true">01 — 06 <i /></div>
-    </section>
     <BlogFeed content={content} />
-    <section className="blog-newsletter" id="newsletter">
-      <div className="blog-newsletter-mark" aria-hidden="true">T<span>.</span></div>
-      <div><p className="blog-eyebrow"><span /> FROM THE TRAVERSE BLOG</p><h2>Useful reads for<br />every connection.</h2><p>Browse practical privacy tips and VPN guides for wherever you connect.</p></div>
-      <a href="#stories">Explore more posts <span aria-hidden="true">↗</span></a>
-    </section>
     <SiteFooter />
   </main>;
 }

@@ -19,7 +19,7 @@ export default function FeaturesContent({ content = fallback }: { content?: Feat
     const page = pageRef.current;
     if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const context = gsap.context(() => {
-      gsap.fromTo(".feature-page-hero .feature-page-eyebrow, .feature-page-hero h1, .feature-page-hero-copy, .feature-page-hero .feature-page-cta, .feature-hero-visual, .feature-hero-proof > *",
+      gsap.fromTo(".feature-page-hero .feature-page-eyebrow, .feature-page-hero h1, .feature-page-hero-copy, .feature-page-hero .feature-page-cta, .feature-hero-visual",
         { autoAlpha: 0, y: 25, filter: "blur(7px)" },
         { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.9, stagger: 0.11, ease: "power3.out", delay: 0.12 },
       );
@@ -77,13 +77,7 @@ export default function FeaturesContent({ content = fallback }: { content?: Feat
           <div className="feature-hero-tunnel-label"><span /> ENCRYPTED TUNNEL</div>
           <div className="feature-hero-visual-bottom"><span>YOUR TRAFFIC</span><i /><span>ENCRYPTED</span><i /><span>CONNECTED</span></div>
         </div>
-        <div className="feature-hero-proof">
-          <p className="feature-page-copy feature-page-copy-secondary">Whether you are at home, on mobile data, or connected to public WiFi, Traverse VPN keeps your browsing, messages, and online activity much harder to snoop on or profile.</p>
-          <ul className="feature-hero-points"><li>Browse privately and securely, even on public WiFi</li><li>Make it harder for advertisers and trackers to follow you around the internet</li><li>Reduce how much of your data can be turned into a product for ad networks and data brokers</li></ul>
-          <p className="feature-page-copy feature-page-close">With Traverse VPN, you can also secure risky networks, minimize common IP and DNS leaks, and enjoy smoother, safer browsing wherever you go.</p>
-        </div>
       </div>
-      <div className="feature-hero-note"><span>01</span><i /> BUILT FOR EVERYDAY CONNECTIONS</div>
     </header>
 
     <section className="feature-highlights" aria-labelledby="feature-highlights-title">

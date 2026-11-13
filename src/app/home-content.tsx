@@ -121,15 +121,9 @@ function ProjectAnswers({ faq }: { faq: HomePageContent["faq"] }) {
 }
 
 function HomePage({ content }: { content: HomePageContent }) {
-  const [annualBilling, setAnnualBilling] = useState(false);
   const pricingHeading = content.pricing.heading === "Packages"
     ? ["Predictable pricing.", "Protection that travels."]
     : content.pricing.heading.split("\n");
-  const maxAnnualSavings = Math.round(content.pricing.plans.reduce((maximum, plan) => {
-    const monthly = Number(plan.monthly);
-    const annual = Number(plan.annual);
-    return monthly > 0 ? Math.max(maximum, ((monthly - annual) / monthly) * 100) : maximum;
-  }, 0));
   const mainRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
@@ -216,7 +210,7 @@ function HomePage({ content }: { content: HomePageContent }) {
 
       const reveals = [
         [".features", ".features-intro p, .features-heading > h2, .feature-copy-bottom > *, .feature-visual > *, .feature-expertise > *, .feature-bottom-cards > *"],
-        [".n-pricing", ".n-pricing-heading > *, .n-billing-control, .n-plan-card"],
+        [".n-pricing", ".n-pricing-heading > *, .n-plan-card"],
         [".journey-section", ".journey-intro > *, .journey-quote > *, .journey-visual, .journey-step"],
         [".project-stories", ".stories-heading h2, .story-card"],
         [".visuvate-footer", ".visuvate-footer-top > *, .visuvate-social-grid > *, .visuvate-footer-group > *, .visuvate-copyright"],
@@ -299,7 +293,7 @@ function HomePage({ content }: { content: HomePageContent }) {
     </section>
     <section className="about section" id="about" ref={aboutRef}>
       <GridLines/>
-      <div className="about-images"><img loading="lazy" decoding="async" className="about-left" src="/images/vpn/photos/airport-work.webp" alt="Traveler working on a laptop at the airport"/><img loading="lazy" decoding="async" className="about-right" src="/images/vpn/photos/city-phone.webp" alt="Traveler using a phone in the city at night"/></div>
+      <div className="about-images"><img loading="lazy" decoding="async" className="about-left" src="/images/home-vpn/airport-laptop.webp" alt="Traveler connecting at an airport with a VPN"/><img loading="lazy" decoding="async" className="about-right" src="/images/home-vpn/city-phone.webp" alt="VPN location map open on a phone in the city"/></div>
       <div className="about-heading">
 
         <h2><ScrollRevealWords text={content.about.headingLine1}/><br className="desktop-break"/> <ScrollRevealWords text={content.about.headingLine2}/><br className="desktop-break"/> <ScrollRevealWords text={content.about.headingLine3}/></h2>
@@ -329,7 +323,7 @@ function HomePage({ content }: { content: HomePageContent }) {
         <article className="feature-copy">
           <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><FeatureBenefits benefits={content.features.benefits}/><nav className="feature-policy-links" aria-label="Privacy and security information"><a href="/no-logs-policy">Read No Logs Policy <span aria-hidden="true">↗</span></a><a href="/security-standards">View Security Standards <span aria-hidden="true">↗</span></a></nav></div>
         </article>
-        <article className="feature-visual" aria-label="Traverse VPN privacy features"><img loading="lazy" decoding="async" className="feature-phone" src="/images/vpn/photos/cafe-phone.webp" alt="Phone in use in a public indoor space"/>
+        <article className="feature-visual" aria-label="Traverse VPN privacy features"><img loading="lazy" decoding="async" className="feature-phone" src="/images/home-vpn/cafe-phone.webp" alt="Phone showing an active VPN connection in a café"/>
           <div className="metric metric-retention"><span className="metric-icon red"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a6 6 0 0 1 12 0v1zM16 5a3 3 0 0 1 0 6M18 14a4 4 0 0 1 3 4v1h-3"/></svg></span><span><b>{content.features.usersMetric}</b><small>{content.features.usersLabel}</small></span></div>
           <div className="metric metric-response"><span className="metric-icon dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>{content.features.serversMetric} <i></i></b><small>{content.features.serversLabel}</small></span></div>
           <div className="metric metric-conversion"><span className="metric-icon black"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 6-6 4 3 7-8M14 6h6v6"/></svg></span><span><b>{content.features.encryptionMetric}</b><small>{content.features.encryptionLabel}</small></span></div>
@@ -350,19 +344,18 @@ function HomePage({ content }: { content: HomePageContent }) {
     <section className="pricing section n-pricing" id="pricing">
       <GridLines />
       <div className="n-pricing-inner">
-        <div className="n-pricing-heading"><h2>{pricingHeading.map((line, index) => <span className={index === 1 ? "n-pricing-heading-muted" : ""} key={`${line}-${index}`}>{line}</span>)}</h2><p>Simple, reliable protection for wherever you connect. Choose the billing option that works for you.</p></div>
-        <div className="n-pricing-toolbar"><div className={`n-billing-control${annualBilling ? " annual" : ""}`} role="group" aria-label="Billing period"><div className="n-billing-tabs"><span className="n-billing-indicator" aria-hidden="true"/><button type="button" className={!annualBilling ? "active" : ""} aria-pressed={!annualBilling} onClick={() => setAnnualBilling(false)}>Monthly</button><button type="button" className={annualBilling ? "active" : ""} aria-pressed={annualBilling} onClick={() => setAnnualBilling(true)}>Annually</button></div><span className="n-billing-savings">SAVE UP TO {maxAnnualSavings}%</span></div></div>
-        <div className={`n-plan-grid${annualBilling ? " annual-selection" : " monthly-selection"}`}>{content.pricing.plans.filter(plan => annualBilling ? plan.name === "Yearly" : plan.name !== "Yearly").map((plan, index) => {
+        <div className="n-pricing-heading"><h2>{pricingHeading.map((line, index) => <span key={`${line}-${index}`}>{line}</span>)}</h2><p>Simple, reliable protection for wherever you connect. Compare weekly, monthly, and annual plans below.</p></div>
+        <div className="n-plan-grid">{content.pricing.plans.map((plan, index) => {
           const isAnnualPlan = plan.name === "Yearly";
-          const price = annualBilling ? (Number(plan.annual) * 12).toFixed(2) : plan.monthly;
-          const interval = annualBilling ? "year" : plan.interval;
+          const price = isAnnualPlan ? (Number(plan.annual) * 12).toFixed(2) : plan.monthly;
+          const interval = isAnnualPlan ? "year" : plan.interval;
           const annualSavings = Math.max(0, (Number(plan.monthly) - Number(plan.annual)) * 12);
           return <article className={`n-plan-card${index === 1 || isAnnualPlan ? " n-plan-card-featured" : ""}`} key={plan.name}>
             <div className="n-plan-main">
               <div className="n-plan-kicker"><span>00{index + 1}. /</span><span>PRIVATE CONNECTION</span></div>
               <div className="n-plan-title-row"><h3>{isAnnualPlan ? "Annual" : plan.name} Plan</h3>{isAnnualPlan ? <span className="n-popular">Best value</span> : index === 1 && <span className="n-popular">Popular</span>}</div>
               <p className="n-plan-description">{plan.audience}.</p>
-              <div className="n-plan-price"><span>$</span><strong>{price}</strong><small>/{interval}{annualBilling ? ", billed upfront" : ""}</small></div>
+              <div className="n-plan-price"><span>$</span><strong>{price}</strong><small>/{interval}{isAnnualPlan ? ", billed upfront" : ""}</small></div>
             </div>
             <div className="n-plan-details"><span className="n-list-label">What's included</span><ul>{plan.features.slice(0, 4).map(feature => <li key={feature}>{feature}</li>)}</ul><span className="n-list-label n-extras-label">Extras</span><ul>{plan.features.slice(4).map(feature => <li key={feature}>{feature}</li>)}</ul></div>
             <div className="n-plan-footer"><a href="https://links.traversevpn.com/s/Ugp0lRJV">Buy plan <span aria-hidden="true">↗</span></a><p className={`n-plan-savings${annualSavings ? " has-savings" : ""}`}>{annualSavings ? <><strong>Save ${annualSavings.toFixed(2)}/year</strong><span>with annual billing</span></> : <span>No annual savings on this plan</span>}</p></div>
