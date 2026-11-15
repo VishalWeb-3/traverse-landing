@@ -2,7 +2,7 @@
    Movement lives in enterprise-content.tsx (GSAP); this file only holds resting states and colour feedback. */
 .en-page{--en-paper:#f1f1ef;--en-ink:#090909;--en-soft:#3a3a36;--en-band:rgba(9,9,9,.055);--en-night:#090909;--en-accent:var(--pink,#f22c59);--en-gutter:clamp(20px,4.5vw,72px);--en-gap:clamp(72px,7vw,112px);--en-h:clamp(40px,5.6vw,84px);--en-statement:clamp(24px,2.5vw,36px);--en-lead:clamp(19px,1.5vw,22px);--en-body:17px;--en-radius:20px;display:block;background:var(--en-paper);color:var(--en-ink);font:400 var(--en-body)/1.5 var(--type)}
 .en-page ::selection{background:var(--en-accent);color:var(--en-ink)}
-.en-page :is(h1,h2,h3,p){margin:0;padding:0}
+.en-page>section :is(h2,h3,p){margin:0;padding:0}
 .en-wrap{width:100%;max-width:1640px;margin-inline:auto;padding-inline:var(--en-gutter)}
 .en-page>section{padding-block:var(--en-gap)}
 .en-h{font:600 var(--en-h)/.98 var(--type);letter-spacing:-.04em;text-wrap:balance}
@@ -11,13 +11,6 @@
 .en-button:hover{background:#fff;color:var(--en-ink)}
 .en-button:active{background:#d9d9d3}
 .en-button-accent{background:var(--en-accent);color:var(--en-ink)}
-
-/* Hero: one word, cropped by the bottom edge. */
-.en-hero{position:relative;display:flex;flex-direction:column;min-height:clamp(520px,30vw + 360px,100svh);overflow:hidden;background:var(--en-night);color:#fff}
-.en-hero-copy{position:relative;z-index:1;display:grid;gap:28px;justify-items:start;padding-top:clamp(120px,17svh,168px)}
-.en-hero-copy p{max-width:26ch;font-size:var(--en-statement);font-weight:600;line-height:1.12;letter-spacing:-.03em;text-wrap:balance}
-.en-hero-word{position:absolute;left:var(--en-gutter);bottom:-.15em;font:700 min(17.6vw,52svh)/.8 var(--type);letter-spacing:-.04em;white-space:nowrap;pointer-events:none}
-.en-hero-word span{display:block;margin-left:-.06em;transform-origin:0 100%}
 
 /* Who it is for: pick a role, read its answer. */
 .en-roles-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:clamp(40px,4.5vw,72px);align-items:start}
@@ -70,7 +63,6 @@
   .en-support-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:600px){
-  .en-hero-word{font-size:18.4vw}
   .en-button{min-height:54px}
   .en-support-grid{grid-template-columns:1fr}
   .en-support-item{gap:20px}

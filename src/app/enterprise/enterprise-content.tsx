@@ -15,6 +15,27 @@ const CONTACT_URL = "/contact-us";
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+function EnterpriseNetwork() {
+  return <div className="enterprise-network" role="img" aria-label="People, offices, business apps, cloud, and devices connected through Traverse secure access">
+    <div className="enterprise-network-topline"><span>SECURE ACCESS LAYER</span><span className="enterprise-network-status"><i /> ACCESS ROUTES</span></div>
+    <svg className="enterprise-network-lines" viewBox="0 0 680 470" fill="none" aria-hidden="true">
+      <path className="enterprise-network-line" d="M340 235C260 202 210 129 105 105"/><path className="enterprise-network-line" d="M340 235C420 202 470 129 575 105"/>
+      <path className="enterprise-network-line" d="M340 235H65"/><path className="enterprise-network-line" d="M340 235H615"/>
+      <path className="enterprise-network-line" d="M340 235C260 269 210 342 105 365"/><path className="enterprise-network-line" d="M340 235C420 269 470 342 575 365"/>
+      <circle className="enterprise-network-pulse" r="4"><animateMotion dur="4.5s" repeatCount="indefinite" path="M340 235C260 202 210 129 105 105"/></circle>
+      <circle className="enterprise-network-pulse" r="4"><animateMotion dur="5.2s" repeatCount="indefinite" path="M340 235C420 269 470 342 575 365"/></circle>
+    </svg>
+    <div className="enterprise-network-hub"><span className="enterprise-hub-mark"><i /><i /><i /></span><b>TRAVERSE</b><small>SECURE GATEWAY</small></div>
+    <div className="enterprise-network-node node-people"><span>01</span><b>PEOPLE</b></div>
+    <div className="enterprise-network-node node-sites"><span>02</span><b>OFFICES</b></div>
+    <div className="enterprise-network-node node-apps"><span>03</span><b>APPS</b></div>
+    <div className="enterprise-network-node node-cloud"><span>04</span><b>CLOUD</b></div>
+    <div className="enterprise-network-node node-devices"><span>05</span><b>DEVICES</b></div>
+    <div className="enterprise-network-node node-remote"><span>06</span><b>REMOTE</b></div>
+    <div className="enterprise-network-foot"><span>ONE POLICY LAYER</span><i /><span>CONNECTED BY ENCRYPTION</span></div>
+  </div>;
+}
+
 function Roles({ items }: { items: EnterprisePageData["audiences"] }) {
   const baseId = useId();
   const listRef = useRef<HTMLDivElement>(null);
@@ -107,23 +128,27 @@ export default function EnterpriseContent({ content = fallback }: { content?: En
     const page = pageRef.current;
     if (!page || prefersReducedMotion()) return;
     const context = gsap.context(() => {
-      // The page's one authored entrance: the word rises out of the fold it is cropped by.
-      gsap.timeline({ defaults: { ease: "expo.out" } })
-        .from(".en-hero-word", { yPercent: 60, duration: 1 })
-        .from(".en-hero-copy > *", { y: 18, autoAlpha: 0, duration: .7, stagger: .08 }, .15);
-      gsap.to(".en-hero-word span", { scale: 1.1, ease: "none", scrollTrigger: { trigger: ".en-hero", start: "top top", end: "bottom top", scrub: true } });
+      // The page's one authored entrance: the hero copy and access diagram settle in together.
+      gsap.fromTo(".enterprise-hero-kicker,.enterprise-hero h1,.enterprise-hero-summary,.enterprise-hero-actions,.enterprise-network",
+        { autoAlpha: 0, y: 22, filter: "blur(5px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: .78, stagger: .1, ease: "power3.out", delay: .12 });
       gsap.from(".en-support-item", { y: 32, autoAlpha: 0, duration: .7, stagger: .07, ease: "expo.out", scrollTrigger: { trigger: ".en-support-grid", start: "top 85%", once: true } });
     }, page);
     return () => context.revert();
   }, []);
 
   return <section ref={pageRef} className="en-page">
-    <header className="en-hero">
-      <div className="en-wrap en-hero-copy">
-        <p>Secure access for distributed teams, managed from one place.</p>
-        <a className="en-button en-button-accent" href={CONTACT_URL}>Talk to our team</a>
+    <header className="enterprise-hero">
+      <div className="enterprise-hero-shell">
+        <div className="enterprise-hero-copy">
+          <p className="blog-eyebrow enterprise-hero-kicker"><span /> TRAVERSE VPN <i>/</i> ENTERPRISE</p>
+          <h1><span className="enterprise-title-first">Secure access for</span><span className="enterprise-title-accent">distributed teams.</span></h1>
+          <p className="enterprise-hero-summary">Traverse VPN provides IT teams and security leaders with a secure, scalable foundation for remote access, multi-site connectivity, and centralized network control.</p>
+          <div className="enterprise-hero-actions"><a className="enterprise-hero-cta" href="/contact-us">Talk to our team <span aria-hidden="true">↗</span></a><a className="enterprise-hero-secondary" href="#en-needs-title">Explore the model <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <EnterpriseNetwork />
+        <div className="enterprise-hero-footnote"><span>FOR IT &amp; SECURITY LEADERS</span><span>ACCESS, DESIGNED TO SCALE</span></div>
       </div>
-      <h1 className="en-hero-word"><span>Enterprise</span></h1>
     </header>
 
     <Roles items={content.audiences} />
