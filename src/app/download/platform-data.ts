@@ -22,7 +22,7 @@ export const platformPages: Record<PlatformKey, PlatformPageData> = {
     key: "windows", name: "Windows", family: "Desktop", title: "A more private connection for Windows.",
     lead: "Get the Traverse VPN experience on your Windows PC or laptop, with encrypted connections and straightforward controls for everyday browsing.",
     description: "A VPN for Windows routes your internet traffic through an encrypted connection and replaces your usual network IP with the VPN server's IP while you are connected. That adds privacy on shared networks and gives you a simple way to choose a virtual location.",
-    image: "/images/vpn/photos/airport-work.webp", imageAlt: "Laptop ready for a secure connection while travelling",
+    image: "/images/vpn/photos/airport-work.webp", imageAlt: "Traveler with a laptop at an airport window overlooking a plane",
     highlights: [
       { title: "Connect in a click", text: "Open the app and connect to a server without configuring a VPN connection from scratch." },
       { title: "Choose your route", text: "Select a server location for the connection you need, then switch when your plans change." },
@@ -47,7 +47,7 @@ export const platformPages: Record<PlatformKey, PlatformPageData> = {
     key: "macos", name: "macOS", family: "Desktop", title: "Private browsing, at home or on the move.",
     lead: "Bring Traverse VPN to your Mac for an encrypted connection, simple server choices, and a familiar one-tap setup.",
     description: "A VPN for Mac encrypts the connection between your Mac and a VPN server. It can help keep traffic more private on café, hotel, and airport Wi-Fi while masking your regular network IP from the websites you visit.",
-    image: "/images/vpn/photos/travel-desk.webp", imageAlt: "Mac style laptop on a travel desk",
+    image: "/images/vpn/photos/travel-desk.webp", imageAlt: "Laptop, tablet and phone together on a desk",
     highlights: [
       { title: "A simple setup", text: "Install the macOS app, sign in, and connect without manually building a VPN profile." },
       { title: "Safer shared networks", text: "Add an encrypted layer when using Wi-Fi away from home or the office." },
@@ -72,7 +72,7 @@ export const platformPages: Record<PlatformKey, PlatformPageData> = {
     key: "linux", name: "Linux", family: "Desktop", title: "A straightforward VPN for Linux.",
     lead: "Traverse's Linux page highlights graphical and command-line options for users who want privacy without a complicated setup.",
     description: "Connect your Linux computer through an encrypted VPN tunnel, choose a server location, and keep the same everyday privacy tools close at hand. The original product page describes support for popular distributions and both GUI and CLI workflows.",
-    image: "/images/vpn/photos/cafe-laptop.webp", imageAlt: "Laptop open and ready for work in a café",
+    image: "/images/vpn/photos/cafe-laptop.webp", imageAlt: "Woman working on a laptop at a café table",
     highlights: [
       { title: "GUI and CLI options", text: "Choose the workflow that fits your setup, whether you prefer a graphical app or terminal controls." },
       { title: "Common distributions", text: "The original Linux page names Ubuntu, Debian, Fedora, Linux Mint, and Arch among its supported options." },
@@ -97,7 +97,7 @@ export const platformPages: Record<PlatformKey, PlatformPageData> = {
     key: "android", name: "Android", family: "Mobile", title: "Your privacy, ready for the everyday.",
     lead: "Protect the connection on the phone that goes everywhere with you, from everyday browsing to public Wi-Fi.",
     description: "The Traverse Android app brings VPN protection to your mobile connection. Connect through an encrypted tunnel, mask your regular IP, and use available privacy features from one app.",
-    image: "/images/vpn/photos/city-phone.webp", imageAlt: "Phone user on a city street after dark",
+    image: "/images/vpn/photos/city-phone.webp", imageAlt: "Woman looking at her phone in a busy city at night",
     highlights: [
       { title: "One-tap connection", text: "Open the app, choose a server, and connect before using a shared or unfamiliar network." },
       { title: "Mobile-friendly safeguards", text: "Options such as kill switch and auto-connect can help keep protection aligned with your routine." },
@@ -122,7 +122,7 @@ export const platformPages: Record<PlatformKey, PlatformPageData> = {
     key: "ios", name: "iOS", family: "Mobile", title: "A more private connection for iPhone.",
     lead: "Take Traverse VPN with you for everyday browsing, travel, and the Wi-Fi networks you do not know.",
     description: "A VPN for iPhone routes your internet traffic through an encrypted connection and masks your usual IP while connected. Traverse's iOS page focuses on quick setup, privacy on the go, and an experience designed for the Apple ecosystem.",
-    image: "/images/vpn/photos/cafe-phone.webp", imageAlt: "Phone in hand in a public indoor space",
+    image: "/images/vpn/photos/cafe-phone.webp", imageAlt: "Person using a phone at a café table",
     highlights: [
       { title: "Connect with one tap", text: "Sign in, pick a server, and turn on your VPN connection from the app." },
       { title: "Safer on the go", text: "Use encryption when connecting through public Wi-Fi while travelling or working away from home." },

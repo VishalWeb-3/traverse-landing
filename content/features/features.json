@@ -27,7 +27,7 @@
       "tag": "SCAM LINK SCANNER",
       "title": "Link scam scan",
       "image": "/images/vpn/photos/night-phone.webp",
-      "alt": "Phone being used on a city street after dark",
+      "alt": "Man checking his phone on a city street at night",
       "imageLabel": "LINK SCAM SCAN",
       "copy": "Quickly check sus links before you tap.",
       "points": [
@@ -41,7 +41,7 @@
       "tag": "IP PRIVACY",
       "title": "Mask your IP",
       "image": "/images/vpn/photos/city-phone.webp",
-      "alt": "Person using a phone in a city at night",
+      "alt": "Woman looking at her phone in a busy city at night",
       "imageLabel": "IP MASKING",
       "copy": "Traverse VPN hides your real IP address and routes your traffic through secure VPN servers, so websites and apps see the VPN location instead of your home or mobile IP. This makes it much harder for advertisers, data brokers, or bad actors to tie your browsing directly to your real device or physical location.",
       "points": [
@@ -55,7 +55,7 @@
       "tag": "LEAK SAFEGUARDS",
       "title": "Protection against common leaks",
       "image": "/images/vpn/photos/cafe-laptop.webp",
-      "alt": "Laptop connected on a café network",
+      "alt": "Woman working on a laptop at a café table",
       "imageLabel": "DNS · IP · CONNECTION",
       "copy": "Beyond basic encryption, Traverse VPN adds extra layers to reduce common ways your identity can slip through. These protections work together so your IP, DNS requests, and communication channels are harder to correlate and track in everyday use.",
       "points": [
@@ -69,7 +69,7 @@
       "tag": "SMARTER BROWSING",
       "title": "Smart protection for everyday browsing",
       "image": "/images/vpn/photos/cafe-phone.webp",
-      "alt": "Phone held in a public indoor space",
+      "alt": "Person using a phone at a café table",
       "imageLabel": "SMART BROWSING",
       "copy": "Traverse VPN includes extra tools tailored to how people actually use the internet every day, not just raw tunneling. Link scam scanning – Check suspicious links for scam patterns and risky behavior before you open them, adding a buffer between you and phishing pages. These features complement the VPN tunnel to keep you safer against common traps like phishing, scam links, and confusing security settings.",
       "points": [
@@ -83,7 +83,7 @@
       "tag": "NO DATA METER",
       "title": "Unlimited bandwidth",
       "image": "/images/vpn/photos/airport-work.webp",
-      "alt": "Traveler working on a laptop at an airport",
+      "alt": "Traveler with a laptop at an airport window overlooking a plane",
       "imageLabel": "UNLIMITED BANDWIDTH",
       "copy": "Traverse VPN Pro offers unlimited bandwidth, so you don’t have to keep one eye on a data meter while you browse, stream, or download. Within normal usage limits, you’re free to stay connected as long as you like without worrying about pre-set caps.",
       "points": [
@@ -97,7 +97,7 @@
       "tag": "YOUR DEVICES",
       "title": "Multi-device protection",
       "image": "/images/vpn/photos/travel-desk.webp",
-      "alt": "Laptop and travel essentials on a desk",
+      "alt": "Laptop, tablet and phone together on a desk",
       "imageLabel": "MULTI-DEVICE USE",
       "copy": "Traverse VPN is available for iPhone, iPad, and other Apple platforms, so you can protect more than one device with the same service. You can keep your phone protected on mobile data while your tablet or laptop stays secure on WiFi, using the same familiar interface across your Apple ecosystem.",
       "points": [
@@ -111,7 +111,7 @@
       "tag": "TRAVEL READY",
       "title": "Streaming and travel-friendly",
       "image": "/images/vpn/photos/cafe-collaboration.webp",
-      "alt": "People working together on laptops in a café",
+      "alt": "People working on laptops in a brick-walled café",
       "imageLabel": "AT HOME · ON THE GO",
       "copy": "When you’re traveling or using unfamiliar networks, Traverse VPN can help keep your streaming and browsing more private and consistent. Connect to a high-speed server in a suitable region, secure the hotel or airport WiFi, and stream or browse knowing your traffic is encrypted instead of exposed.",
       "points": [
@@ -125,7 +125,7 @@
       "tag": "TRAVEL READY",
       "title": "Streaming and travel-friendly",
       "image": "/images/vpn/photos/cafe-laptop.webp",
-      "alt": "Laptop connected in a café",
+      "alt": "Woman working on a laptop at a café table",
       "imageLabel": "AT HOME · ON THE GO",
       "copy": "When you’re traveling or using unfamiliar networks, Traverse VPN can help keep your streaming and browsing more private and consistent. Connect to a high-speed server in a suitable region, secure the hotel or airport WiFi, and stream or browse knowing your traffic is encrypted instead of exposed. (Availability with specific streaming platforms can vary by region and service, but the encrypted tunnel keeps your connection protected either way.)",
       "points": [
@@ -139,7 +139,7 @@
       "tag": "PUBLIC WI-FI",
       "title": "Secure VPN for Public WiFi",
       "image": "/images/vpn/photos/cafe-collaboration.webp",
-      "alt": "People using a shared café Wi-Fi network",
+      "alt": "People working on laptops in a brick-walled café",
       "imageLabel": "AUTO-PROTECT",
       "copy": "Auto-protect activates the moment you join any public network, cafes, airports, hotels, anywhere. You do not have to remember to turn it on. Traverse VPN does it for you.",
       "points": [

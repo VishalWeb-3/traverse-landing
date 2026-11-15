@@ -38,11 +38,11 @@
         "images": [
           {
             "src": "/images/home-vpn/hotel-wifi.webp",
-            "alt": "Traveler protecting a laptop connection on public Wi-Fi"
+            "alt": "Man working on a laptop in a sunlit café"
           },
           {
             "src": "/images/home-vpn/cafe-phone.webp",
-            "alt": "Phone showing an active VPN connection in a café"
+            "alt": "Person using a phone beside a laptop and coffee at a café table"
           }
         ]
       },
@@ -62,11 +62,11 @@
         "images": [
           {
             "src": "/images/home-vpn/airport-laptop.webp",
-            "alt": "Traveler connecting at an airport with a VPN"
+            "alt": "Traveler waiting by an airport window at sunset"
           },
           {
             "src": "/images/home-vpn/city-phone.webp",
-            "alt": "VPN location map open on a phone in the city"
+            "alt": "Person holding up a phone on a city street at night"
           }
         ]
       },
@@ -86,11 +86,11 @@
         "images": [
           {
             "src": "/images/home-vpn/hotel-wifi.webp",
-            "alt": "Laptop and phone protected on a public hotel network"
+            "alt": "Man working on a laptop in a sunlit café"
           },
           {
             "src": "/images/home-vpn/cafe-phone.webp",
-            "alt": "Phone showing an active VPN connection in a café"
+            "alt": "Person using a phone beside a laptop and coffee at a café table"
           }
         ]
       },
@@ -110,11 +110,11 @@
         "images": [
           {
             "src": "/images/home-vpn/home-devices.webp",
-            "alt": "Devices connected through a private VPN at home"
+            "alt": "Woman working on a laptop at home in the evening"
           },
           {
             "src": "/images/home-vpn/city-phone.webp",
-            "alt": "Phone showing a protected city connection"
+            "alt": "Person holding up a phone on a city street at night"
           }
         ]
       }
@@ -172,19 +172,19 @@
         "title": "Encryption for every connection.",
         "copy": "AES-256 encryption helps protect your internet traffic as it travels between your device and the VPN server.",
         "image": "/images/home-vpn/hotel-wifi.webp",
-        "alt": "Laptop protected on a public Wi-Fi network"
+        "alt": "Man working on a laptop in a sunlit café"
       },
       {
         "title": "Global Access",
         "copy": "Fast server locations for your connection",
         "image": "/images/home-vpn/city-phone.webp",
-        "alt": "VPN location map open on a phone in the city"
+        "alt": "Person holding up a phone on a city street at night"
       },
       {
         "title": "Easy to Connect",
         "copy": "Choose a server. Tap connect. Browse with more privacy.",
         "image": "/images/home-vpn/cafe-phone.webp",
-        "alt": "Phone showing an active VPN connection in a café"
+        "alt": "Person using a phone beside a laptop and coffee at a café table"
       }
     ]
   },

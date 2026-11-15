@@ -293,7 +293,7 @@ function HomePage({ content }: { content: HomePageContent }) {
     </section>
     <section className="about section" id="about" ref={aboutRef}>
       <GridLines/>
-      <div className="about-images"><img loading="lazy" decoding="async" className="about-left" src="/images/home-vpn/airport-laptop.webp" alt="Traveler connecting at an airport with a VPN"/><img loading="lazy" decoding="async" className="about-right" src="/images/home-vpn/city-phone.webp" alt="VPN location map open on a phone in the city"/></div>
+      <div className="about-images"><img loading="lazy" decoding="async" className="about-left" src="/images/home-vpn/airport-laptop.webp" alt="Traveler waiting by an airport window at sunset"/><img loading="lazy" decoding="async" className="about-right" src="/images/home-vpn/city-phone.webp" alt="Person holding up a phone on a city street at night"/></div>
       <div className="about-heading">
 
         <h2><ScrollRevealWords text={content.about.headingLine1}/><br className="desktop-break"/> <ScrollRevealWords text={content.about.headingLine2}/><br className="desktop-break"/> <ScrollRevealWords text={content.about.headingLine3}/></h2>
@@ -323,7 +323,7 @@ function HomePage({ content }: { content: HomePageContent }) {
         <article className="feature-copy">
           <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><FeatureBenefits benefits={content.features.benefits}/><nav className="feature-policy-links" aria-label="Privacy and security information"><a href="/no-logs-policy">Read No Logs Policy <span aria-hidden="true">↗</span></a><a href="/security-standards">View Security Standards <span aria-hidden="true">↗</span></a></nav></div>
         </article>
-        <article className="feature-visual" aria-label="Traverse VPN privacy features"><img loading="lazy" decoding="async" className="feature-phone" src="/images/home-vpn/cafe-phone.webp" alt="Phone showing an active VPN connection in a café"/>
+        <article className="feature-visual" aria-label="Traverse VPN privacy features"><img loading="lazy" decoding="async" className="feature-phone" src="/images/home-vpn/cafe-phone.webp" alt="Person using a phone beside a laptop and coffee at a café table"/>
           <div className="metric metric-retention"><span className="metric-icon red"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a6 6 0 0 1 12 0v1zM16 5a3 3 0 0 1 0 6M18 14a4 4 0 0 1 3 4v1h-3"/></svg></span><span><b>{content.features.usersMetric}</b><small>{content.features.usersLabel}</small></span></div>
           <div className="metric metric-response"><span className="metric-icon dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>{content.features.serversMetric} <i></i></b><small>{content.features.serversLabel}</small></span></div>
           <div className="metric metric-conversion"><span className="metric-icon black"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 6-6 4 3 7-8M14 6h6v6"/></svg></span><span><b>{content.features.encryptionMetric}</b><small>{content.features.encryptionLabel}</small></span></div>

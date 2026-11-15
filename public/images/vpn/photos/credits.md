@@ -2,10 +2,10 @@
 
 Photographs are from Unsplash and are used under the Unsplash License (https://unsplash.com/license).
 
-- Airport traveler working at a laptop — Daniel Gomez: https://unsplash.com/photos/man-working-on-laptop-by-airport-window-at-sunrise-iNK8lpCBlfg
-- Man working on a laptop in a café — Arun K: https://unsplash.com/photos/man-works-on-a-laptop-at-a-cafe-XHRaxIB8IiY
-- People working on laptops in a café — yan kolesnyk: https://unsplash.com/photos/young-women-working-on-laptops-at-a-cafe-QlOfYT943Ac
-- Woman using a phone on a city street at night — Georgi Kalaydzhiev: https://unsplash.com/photos/woman-on-city-street-at-night-looking-at-phone-qQ0nknwjXic
-- Laptop and travel items in a hotel workspace — My Spain Visa: https://unsplash.com/photos/laptop-breakfast-and-a-scenic-view-5VSnSYCYcB8
-- Phone photographed in a city at night — Oscar Sutton: https://unsplash.com/photos/person-using-phone-while-taking-photo-t8PKFPLcNYA
-- Phone in a public indoor space — Neil Cooper: https://unsplash.com/photos/person-holding-mobile-phone-UZPAKEknAyw
+- airport-work.webp — Henry Deng: https://unsplash.com/photos/a-person-sitting-in-front-of-a-window-looking-out-at-an-airport-6MxF5a6pa0c
+- cafe-collaboration.webp — Eric Anderson: https://unsplash.com/photos/people-working-on-laptops-in-a-cozy-cafe-ZwzB7C8lPDI
+- cafe-laptop.webp — Adam Satria: https://unsplash.com/photos/woman-in-green-jacket-sitting-by-the-table-using-laptop-uXLgmicKSi4
+- cafe-phone.webp — freestocks: https://unsplash.com/photos/selective-focus-photography-of-person-using-black-smartphone-hRVrvH9-dG0
+- city-phone.webp — nguyen quan: https://unsplash.com/photos/a-woman-in-a-blue-top-is-looking-at-her-cell-phone-SFd2225T-Zc
+- night-phone.webp — HamZa NOUASRIA: https://unsplash.com/photos/man-in-white-polo-shirt-holding-smartphone-n_ZA0tj3E8g
+- travel-desk.webp — Esteban Bonilla: https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-cEOKNlNj_iQ

@@ -9,11 +9,11 @@ import fallback from "../../../content/download/download.json";
 import SiteFooter from "../site-footer";
 
 const platformArtwork: Record<string, { src: string; alt: string }> = {
-  windows: { src: "/images/vpn/photos/airport-work.webp", alt: "Laptop ready for a secure connection while travelling" },
-  macos: { src: "/images/vpn/photos/travel-desk.webp", alt: "Laptop and travel essentials on a desk" },
-  linux: { src: "/images/vpn/photos/cafe-laptop.webp", alt: "Laptop open and ready for work in a café" },
-  android: { src: "/images/vpn/photos/city-phone.webp", alt: "Phone user on a city street after dark" },
-  ios: { src: "/images/vpn/photos/cafe-phone.webp", alt: "Phone in hand in a bright public indoor space" },
+  windows: { src: "/images/vpn/photos/airport-work.webp", alt: "Traveler with a laptop at an airport window overlooking a plane" },
+  macos: { src: "/images/vpn/photos/travel-desk.webp", alt: "Laptop, tablet and phone together on a desk" },
+  linux: { src: "/images/vpn/photos/cafe-laptop.webp", alt: "Woman working on a laptop at a café table" },
+  android: { src: "/images/vpn/photos/city-phone.webp", alt: "Woman looking at her phone in a busy city at night" },
+  ios: { src: "/images/vpn/photos/cafe-phone.webp", alt: "Person using a phone at a café table" },
 };
 
 gsap.registerPlugin(ScrollTrigger);
