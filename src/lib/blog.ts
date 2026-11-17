@@ -53,8 +53,8 @@ export function formatPostDate(value: string) {
 /** Topic shown in the blog feed, derived from the article itself. */
 export function postTopic(post: BlogPost) {
   const text = `${post.slug} ${post.title}`.toLowerCase();
-  if (/how-to|set up|setup/.test(text)) return "Setup guides";
+  if (/how-to|set up|setup/.test(text)) return "Setup";
   if (/ vs |-vs-|comparison|best vpn/.test(text)) return "Comparisons";
-  if (/business|remote/.test(text)) return "Work and business";
-  return "Privacy and security";
+  if (/business|remote/.test(text)) return "Work";
+  return "Security";
 }

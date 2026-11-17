@@ -54,7 +54,7 @@ const posts = readdirSync(dir)
       title: toText(data.title) || id,
       // Kept untrimmed: the original cut descriptions at 155 characters before trimming, and meta tags must match.
       description: toText(data.description),
-      image: toText(data.image) || "/blog-hero-laptop.png",
+      image: toText(data.image) || "/images/vpn/photos/cafe-laptop.webp",
       date: toDate(data.date),
       lastUpdated: toDate(data.lastUpdated),
       canonicalUrl: toText(data.canonicalUrl),
