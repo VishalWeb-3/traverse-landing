@@ -6,7 +6,14 @@ import fallback from "../../../content/download/download.json";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = { title: "Download Traverse VPN Apps for Any Device", description: "Explore Traverse VPN apps for desktop, mobile, and Linux devices." };
+export const metadata: Metadata = {
+  title: "Download Traverse VPN Apps for Any Device",
+  description:
+    "Download Traverse VPN for Windows, iOS, Linux, macOS, and Android.",
+  alternates: {
+    canonical: "https://traversevpn.com/downloads",
+  },
+};
 
 export default async function DownloadPage() {
   let content: typeof fallback = fallback;

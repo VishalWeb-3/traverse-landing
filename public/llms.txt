@@ -1,0 +1,40 @@
+# Traverse VPN
+
+> Traverse VPN is a privacy-first VPN service for secure browsing, public Wi-Fi protection, IP masking, and fast VPN access across devices.
+
+Traverse VPN helps users browse privately, protect internet traffic on public Wi-Fi, hide their IP address, and download VPN apps for major platforms.
+
+## Main Pages
+
+- [Homepage](https://traversevpn.com/) - Secure VPN landing page.
+- [Features](https://traversevpn.com/features) - VPN privacy, speed, security, and device features.
+- [Plans](https://traversevpn.com/plans) - VPN subscription plans.
+- [Downloads](https://traversevpn.com/downloads) - Download Traverse VPN apps.
+- [Android VPN](https://traversevpn.com/vpn-for-android) - VPN app for Android devices.
+- [iPhone VPN](https://traversevpn.com/vpn-for-iphone) - VPN app for iPhone and iOS devices.
+- [Windows VPN](https://traversevpn.com/vpn-for-windows) - VPN app for Windows.
+- [Mac VPN](https://traversevpn.com/vpn-for-mac) - VPN app for macOS.
+- [Linux VPN](https://traversevpn.com/vpn-for-linux) - VPN app for Linux.
+- [Enterprise VPN](https://traversevpn.com/enterprise) - VPN solutions for teams and businesses.
+- [Blog](https://traversevpn.com/blogs) - VPN guides, privacy tips, and security articles.
+- [FAQs](https://traversevpn.com/faqs) - Frequently asked questions.
+- [Contact](https://traversevpn.com/contact-us) - Support and contact page.
+
+## Legal Pages
+
+- [Privacy Policy](https://traversevpn.com/privacy-policy) - How Traverse VPN handles privacy and user data.
+- [Terms and Conditions](https://traversevpn.com/terms-and-conditions) - Product terms and usage rules.
+- [Refund Policy](https://traversevpn.com/refund-policy) - Refund and cancellation information.
+
+## Core Topics
+
+- Secure VPN
+- Private browsing
+- Public Wi-Fi protection
+- Hide IP address
+- VPN for Android
+- VPN for iPhone
+- VPN for Windows
+- VPN for Mac
+- VPN for Linux
+- Remote work security

@@ -3,10 +3,12 @@ import SiteHeader from "../site-header";
 import EnterpriseContent from "./enterprise-content";
 import { client } from "../../../tina/__generated__/client";
 import fallback from "../../../content/enterprise/enterprise.json";
+import { buildSeoMetadata } from "../../lib/seo";
+import seoData from "../../data/seo/enterprise.json";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = { title: "Business VPN for Secure Remote Teams — Traverse VPN", description: "Explore enterprise VPN planning for secure remote teams, centralized access, and multi-site connectivity." };
+export const metadata: Metadata = buildSeoMetadata(seoData);
 
 export default async function EnterprisePage() {
   if (process.env.NODE_ENV !== "development" && !(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN)) {

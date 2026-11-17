@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { client } from "../../tina/__generated__/client";
 import homepage from "../../content/pages/home.json";
 import HomeContent, { StaticHomeContent } from "./home-content";
+import { buildSeoMetadata } from "../lib/seo";
+import seoData from "../data/seo/home.json";
+
+export const metadata: Metadata = buildSeoMetadata(seoData);
 
 export const dynamic = "force-dynamic";
 

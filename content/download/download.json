@@ -4,35 +4,35 @@
       "name": "Windows",
       "key": "windows",
       "family": "Desktop",
-      "href": "/download/windows",
+      "href": "/vpn-for-windows",
       "note": "PC and laptop"
     },
     {
       "name": "macOS",
       "key": "macos",
       "family": "Desktop",
-      "href": "/download/macos",
+      "href": "/vpn-for-mac",
       "note": "Mac"
     },
     {
       "name": "Linux",
       "key": "linux",
       "family": "Desktop",
-      "href": "/download/linux",
+      "href": "/vpn-for-linux",
       "note": "GUI and CLI details"
     },
     {
       "name": "Android",
       "key": "android",
       "family": "Mobile",
-      "href": "/download/android",
+      "href": "/vpn-for-android",
       "note": "Phone and tablet"
     },
     {
       "name": "iOS",
       "key": "ios",
       "family": "Mobile",
-      "href": "/download/ios",
+      "href": "/vpn-for-iphone",
       "note": "iPhone and iPad"
     }
   ],

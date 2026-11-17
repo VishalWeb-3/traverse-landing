@@ -1,3 +1,5 @@
+import { blogPosts } from "../lib/blog";
+
 export type InfoPageSection = {
   eyebrow?: string;
   title: string;
@@ -16,16 +18,16 @@ export type InfoPage = {
 };
 
 const platformLinks = [
-  { label: "Download VPN Apps", href: "/download", group: "Platforms" },
-  { label: "VPN for Android", href: "/download/android", group: "Platforms" },
-  { label: "VPN for iPhone", href: "/download/ios", group: "Platforms" },
+  { label: "Download VPN Apps", href: "/downloads", group: "Platforms" },
+  { label: "VPN for Android", href: "/vpn-for-android", group: "Platforms" },
+  { label: "VPN for iPhone", href: "/vpn-for-iphone", group: "Platforms" },
   { label: "VPN for Business", href: "/vpn-for-business", group: "Platforms" },
   { label: "VPN for Streaming", href: "/vpn-for-streaming", group: "Platforms" },
   { label: "VPN for Gaming", href: "/vpn-for-gaming", group: "Platforms" },
   { label: "VPN for Security", href: "/security", group: "Platforms" },
-  { label: "VPN for Mac", href: "/download/macos", group: "Platforms" },
-  { label: "VPN for Windows", href: "/download/windows", group: "Platforms" },
-  { label: "VPN for Linux", href: "/download/linux", group: "Platforms" },
+  { label: "VPN for Mac", href: "/vpn-for-mac", group: "Platforms" },
+  { label: "VPN for Windows", href: "/vpn-for-windows", group: "Platforms" },
+  { label: "VPN for Linux", href: "/vpn-for-linux", group: "Platforms" },
 ];
 
 const companyLinks = [
@@ -53,7 +55,7 @@ export const infoPages: InfoPage[] = [
     sections: [
       { eyebrow: "WHY WE'RE HERE", title: "Make privacy easier to use.", paragraphs: ["Traverse says it set out to bridge a gap between complicated privacy tools and services that trade user data for convenience. Its goal is a VPN experience that pairs everyday usability with strong connection protection."] },
       { eyebrow: "OUR MISSION", title: "Keep personal data in your hands.", paragraphs: ["The company describes its mission as helping people protect their personal information at home, in cafés, and while travelling. Its tools are designed to reduce exposure to hackers, trackers, and other unwanted observers on the networks people use."] },
-      { eyebrow: "FOR EVERY SCREEN", title: "Protection that moves with you.", paragraphs: ["Traverse offers apps across mobile and desktop platforms, so people can use one account on the devices they rely on. Each platform page includes app details and setup information."], points: [{ title: "Find your app", text: "Browse supported platforms and setup information.", href: "/download" }, { title: "For teams", text: "Explore Traverse VPN for business and enterprise needs.", href: "/enterprise" }] },
+      { eyebrow: "FOR EVERY SCREEN", title: "Protection that moves with you.", paragraphs: ["Traverse offers apps across mobile and desktop platforms, so people can use one account on the devices they rely on. Each platform page includes app details and setup information."], points: [{ title: "Find your app", text: "Browse supported platforms and setup information.", href: "/downloads" }, { title: "For teams", text: "Explore Traverse VPN for business and enterprise needs.", href: "/enterprise" }] },
       { eyebrow: "MADE FOR REAL ROUTINES", title: "Choose a connection for the moment.", paragraphs: ["The original site highlights streaming, gaming, and everyday security as common reasons people use Traverse. Server selection and network conditions affect results, so the best connection can vary by activity and location."], points: [{ title: "Streaming", text: "Learn about private connections while streaming.", href: "/vpn-for-streaming" }, { title: "Gaming", text: "See guidance for gaming connections.", href: "/vpn-for-gaming" }, { title: "Security", text: "Explore connection safeguards.", href: "/security" }] },
       { eyebrow: "FOR ORGANIZATIONS", title: "Protection for teams as well.", paragraphs: ["Traverse also offers business and enterprise options for organizations that need to manage secure connections across a team. Enterprise arrangements can include tailored deployment and support."], points: [{ title: "Business VPN", text: "Explore team plans and organization support.", href: "/vpn-for-business" }, { title: "Enterprise VPN", text: "Discuss a tailored deployment.", href: "/enterprise" }] },
       { eyebrow: "HERE TO HELP", title: "A team behind the service.", paragraphs: ["The company invites users to contact its support team for account, setup, and general questions."], points: [{ title: "Contact Traverse", text: "Email info@traversevpn.com or see the support page.", href: "/support" }] },
@@ -66,7 +68,7 @@ export const infoPages: InfoPage[] = [
     intro: "Give your team a straightforward way to protect work connections across the devices and networks they use every day.",
     actions: [{ label: "Talk to the team", href: "mailto:info@traversevpn.com?subject=Traverse%20Business%20VPN" }, { label: "Compare plans", href: "/plans" }],
     sections: [
-      { eyebrow: "FOR EVERYDAY WORK", title: "Protection that travels with your people.", paragraphs: ["Use an encrypted VPN connection on shared Wi-Fi at the office, at home, or while travelling. Traverse Business is designed to make connection protection easy to adopt across a team's routine."], points: [{ title: "Supported apps", text: "Review setup information for supported devices.", href: "/download" }] },
+      { eyebrow: "FOR EVERYDAY WORK", title: "Protection that travels with your people.", paragraphs: ["Use an encrypted VPN connection on shared Wi-Fi at the office, at home, or while travelling. Traverse Business is designed to make connection protection easy to adopt across a team's routine."], points: [{ title: "Supported apps", text: "Review setup information for supported devices.", href: "/downloads" }] },
       { eyebrow: "TEAM SETUP", title: "A plan for the way your team works.", paragraphs: ["Share your organization size, device mix, and deployment needs with the Traverse team. They can help identify the right setup and answer questions about managing access for your organization."], points: [{ title: "Contact the team", text: "Email info@traversevpn.com to discuss Business VPN.", href: "mailto:info@traversevpn.com?subject=Traverse%20Business%20VPN" }] },
       { eyebrow: "LARGER DEPLOYMENTS", title: "Need a tailored deployment?", paragraphs: ["For larger organizations or custom deployment requirements, the Enterprise team can discuss onboarding, administration, and support options."], points: [{ title: "Enterprise VPN", text: "Explore tailored organization deployments.", href: "/enterprise" }] },
     ],
@@ -92,7 +94,7 @@ export const infoPages: InfoPage[] = [
     actions: [{ label: "Browse FAQs", href: "/faqs" }, { label: "Contact support", href: "mailto:info@traversevpn.com?subject=Traverse%20VPN%20support" }],
     sections: [
       { eyebrow: "QUICK START", title: "Start with your device.", paragraphs: ["Choose your platform for app details and setup information. If a connection issue continues, include your device and app version when you contact support."], points: [
-        { title: "iPhone and iPad", text: "Open the iOS app page.", href: "/download/ios" }, { title: "Android", text: "Open the Android app page.", href: "/download/android" }, { title: "Desktop", text: "Browse Windows, macOS, and Linux options.", href: "/download" },
+        { title: "iPhone and iPad", text: "Open the iOS app page.", href: "/vpn-for-iphone" }, { title: "Android", text: "Open the Android app page.", href: "/vpn-for-android" }, { title: "Desktop", text: "Browse Windows, macOS, and Linux options.", href: "/downloads" },
       ] },
       { eyebrow: "TROUBLESHOOTING", title: "A few things to check.", paragraphs: ["Confirm that your internet connection works with Traverse disconnected, update the app, then try reconnecting to another available server. If the issue remains, email support with the steps that reproduce it."], points: [{ title: "Common questions", text: "Search answers about accounts, privacy, plans, and connections.", href: "/faqs" }] },
       { eyebrow: "STREAMING, GAMING & SECURITY", title: "Get help with how you connect.", paragraphs: ["The original support page offers help with streaming access, gaming latency, and security settings. Results can depend on your server, location, device, and the service you are using."], points: [{ title: "Streaming", text: "Troubleshoot streaming connections.", href: "/vpn-for-streaming" }, { title: "Gaming", text: "Review gaming connection guidance.", href: "/vpn-for-gaming" }, { title: "Security", text: "Learn about protection settings.", href: "/security" }] },
@@ -134,7 +136,7 @@ export const infoPages: InfoPage[] = [
     ],
   },
   {
-    slug: "terms-of-use",
+    slug: "terms-and-conditions",
     title: "Terms of use.",
     kicker: "TERMS & CONDITIONS",
     intro: "This page brings the published Traverse VPN Terms and Conditions into the new site. It covers service use, subscriptions, acceptable use, and the limitations described in the original terms.",
@@ -155,11 +157,11 @@ export const infoPages: InfoPage[] = [
     title: "A more private stream, wherever you are.",
     kicker: "TRAVERSE FOR STREAMING",
     intro: "Keep your connection protected while you watch, travel, or switch between screens. Content availability depends on the streaming service and your location.",
-    actions: [{ label: "Explore plans", href: "/plans" }, { label: "Choose your app", href: "/download" }],
+    actions: [{ label: "Explore plans", href: "/plans" }, { label: "Choose your app", href: "/downloads" }],
     sections: [
       { eyebrow: "ON THE MOVE", title: "Take your usual privacy with you.", paragraphs: ["Connect through a VPN when using shared Wi-Fi at a hotel, airport, or café. Your traffic travels through an encrypted connection between your device and the VPN server."] },
       { eyebrow: "YOUR CONNECTION", title: "A steadier way to get online.", paragraphs: ["Network speed depends on your internet provider, distance to the server, device, and streaming service. Try a nearby server if playback feels slow, and check the service’s own terms and availability when travelling."] },
-      { eyebrow: "ONE ACCOUNT", title: "Switch between supported screens.", paragraphs: ["Use Traverse on supported phones and computers. Visit the app guide to see platform-specific information."], points: [{ title: "All supported apps", text: "Browse platform pages.", href: "/download" }] },
+      { eyebrow: "ONE ACCOUNT", title: "Switch between supported screens.", paragraphs: ["Use Traverse on supported phones and computers. Visit the app guide to see platform-specific information."], points: [{ title: "All supported apps", text: "Browse platform pages.", href: "/downloads" }] },
     ],
   },
   {
@@ -167,11 +169,11 @@ export const infoPages: InfoPage[] = [
     title: "Keep your connection in the game.",
     kicker: "TRAVERSE FOR GAMING",
     intro: "Add an encrypted route to your online gaming connection, with the choice of server location in your hands. Actual latency depends on your route and network conditions.",
-    actions: [{ label: "See plans", href: "/plans" }, { label: "Get the app", href: "/download" }],
+    actions: [{ label: "See plans", href: "/plans" }, { label: "Get the app", href: "/downloads" }],
     sections: [
       { eyebrow: "YOUR ROUTE", title: "Choose a server with care.", paragraphs: ["A VPN adds a routing step, so it may increase or reduce latency depending on the route. Start with a nearby server and compare your in-game connection before settling on one."] },
       { eyebrow: "SHARED NETWORKS", title: "Play on public Wi-Fi with more confidence.", paragraphs: ["Encrypting your traffic can help protect your connection on networks you do not control. It does not replace account security, device updates, or a strong password."] },
-      { eyebrow: "GET SET UP", title: "Find Traverse for your device.", paragraphs: ["Choose a supported platform to see installation details and app information."], points: [{ title: "Browse apps", text: "Windows, macOS, Linux, iOS, and Android.", href: "/download" }, { title: "Connection protection", text: "See the full feature list.", href: "/features" }] },
+      { eyebrow: "GET SET UP", title: "Find Traverse for your device.", paragraphs: ["Choose a supported platform to see installation details and app information."], points: [{ title: "Browse apps", text: "Windows, macOS, Linux, iOS, and Android.", href: "/downloads" }, { title: "Connection protection", text: "See the full feature list.", href: "/features" }] },
     ],
   },
   {
@@ -189,8 +191,11 @@ export const infoPages: InfoPage[] = [
 ];
 
 export const sitemapGroups = [
-  { title: "Explore Traverse", links: [{ label: "Home", href: "/" }, { label: "Features", href: "/features" }, { label: "Plans", href: "/plans" }, { label: "Enterprise", href: "/enterprise" }, { label: "Blog", href: "/blog" }, { label: "FAQs", href: "/faqs" }] },
+  { title: "Explore Traverse", links: [{ label: "Home", href: "/" }, { label: "Features", href: "/features" }, { label: "Plans", href: "/plans" }, { label: "Enterprise", href: "/enterprise" }, { label: "Blog", href: "/blogs" }, { label: "FAQs", href: "/faqs" }] },
   { title: "Company", links: companyLinks },
   { title: "Platforms & use cases", links: platformLinks },
   { title: "Legal", links: legalLinks.slice(0, 2) },
+  // Every article is linked here, as on the original /sitemap page, so each indexed post has a crawl path.
+  { title: "Blog articles", links: blogPosts.map((post) => ({ label: post.title, href: `/blogs/${post.slug}` })) },
+  { title: "Resources", links: [{ label: "XML sitemap", href: "/sitemap.xml" }] },
 ];

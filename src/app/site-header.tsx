@@ -21,14 +21,14 @@ export default function SiteHeader() {
 
   const downloadGroups = [
       { title: "Desktop", items: [
-      { label: "Windows", href: "/download/windows", icon: "windows" },
-      { label: "macOS", href: "/download/macos", icon: "mac" },
-      { label: "Linux", href: "/download/linux", icon: "linux" },
+      { label: "Windows", href: "/vpn-for-windows", icon: "windows" },
+      { label: "macOS", href: "/vpn-for-mac", icon: "mac" },
+      { label: "Linux", href: "/vpn-for-linux", icon: "linux" },
     ] },
     { title: "Mobile", items: [
-      { label: "Android", href: "/download/android", icon: "android" },
-      { label: "iOS", href: "/download/ios", icon: "apple" },
-      { label: "All Apps", href: "/download", icon: "all" },
+      { label: "Android", href: "/vpn-for-android", icon: "android" },
+      { label: "iOS", href: "/vpn-for-iphone", icon: "apple" },
+      { label: "All Apps", href: "/downloads", icon: "all" },
     ] },
   ];
 
@@ -59,7 +59,7 @@ export default function SiteHeader() {
       <a href="/features" aria-current={pathname === "/features" ? "page" : undefined}>Features</a>
       <a href="/plans" aria-current={pathname === "/plans" ? "page" : undefined}>Plans</a>
       <a href="/enterprise" aria-current={pathname === "/enterprise" ? "page" : undefined}>Enterprise</a>
-      <a href="/blog" aria-current={pathname === "/blog" ? "page" : undefined}>Blog</a>
+      <a href="/blogs" aria-current={pathname === "/blogs" ? "page" : undefined}>Blog</a>
       <div className="nav-download" onMouseEnter={() => setDownloadOpen(true)} onMouseLeave={() => setDownloadOpen(false)} onFocus={() => setDownloadOpen(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDownloadOpen(false); }}>
         <button type="button" aria-expanded={downloadOpen} aria-controls="desktop-download-menu" onClick={() => setDownloadOpen((value) => !value)}>
           Download <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4"/></svg>
@@ -68,13 +68,13 @@ export default function SiteHeader() {
       </div>
       <a href="/faqs" aria-current={pathname === "/faqs" ? "page" : undefined}>FAQs</a>
     </nav>
-    <a className="header-cta" href="/download">Get protected <span aria-hidden="true">↗</span></a>
+    <a className="header-cta" href="/downloads">Get protected <span aria-hidden="true">↗</span></a>
     <button className="menu-button" type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><i/><i/></button>
     <nav className="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" hidden={!open}>
       <a onClick={() => setOpen(false)} href="/features" aria-current={pathname === "/features" ? "page" : undefined}>Features</a>
       <a onClick={() => setOpen(false)} href="/plans" aria-current={pathname === "/plans" ? "page" : undefined}>Plans</a>
       <a onClick={() => setOpen(false)} href="/enterprise" aria-current={pathname === "/enterprise" ? "page" : undefined}>Enterprise</a>
-      <a onClick={() => setOpen(false)} href="/blog" aria-current={pathname === "/blog" ? "page" : undefined}>Blog</a>
+      <a onClick={() => setOpen(false)} href="/blogs" aria-current={pathname === "/blogs" ? "page" : undefined}>Blog</a>
       <details className="mobile-download">
         <summary>Download <span aria-hidden="true">⌄</span></summary>
         <div>{downloadGroups.flatMap((group) => group.items).map((item) => <a className="mobile-platform-link" onClick={() => setOpen(false)} href={item.href} key={item.label}><i className={`platform-${item.icon}`}><PlatformIcon platform={item.icon}/></i><span>{item.label}</span></a>)}</div>

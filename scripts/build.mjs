@@ -29,6 +29,8 @@ function run(command, args) {
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
 
+run("node", ["scripts/build-blog-index.mjs"]);
+
 if (process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN) {
   run("npx", ["tinacms", "build", "--skip-cloud-checks"]);
 } else {

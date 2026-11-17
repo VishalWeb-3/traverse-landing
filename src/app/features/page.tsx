@@ -4,13 +4,12 @@ import FeaturesContent from "./features-content";
 import { client } from "../../../tina/__generated__/client";
 import { resolveTinaImageUrls } from "../tina-image-url";
 import fallback from "../../../content/features/features.json";
+import { buildSeoMetadata } from "../../lib/seo";
+import seoData from "../../data/seo/features.json";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "VPN Features — Traverse VPN",
-  description: "Explore how Traverse VPN helps protect your connection, mask your IP, and browse more confidently on the networks you use every day.",
-};
+export const metadata: Metadata = buildSeoMetadata(seoData);
 
 export default async function FeaturesPage() {
   if (process.env.NODE_ENV !== "development" && !(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN)) {

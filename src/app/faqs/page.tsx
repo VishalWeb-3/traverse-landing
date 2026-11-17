@@ -3,10 +3,12 @@ import SiteHeader from "../site-header";
 import FaqContent from "./faq-content";
 import { client } from "../../../tina/__generated__/client";
 import fallback from "../../../content/faqs/faqs.json";
+import { buildSeoMetadata } from "../../lib/seo";
+import seoData from "../../data/seo/faq.json";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = { title: "Frequently Asked Questions — Traverse VPN", description: "Answers about Traverse VPN privacy, security, streaming, speed, supported devices, and plans." };
+export const metadata: Metadata = buildSeoMetadata(seoData);
 
 export default async function FaqsPage() {
   if (process.env.NODE_ENV !== "development" && !(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN)) {

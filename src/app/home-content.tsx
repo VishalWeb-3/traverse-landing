@@ -24,7 +24,7 @@ function Plus() { return <span className="plus" aria-hidden="true">+</span>; }
 
 function resolveCtaHref(label: string, href: string) {
   const purchaseAction = /\b(buy|purchase|subscribe|checkout)\b/i.test(label);
-  if (!purchaseAction && href.startsWith("https://links.traversevpn.com/")) return "/download";
+  if (!purchaseAction && href.startsWith("https://links.traversevpn.com/")) return "/downloads";
   return href;
 }
 
@@ -321,7 +321,7 @@ function HomePage({ content }: { content: HomePageContent }) {
       </div>
       <div className="features-cards">
         <article className="feature-copy">
-          <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><FeatureBenefits benefits={content.features.benefits}/><nav className="feature-policy-links" aria-label="Privacy and security information"><a href="/no-logs-policy">Read No Logs Policy <span aria-hidden="true">↗</span></a><a href="/security-standards">View Security Standards <span aria-hidden="true">↗</span></a></nav></div>
+          <div className="feature-copy-bottom"><h3>{content.features.privacyHeading}</h3><p>{content.features.privacyCopy}</p><FeatureBenefits benefits={content.features.benefits}/><nav className="feature-policy-links" aria-label="Privacy and security information"><a href="/privacy-policy">Read No Logs Policy <span aria-hidden="true">↗</span></a><a href="/security">View Security Standards <span aria-hidden="true">↗</span></a></nav></div>
         </article>
         <article className="feature-visual" aria-label="Traverse VPN privacy features"><img loading="lazy" decoding="async" className="feature-phone" src="/images/home-vpn/cafe-phone.webp" alt="Person using a phone beside a laptop and coffee at a café table"/>
           <div className="metric metric-retention"><span className="metric-icon red"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a6 6 0 0 1 12 0v1zM16 5a3 3 0 0 1 0 6M18 14a4 4 0 0 1 3 4v1h-3"/></svg></span><span><b>{content.features.usersMetric}</b><small>{content.features.usersLabel}</small></span></div>

@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import fallback from "../../../content/blog/blog.json";
 import FlapText from "./flap-text";
 
 type BlogContent = typeof fallback;
-type Story = BlogContent["stories"][number];
+type Story = BlogContent["stories"][number] & { href?: string };
 
 const ALL = "All stories";
 
@@ -22,13 +22,11 @@ function splitDate(date: string) {
 const shortRead = (read: string) => read.replace(/\s*read\s*$/i, "").toLowerCase();
 const topicLabel = (category: string) => category === ALL ? "All guides" : category;
 
-export default function BlogFeed({ content = fallback }: { content?: BlogContent }) {
+export default function BlogFeed({ content = fallback }: { content?: Omit<BlogContent, "stories"> & { stories: Story[] } }) {
   const [category, setCategory] = useState(ALL);
   const [query, setQuery] = useState("");
   const [activeNumber, setActiveNumber] = useState<string | null>(null);
-  const [selectedStory, setSelectedStory] = useState<Story | null>(null);
   const [subscribeStatus, setSubscribeStatus] = useState("");
-  const passDialog = useRef<HTMLDialogElement>(null);
 
   const lead = content.stories[0];
   const filteredStories = useMemo(() => content.stories.filter((story) => {
@@ -38,13 +36,6 @@ export default function BlogFeed({ content = fallback }: { content?: BlogContent
   }), [category, query, content]);
   const active = filteredStories.find((story) => story.number === activeNumber) || filteredStories[0];
   const cycleKey = `${category}|${query.trim() ? "q" : ""}`;
-
-  useEffect(() => {
-    const dialog = passDialog.current;
-    if (!dialog) return;
-    if (selectedStory && !dialog.open) dialog.showModal();
-    if (!selectedStory && dialog.open) dialog.close();
-  }, [selectedStory]);
 
   const countFor = (item: string) => item === ALL ? content.stories.length : content.stories.filter((story) => story.category === item).length;
 
@@ -65,13 +56,13 @@ export default function BlogFeed({ content = fallback }: { content?: BlogContent
       </div>
 
       {lead && <article className="tv-lead">
-        <button className="tv-lead-image" type="button" onClick={() => setSelectedStory(lead)} aria-label={`Read ${lead.title}`}>
+        <a className="tv-lead-image" href={lead.href} aria-label={`Read ${lead.title}`}>
           <Image src={lead.image} alt={lead.alt} fill priority sizes="(max-width: 900px) 100vw, 48vw" />
           <span className="tv-lead-tag">Latest guide</span>
-        </button>
+        </a>
         <div className="tv-lead-copy">
           <p className="tv-lead-meta"><span>{lead.category}</span><span>{shortRead(lead.read)}</span></p>
-          <h2><button type="button" onClick={() => setSelectedStory(lead)}>{lead.title}</button></h2>
+          <h2><a href={lead.href}>{lead.title}</a></h2>
           <p>{lead.excerpt}</p>
         </div>
       </article>}
@@ -105,13 +96,13 @@ export default function BlogFeed({ content = fallback }: { content?: BlogContent
                 const date = splitDate(story.date);
                 const isActive = active?.number === story.number;
                 return <li key={story.number}>
-                  <button type="button" className={`tv-row${isActive ? " is-active" : ""}`} onClick={() => setSelectedStory(story)} onMouseEnter={() => setActiveNumber(story.number)} onFocus={() => setActiveNumber(story.number)}>
+                  <a href={story.href} className={`tv-row${isActive ? " is-active" : ""}`} onMouseEnter={() => setActiveNumber(story.number)} onFocus={() => setActiveNumber(story.number)}>
                     <span className="tv-row-date"><FlapText text={date.flap} cycleKey={cycleKey} delay={index * 90} /></span>
                     <span className="tv-row-thumb" aria-hidden="true"><Image src={story.image} alt="" fill sizes="96px" /></span>
                     <span className="tv-row-title">{story.title}</span>
                     <span className="tv-row-topic">{story.category}</span>
                     <span className="tv-row-read">{shortRead(story.read)}</span>
-                  </button>
+                  </a>
                 </li>;
               })}
             </ol>
@@ -145,33 +136,5 @@ export default function BlogFeed({ content = fallback }: { content?: BlogContent
       </form>
     </section>
 
-    <dialog className="tv-pass" ref={passDialog} aria-labelledby="tv-pass-title" onClose={() => setSelectedStory(null)} onClick={(event) => { if (event.target === event.currentTarget) passDialog.current?.close(); }}>
-      {selectedStory && (() => {
-        const date = splitDate(selectedStory.date);
-        return <div className="tv-pass-ticket">
-          <div className="tv-pass-main">
-            <div className="tv-pass-image"><Image src={selectedStory.image} alt={selectedStory.alt} fill sizes="(max-width: 700px) 92vw, 560px" /></div>
-            <div className="tv-pass-copy">
-              <p className="tv-pass-brand">Traverse guide</p>
-              <h2 id="tv-pass-title">{selectedStory.title}</h2>
-              <p>{selectedStory.excerpt}</p>
-              <p className="tv-pass-author">Written by {selectedStory.author}</p>
-            </div>
-          </div>
-          <div className="tv-pass-stub">
-            <dl>
-              <div><dt>Topic</dt><dd>{selectedStory.category}</dd></div>
-              <div><dt>Published</dt><dd>{date.month} {Number(date.day) || ""}{date.year ? `, ${date.year}` : ""}</dd></div>
-              <div><dt>Reading time</dt><dd>{shortRead(selectedStory.read)}</dd></div>
-              <div><dt>Guide</dt><dd>No. {selectedStory.number}</dd></div>
-            </dl>
-            <button type="button" className="tv-pass-back" onClick={() => passDialog.current?.close()}>Back to all guides</button>
-          </div>
-          <button className="tv-pass-close" type="button" onClick={() => passDialog.current?.close()} aria-label="Close guide">
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 3 10 10M13 3 3 13" /></svg>
-          </button>
-        </div>;
-      })()}
-    </dialog>
   </>;
 }
