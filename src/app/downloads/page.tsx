@@ -25,5 +25,5 @@ export default async function DownloadPage() {
       // Keep the bundled page available when Tina Cloud content is unavailable.
     }
   }
-  return <main className="platform-download-page"><SiteHeader/><PlatformDownloadContent platform={null} content={content}/></main>;
+  return <main className="kit blog-page blog-neiden-page"><SiteHeader/><PlatformDownloadContent platform={null} content={content}/></main>;
 }

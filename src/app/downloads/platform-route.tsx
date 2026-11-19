@@ -36,5 +36,5 @@ export async function PlatformRoute({ platform }: { platform: PlatformKey }) {
       // Keep the platform page available from bundled content when Tina Cloud is unavailable.
     }
   }
-  return <main className="platform-download-page"><SiteHeader/><PlatformDownloadContent platform={data}/></main>;
+  return <main className="kit blog-page blog-neiden-page"><SiteHeader/><PlatformDownloadContent platform={{ ...data, key: platform }}/></main>;
 }

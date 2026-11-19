@@ -13,7 +13,7 @@ export const metadata: Metadata = buildSeoMetadata(seoData);
 
 export default async function FeaturesPage() {
   if (process.env.NODE_ENV !== "development" && !(process.env.NEXT_PUBLIC_TINA_CLIENT_ID && process.env.TINA_TOKEN)) {
-    return <main className="product-features"><SiteHeader /><FeaturesContent content={fallback} /></main>;
+    return <main className="kit blog-page blog-neiden-page"><SiteHeader /><FeaturesContent content={fallback} /></main>;
   }
   let content = fallback;
   try {
@@ -22,7 +22,7 @@ export default async function FeaturesPage() {
   } catch {
     // Keep the local page available if Tina Cloud has no indexed record yet.
   }
-  return <main className="product-features">
+  return <main className="kit blog-page blog-neiden-page">
     <SiteHeader />
     <FeaturesContent content={content} />
   </main>;

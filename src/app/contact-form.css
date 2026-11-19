@@ -1,0 +1,28 @@
+/* Contact form on /contact-us, in the kit's light style: hairline fields, ink pill submit with a pink disc. */
+.contact-form { display: grid; gap: 20px; max-width: 760px; scroll-margin-top: 120px; }
+.contact-form-lead { margin: 0; color: #555; font-size: 15px; line-height: 1.5; }
+.contact-form abbr { color: var(--pink, #f22c59); text-decoration: none; }
+.contact-form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.contact-form label { display: grid; gap: 8px; }
+.contact-form label > span { color: #090909; font: 700 11px/1.3 var(--mono); letter-spacing: .02em; text-transform: uppercase; }
+.contact-form :is(input:not([type="checkbox"]), select, textarea) { width: 100%; min-height: 52px; padding: 14px 16px; border: 1px solid rgba(0, 0, 0, .14); border-radius: 0; background: #f5f5f3; color: #090909; font: 500 15px/1.4 var(--type); letter-spacing: -.02em; transition: border-color .2s ease, background-color .2s ease; }
+.contact-form textarea { min-height: 140px; resize: vertical; }
+.contact-form select { appearance: none; padding-right: 44px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%23090909' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; cursor: pointer; }
+.contact-form :is(input, textarea)::placeholder { color: rgba(0, 0, 0, .4); }
+.contact-form :is(input:not([type="checkbox"]), select, textarea):hover { border-color: rgba(0, 0, 0, .3); }
+.contact-form :is(input:not([type="checkbox"]), select, textarea):focus { outline: none; border-color: #090909; background: #fff; }
+.contact-form :is(input, select, textarea):focus-visible { outline: 2px solid var(--pink, #f22c59); outline-offset: 2px; }
+.contact-form .contact-form-consent { grid-template-columns: 20px 1fr; align-items: start; gap: 12px; }
+.contact-form-consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--pink, #f22c59); }
+.contact-form .contact-form-consent > span { color: #555; font: 400 14px/1.5 var(--type); letter-spacing: -.01em; text-transform: none; }
+.contact-form a { color: #090909; text-decoration: underline; text-decoration-color: var(--pink, #f22c59); text-underline-offset: 3px; }
+.contact-form-error { margin: 0; color: #b0173c; font-size: 14px; line-height: 1.5; }
+.contact-form .contact-form-submit { display: inline-flex; justify-self: start; align-items: center; gap: 20px; height: 56px; padding: 0 7px 0 23px; border: 0; border-radius: 999px; background: #090909; color: #fff; font: 600 13px var(--type); cursor: pointer; transition: transform .2s cubic-bezier(.22, 1, .36, 1); }
+.contact-form-submit span { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--pink, #f22c59); color: #090909; font-size: 18px; }
+.contact-form .contact-form-submit:hover { transform: translateY(-2px); }
+.contact-form .contact-form-submit:disabled { opacity: .6; cursor: progress; transform: none; }
+.contact-form-done { display: grid; gap: 12px; justify-items: start; padding: 32px 0; border-top: 1px solid rgba(0, 0, 0, .12); border-bottom: 1px solid rgba(0, 0, 0, .12); }
+.contact-form-done b { color: #090909; font-size: 32px; font-weight: 600; letter-spacing: -.05em; }
+.contact-form-done p { margin: 0; color: #555; }
+.contact-form-done button { height: 48px; margin-top: 8px; padding: 0 22px; border: 1px solid rgba(0, 0, 0, .14); border-radius: 999px; background: transparent; color: #090909; font: 600 13px var(--type); cursor: pointer; }
+@media (max-width: 700px) { .contact-form-row { grid-template-columns: 1fr; } }

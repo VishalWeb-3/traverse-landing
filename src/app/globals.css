@@ -1449,7 +1449,7 @@ body:not(.hero-in-view) .product-features .site-header.scrolled .menu-button i{b
 .brand-info-page .site-header>.mobile-nav{border-color:rgba(255,255,255,.18)!important;background:rgba(15,15,16,.94)!important}
 .brand-info-page .site-header .mobile-nav a,.brand-info-page .site-header .mobile-download summary{color:#f5f5f2!important;border-color:rgba(255,255,255,.15)!important}
 .brand-info-content{position:relative;isolation:isolate;padding-top:1px}
-.brand-info-hero{position:relative;min-height:560px;padding:clamp(145px,17vw,220px) clamp(22px,8.3vw,130px) 82px;background:radial-gradient(ellipse at 78% 45%,rgba(242,44,89,.11),transparent 34%),linear-gradient(112deg,#101011,#141415 55%,#0a0a0b);overflow:hidden}
+.brand-info-hero{position:relative;min-height:560px;padding:clamp(145px,17vw,220px) clamp(22px,8.3vw,130px) 82px;background:linear-gradient(112deg,#101011,#141415 55%,#0a0a0b);overflow:hidden}
 .brand-info-hero:after{position:absolute;right:clamp(22px,8.3vw,130px);bottom:0;left:clamp(22px,8.3vw,130px);height:1px;background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(255,255,255,.055));content:""}
 .brand-info-hero>.blog-eyebrow{position:relative;z-index:1;color:#aaa}
 .brand-info-hero>.blog-eyebrow i{font-style:normal;color:var(--pink)}
@@ -1846,7 +1846,7 @@ body:has(.hero-reference) .site-header:not(.scrolled) .desktop-nav .nav-download
 .brand-info-hero{min-height:600px}
 .brand-info-hero h1{max-width:min(68%,1120px)}
 .brand-info-intro{position:relative;z-index:1;max-width:min(56%,700px);color:rgba(255,255,255,.76);font-size:16px;line-height:1.6}
-.brand-info-hero-art{position:absolute;top:50%;right:clamp(22px,8.3vw,130px);width:min(33vw,430px);aspect-ratio:1;transform:translateY(-42%);pointer-events:none}
+.brand-info-hero-art{--art:min(33vw,430px);position:absolute;top:72px;bottom:0;right:clamp(22px,8.3vw,130px);width:var(--art);height:var(--art);margin:auto 0;border-radius:50%;background:radial-gradient(circle,rgba(242,44,89,.16),rgba(242,44,89,.05) 45%,transparent 70%);pointer-events:none}
 .brand-info-orbit{position:absolute;inset:0;border:1px solid rgba(255,255,255,.13);border-radius:50%}
 .brand-info-orbit-b{inset:13%;border-color:rgba(242,44,89,.34);transform:rotateX(66deg) rotate(-22deg)}
 .brand-info-orbit-c{inset:13%;border-color:rgba(255,255,255,.12);transform:rotateY(66deg) rotate(22deg)}
@@ -1858,12 +1858,17 @@ body:has(.hero-reference) .site-header:not(.scrolled) .desktop-nav .nav-download
 .brand-info-hero-status i{width:6px;height:6px;border-radius:50%;background:#62d996}.brand-info-hero-status b{color:#f5f5f2;font-weight:500}
 .brand-info-actions a{border-radius:4px;gap:clamp(12px,1.4vw,24px);white-space:nowrap;transition:background .2s ease,border-color .2s ease}
 .brand-info-actions a:hover{transform:none}
+.brand-info-facts{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:clamp(24px,4vw,56px);max-width:min(56%,700px);margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
+.brand-info-facts dt{color:rgba(255,255,255,.45);font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.brand-info-facts dd{margin:7px 0 0;color:#f5f5f2;font-size:15px;font-weight:500}
+.brand-info-facts a{color:inherit;text-decoration:underline;text-decoration-color:var(--pink);text-underline-offset:4px}
+.brand-info-facts a:hover{color:#ff8aa4}
 .brand-info-section-index{font-size:11px;line-height:1.55;color:rgba(255,255,255,.62)}
 .brand-info-section-main h2,.brand-info-sitemap-group h2{max-width:100%}
 @media(min-width:2000px){
   .hero-reference>.ref-copy,.hero-reference>.ref-orbit,.feature-page-content,.plans-page-content,.enterprise-page-content,.faq-page-content,.blog-page,.platform-page-content,.brand-info-content{max-width:1920px;margin-inline:auto}
   .hero-reference{min-height:min(1080px,100svh)}
-  .brand-info-hero-art{width:min(31vw,520px)}
+  .brand-info-hero-art{--art:min(31vw,520px)}
 }
 @media(max-width:1100px){
   .product-features .feature-page-hero{padding:126px 5.5% 52px}
@@ -1913,7 +1918,8 @@ body:has(.hero-reference) .site-header:not(.scrolled) .desktop-nav .nav-download
 @media(max-width:760px){
   .brand-info-hero{min-height:0}
   .brand-info-hero h1,.brand-info-intro{max-width:100%}
-  .brand-info-hero-art{top:auto;right:16px;bottom:18px;width:120px;opacity:.42;transform:none}
+  .brand-info-hero-art{--art:120px;top:auto;right:16px;bottom:18px;margin:0;opacity:.42}
+  .brand-info-facts{grid-template-columns:1fr;gap:14px;max-width:100%}
   .brand-info-hero-status{display:none}
   .brand-info-actions{position:relative;z-index:2;flex-wrap:nowrap;gap:7px}
   .brand-info-actions a{min-width:0;flex:0 1 auto;gap:8px;padding-inline:10px;font-size:clamp(9px,2.8vw,12px)}

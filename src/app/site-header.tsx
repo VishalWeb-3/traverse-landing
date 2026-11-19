@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 function PlatformIcon({ platform }: { platform: string }) {
@@ -18,6 +18,8 @@ export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [downloadOpen, setDownloadOpen] = useState(false);
+  // When hovering opened the menu a moment ago, the click that follows should keep it open, not toggle it shut.
+  const hoverOpenedAt = useRef(0);
 
   const downloadGroups = [
       { title: "Desktop", items: [
@@ -60,8 +62,8 @@ export default function SiteHeader() {
       <a href="/plans" aria-current={pathname === "/plans" ? "page" : undefined}>Plans</a>
       <a href="/enterprise" aria-current={pathname === "/enterprise" ? "page" : undefined}>Enterprise</a>
       <a href="/blogs" aria-current={pathname === "/blogs" ? "page" : undefined}>Blog</a>
-      <div className="nav-download" onMouseEnter={() => setDownloadOpen(true)} onMouseLeave={() => setDownloadOpen(false)} onFocus={() => setDownloadOpen(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDownloadOpen(false); }}>
-        <button type="button" aria-expanded={downloadOpen} aria-controls="desktop-download-menu" onClick={() => setDownloadOpen((value) => !value)}>
+      <div className="nav-download" onMouseEnter={() => { hoverOpenedAt.current = Date.now(); setDownloadOpen(true); }} onMouseLeave={() => setDownloadOpen(false)} onKeyDown={(event) => { if (event.key === "Escape") setDownloadOpen(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDownloadOpen(false); }}>
+        <button type="button" aria-expanded={downloadOpen} aria-controls="desktop-download-menu" onClick={() => { if (downloadOpen && Date.now() - hoverOpenedAt.current < 800) return; setDownloadOpen((value) => !value); }}>
           Download <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4"/></svg>
         </button>
         {downloadOpen && <div className="download-menu" id="desktop-download-menu">{downloadGroups.map((group) => <section key={group.title}><h2>{group.title}</h2>{group.items.map((item) => <a href={item.href} key={item.label}><i className={`platform-${item.icon}`}><PlatformIcon platform={item.icon}/></i><span>{item.label}</span></a>)}</section>)}</div>}

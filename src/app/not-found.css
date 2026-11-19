@@ -1,0 +1,3 @@
+/* 404 page: the kit hero, with the suggestion link underlined in pink. */
+.not-found-copy a { color: #090909; text-decoration: underline; text-decoration-color: var(--pink, #f22c59); text-underline-offset: 3px; }
+.kit-hero .not-found-links { margin-top: 40px; }

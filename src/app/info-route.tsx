@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SiteHeader from "./site-header";
 import BrandInfoContent from "./brand-info-content";
-import BrandInfoMotion from "./brand-info-motion";
 import { infoPages } from "./info-pages";
 import { buildSeoMetadata, type SeoData } from "../lib/seo";
 import aboutUs from "../data/seo/about-us.json";
@@ -51,5 +50,5 @@ export function findInfoPage(slug: string) {
 }
 
 export function InfoRoute({ page }: { page: NonNullable<ReturnType<typeof findInfoPage>> }) {
-  return <main className="brand-info-page"><SiteHeader /><BrandInfoMotion /><BrandInfoContent page={page} /></main>;
+  return <main className="kit blog-page blog-neiden-page"><SiteHeader /><BrandInfoContent page={page} /></main>;
 }

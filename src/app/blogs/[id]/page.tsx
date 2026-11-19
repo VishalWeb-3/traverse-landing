@@ -65,6 +65,14 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ id
       </figure>
       {/* Rendered from the article's MDX at build time (scripts/build-blog-index.mjs); the source is our own content. */}
       <div className="tv-article-body" dangerouslySetInnerHTML={{ __html: post.html }} />
+      {/* Same call to action the original articles carried: straight into the Traverse web app. */}
+      <aside className="tv-article-cta" aria-labelledby="tv-article-cta-title">
+        <div>
+          <h2 id="tv-article-cta-title">Try Traverse VPN</h2>
+          <p>Encrypt your connection on any network, from café Wi-Fi to hotel hotspots, in one tap.</p>
+        </div>
+        <a href="https://traversevpn-web.web.app/login" target="_blank" rel="noopener noreferrer">Try for free <span aria-hidden="true">↗</span></a>
+      </aside>
       <aside className="tv-article-editors" aria-label="About the editorial team">
         {[author, reviewer].map((person) => <div key={person.name}>
           <Person label={person === author ? "Written by" : "Reviewed by"} person={person} />

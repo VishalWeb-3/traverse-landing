@@ -15,6 +15,8 @@ export type InfoPage = {
   sections: InfoPageSection[];
   links?: { label: string; href: string; group: string }[];
   actions?: { label: string; href: string }[];
+  /** Quick reference details shown in the hero instead of buttons (contact page). */
+  facts?: { label: string; value: string; href?: string }[];
 };
 
 const platformLinks = [
@@ -66,10 +68,10 @@ export const infoPages: InfoPage[] = [
     title: "Private connections for your team.",
     kicker: "TRAVERSE BUSINESS VPN",
     intro: "Give your team a straightforward way to protect work connections across the devices and networks they use every day.",
-    actions: [{ label: "Talk to the team", href: "mailto:info@traversevpn.com?subject=Traverse%20Business%20VPN" }, { label: "Compare plans", href: "/plans" }],
+    actions: [{ label: "Talk to the team", href: "/contact-us?type=Sales%20Inquiry#contact-form" }, { label: "Compare plans", href: "/plans" }],
     sections: [
       { eyebrow: "FOR EVERYDAY WORK", title: "Protection that travels with your people.", paragraphs: ["Use an encrypted VPN connection on shared Wi-Fi at the office, at home, or while travelling. Traverse Business is designed to make connection protection easy to adopt across a team's routine."], points: [{ title: "Supported apps", text: "Review setup information for supported devices.", href: "/downloads" }] },
-      { eyebrow: "TEAM SETUP", title: "A plan for the way your team works.", paragraphs: ["Share your organization size, device mix, and deployment needs with the Traverse team. They can help identify the right setup and answer questions about managing access for your organization."], points: [{ title: "Contact the team", text: "Email info@traversevpn.com to discuss Business VPN.", href: "mailto:info@traversevpn.com?subject=Traverse%20Business%20VPN" }] },
+      { eyebrow: "TEAM SETUP", title: "A plan for the way your team works.", paragraphs: ["Share your organization size, device mix, and deployment needs with the Traverse team. They can help identify the right setup and answer questions about managing access for your organization."], points: [{ title: "Contact the team", text: "Send the sales team a message about Business VPN.", href: "/contact-us?type=Sales%20Inquiry#contact-form" }] },
       { eyebrow: "LARGER DEPLOYMENTS", title: "Need a tailored deployment?", paragraphs: ["For larger organizations or custom deployment requirements, the Enterprise team can discuss onboarding, administration, and support options."], points: [{ title: "Enterprise VPN", text: "Explore tailored organization deployments.", href: "/enterprise" }] },
     ],
   },
@@ -78,7 +80,7 @@ export const infoPages: InfoPage[] = [
     title: "Talk to Traverse.",
     kicker: "CONTACT",
     intro: "Questions about plans, account help, or using Traverse with your team? Send a note and we’ll help direct it to the right place.",
-    actions: [{ label: "Email Traverse", href: "mailto:info@traversevpn.com" }, { label: "Visit support", href: "/support" }],
+    facts: [{ label: "Email", value: "info@traversevpn.com", href: "mailto:info@traversevpn.com" }, { label: "Replies", value: "Within one business day" }, { label: "Office", value: "Noida, India" }],
     sections: [
       { eyebrow: "GENERAL QUESTIONS", title: "Start with a message.", paragraphs: ["Email info@traversevpn.com with a short description of what you need. The team can direct sales, technical, billing, and general questions to the right people. Please leave out passwords and payment-card details."], points: [{ title: "Email", text: "info@traversevpn.com", href: "mailto:info@traversevpn.com?subject=Traverse%20VPN%20inquiry" }] },
       { eyebrow: "SALES & TEAMS", title: "Planning a team deployment?", paragraphs: ["Include your organization size, the devices you need to cover, and any deployment requirements. The sales team can discuss business plans, pricing, and setup."], points: [{ title: "Business VPN", text: "See the team and enterprise information.", href: "/enterprise" }, { title: "Plans", text: "Compare the personal plan options.", href: "/plans" }] },
@@ -91,7 +93,7 @@ export const infoPages: InfoPage[] = [
     title: "Let’s get you connected.",
     kicker: "TRAVERSE SUPPORT",
     intro: "Traverse’s support team helps with mobile and desktop setup, connection issues, app features, and business deployments. Start with the device or activity you need help with, or contact the team directly.",
-    actions: [{ label: "Browse FAQs", href: "/faqs" }, { label: "Contact support", href: "mailto:info@traversevpn.com?subject=Traverse%20VPN%20support" }],
+    actions: [{ label: "Browse FAQs", href: "/faqs" }, { label: "Contact support", href: "/contact-us?type=Technical%20Support#contact-form" }],
     sections: [
       { eyebrow: "QUICK START", title: "Start with your device.", paragraphs: ["Choose your platform for app details and setup information. If a connection issue continues, include your device and app version when you contact support."], points: [
         { title: "iPhone and iPad", text: "Open the iOS app page.", href: "/vpn-for-iphone" }, { title: "Android", text: "Open the Android app page.", href: "/vpn-for-android" }, { title: "Desktop", text: "Browse Windows, macOS, and Linux options.", href: "/downloads" },
@@ -114,7 +116,7 @@ export const infoPages: InfoPage[] = [
       { eyebrow: "GOOGLE PLAY PURCHASES", title: "Subscriptions from Google Play.", paragraphs: ["Google Play manages Android app purchases, so refund requests need to be submitted through the Google account used for the subscription. Google’s current policy determines whether a purchase qualifies and how quickly it is processed."], points: [{ title: "Google Play help", text: "Review Google Play purchase and refund guidance.", href: "https://support.google.com/googleplay/answer/2479637" }] },
       { eyebrow: "DIRECT BUSINESS AGREEMENTS", title: "Business and enterprise plans.", paragraphs: ["For a direct business agreement, contact your account representative or the Traverse team. The terms of your agreement apply to billing and refund requests."] },
       { eyebrow: "CANCELLATION", title: "Manage renewal where you subscribed.", paragraphs: ["Removing the app does not stop a subscription. Turn off auto-renewal in the Apple App Store or Google Play settings for the account that made the purchase. The original policy advises cancelling at least 24 hours before the current period ends to avoid the next renewal; check the store’s latest instructions and renewal date."] },
-      { eyebrow: "REFUND QUESTIONS", title: "Need help finding the right place?", paragraphs: ["Mobile refunds are decided by the store that processed the payment. Direct business agreements follow their own written billing terms. If you are unsure where you subscribed, contact Traverse and include the purchase channel and approximate date, but never send full card details."], points: [{ title: "Contact support", text: "Email info@traversevpn.com.", href: "mailto:info@traversevpn.com?subject=Refund%20question" }] },
+      { eyebrow: "REFUND QUESTIONS", title: "Need help finding the right place?", paragraphs: ["Mobile refunds are decided by the store that processed the payment. Direct business agreements follow their own written billing terms. If you are unsure where you subscribed, contact Traverse and include the purchase channel and approximate date, but never send full card details."], points: [{ title: "Contact support", text: "Send a billing question to the support team.", href: "/contact-us?type=Billing#contact-form" }] },
     ],
   },
   {
@@ -122,7 +124,7 @@ export const infoPages: InfoPage[] = [
     title: "Your privacy, clearly explained.",
     kicker: "PRIVACY POLICY",
     intro: "This page brings the published Traverse VPN privacy information into the new site, including the activity the company says it does not log and the limited information used to operate accounts and support.",
-    actions: [{ label: "Explore privacy features", href: "/features" }, { label: "Ask a privacy question", href: "mailto:info@traversevpn.com?subject=Privacy%20question" }],
+    actions: [{ label: "Explore privacy features", href: "/features" }, { label: "Ask a privacy question", href: "/contact-us?type=General%20Inquiry#contact-form" }],
     sections: [
       { eyebrow: "VPN ACTIVITY", title: "The published policy says browsing activity is not logged.", paragraphs: ["Traverse’s policy says it does not record the sites or apps used through the VPN, streaming or gaming activity, the original IP address or selected VPN server, or the files and messages carried through the connection. The policy describes this as a strict no-logs commitment."] },
       { eyebrow: "ACCOUNT INFORMATION", title: "A small amount of information supports your account.", paragraphs: ["The policy says an email address may be used to create an account, send receipts, and help recover access. App-store providers or payment partners process purchases; Traverse says it does not keep full payment-card numbers on its own servers."] },
@@ -149,7 +151,7 @@ export const infoPages: InfoPage[] = [
       { eyebrow: "REFUNDS", title: "Refund requests follow the purchase channel.", paragraphs: ["Apple handles refund decisions for iOS purchases and Google Play handles Android purchases. Contact Traverse for direct Enterprise or Business agreements. Read the local Refund Policy page for the purchase-specific steps."], points: [{ title: "Refund policy", text: "See where and how to request a refund.", href: "/refund-policy" }] },
       { eyebrow: "ACCEPTABLE USE", title: "Do not use Traverse to harm others or break the law.", paragraphs: ["The published terms prohibit illegal activity, sending spam or harmful files, attacking or disrupting the network, and using the service to obtain copyrighted material unlawfully. The original terms reserve the right to end service for violations."] },
       { eyebrow: "WARRANTIES & LIABILITY", title: "Service availability is not guaranteed.", paragraphs: ["The original terms say the service is provided as available and may not be error-free or uninterrupted. They limit liability for indirect losses and describe a cap tied to the amount paid for the service. These clauses should be reviewed with the company’s legal counsel before publication."] },
-      { eyebrow: "CHANGES & CONTACT", title: "Updates may change these terms.", paragraphs: ["The published terms may be revised, with the effective date updated when changes are made. Continued use after an update is treated under the original terms as acceptance of the revised rules. For questions, contact info@traversevpn.com."], points: [{ title: "Contact Traverse", text: "Email the team with questions about these terms.", href: "mailto:info@traversevpn.com?subject=Terms%20question" }] },
+      { eyebrow: "CHANGES & CONTACT", title: "Updates may change these terms.", paragraphs: ["The published terms may be revised, with the effective date updated when changes are made. Continued use after an update is treated under the original terms as acceptance of the revised rules. For questions, contact info@traversevpn.com."], points: [{ title: "Contact Traverse", text: "Send the team a question about these terms.", href: "/contact-us?type=General%20Inquiry#contact-form" }] },
     ],
   },
   {

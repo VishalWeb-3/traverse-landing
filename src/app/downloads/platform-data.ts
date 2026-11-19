@@ -146,3 +146,12 @@ export const platformPages: Record<PlatformKey, PlatformPageData> = {
 };
 
 export const platformKeys = Object.keys(platformPages) as PlatformKey[];
+
+/** Where each platform's download button goes: the same installers and store listings the original site used. */
+export const PLATFORM_DOWNLOADS: Record<PlatformKey, { href: string; external: boolean }> = {
+  windows: { href: "https://firebasestorage.googleapis.com/v0/b/vpn-app-web3.firebasestorage.app/o/downloads%2FTraverseVPNInstaller_v1.0.0.exe?alt=media&token=024b4756-2fdf-46a5-9420-faff3fd62518", external: false },
+  linux: { href: "https://firebasestorage.googleapis.com/v0/b/vpn-app-web3.firebasestorage.app/o/downloads%2Ftraverse-linux-x64.tar.gz?alt=media&token=fb7a0535-9c61-4c6b-92ce-fee6c86a5393", external: false },
+  macos: { href: "https://apps.apple.com/in/app/traversevpn-fast-unlimited/id6754161193", external: true },
+  ios: { href: "https://apps.apple.com/in/app/traversevpn-fast-unlimited/id6754161193", external: true },
+  android: { href: "https://play.google.com/store/apps/details?id=com.web3task.vpn&pcampaignid=web_share", external: true },
+};
