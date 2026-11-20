@@ -1,0 +1,292 @@
+fragment HomepageParts on Homepage {
+  __typename
+  hero {
+    __typename
+    headlineLine1
+    headlineLine2
+    description
+    primaryCta {
+      __typename
+      label
+      href
+    }
+    secondaryCta {
+      __typename
+      label
+      href
+    }
+  }
+  about {
+    __typename
+    headingLine1
+    headingLine2
+    headingLine3
+    copy
+  }
+  servicesSection {
+    __typename
+    heading
+    intro
+    items {
+      __typename
+      number
+      title
+      description
+      price
+      tags
+      images {
+        __typename
+        src
+        alt
+      }
+    }
+  }
+  journey {
+    __typename
+    heading
+    intro
+    quote
+    steps {
+      __typename
+      year
+      title
+      description
+      image
+    }
+  }
+  features {
+    __typename
+    intro
+    heading
+    privacyHeading
+    privacyCopy
+    benefits
+    usersMetric
+    usersLabel
+    serversMetric
+    serversLabel
+    encryptionMetric
+    encryptionLabel
+    cards {
+      __typename
+      title
+      copy
+      image
+      alt
+    }
+  }
+  testimonials {
+    __typename
+    headingLine1
+    headingLine2
+    items {
+      __typename
+      quote
+      accent
+    }
+  }
+  pricing {
+    __typename
+    heading
+    plans {
+      __typename
+      name
+      audience
+      monthly
+      annual
+      interval
+      features
+    }
+  }
+  faq {
+    __typename
+    headingLine1
+    headingLine2
+    intro
+    items {
+      __typename
+      question
+      answer
+    }
+  }
+  footer {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2
+    primaryCta {
+      __typename
+      label
+      href
+    }
+    secondaryCta {
+      __typename
+      label
+      href
+    }
+  }
+}
+
+fragment FeaturesPageParts on FeaturesPage {
+  __typename
+  highlights {
+    __typename
+    number
+    title
+    text
+  }
+  features {
+    __typename
+    number
+    tag
+    title
+    image
+    alt
+    imageLabel
+    copy
+    points
+  }
+  safeguards {
+    __typename
+    title
+    text
+    points
+  }
+}
+
+fragment PlansPageParts on PlansPage {
+  __typename
+  coreFeatures {
+    __typename
+    index
+    title
+    description
+    detail
+    visual
+  }
+  plans {
+    __typename
+    name
+    price
+    interval
+    summary
+    savings
+    features
+    cta
+    popular
+  }
+  addOns {
+    __typename
+    title
+    description
+  }
+  testimonials {
+    __typename
+    quote
+    author
+  }
+  faqItems {
+    __typename
+    question
+    answer
+  }
+}
+
+fragment EnterprisePageParts on EnterprisePage {
+  __typename
+  audiences {
+    __typename
+    title
+    text
+  }
+  expectations {
+    __typename
+    title
+    text
+  }
+  support {
+    __typename
+    title
+    text
+  }
+  questions {
+    __typename
+    question
+    answer
+  }
+}
+
+fragment FaqsPageParts on FaqsPage {
+  __typename
+  categories
+  questions {
+    __typename
+    category
+    question
+    answer
+  }
+}
+
+fragment BlogPageParts on BlogPage {
+  __typename
+  categories
+  stories {
+    __typename
+    title
+    excerpt
+    category
+    date
+    read
+    author
+    image
+    alt
+    number
+  }
+}
+
+fragment DownloadPageParts on DownloadPage {
+  __typename
+  platforms {
+    __typename
+    name
+    key
+    family
+    href
+    note
+  }
+  steps {
+    __typename
+    title
+    text
+  }
+}
+
+fragment PlatformPageParts on PlatformPage {
+  __typename
+  key
+  name
+  family
+  title
+  lead
+  description
+  image
+  imageAlt
+  highlights {
+    __typename
+    title
+    text
+  }
+  steps {
+    __typename
+    title
+    text
+  }
+  detailsTitle
+  details {
+    __typename
+    title
+    text
+  }
+  compatibility
+  note
+}

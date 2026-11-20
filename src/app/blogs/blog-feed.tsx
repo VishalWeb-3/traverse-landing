@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, PointerEvent as ReactPointerEvent, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -85,30 +85,6 @@ export default function BlogFeed({ posts }: { posts: BlogCard[] }) {
     ScrollTrigger.refresh();
   }, [topic, query]);
 
-  // Cursor dot that follows the pointer over a card, as on the reference (fine pointers only).
-  const cursor = useRef<HTMLDivElement>(null);
-  const follow = useRef<{ x: (value: number) => void; y: (value: number) => void } | null>(null);
-  useEffect(() => {
-    const dot = cursor.current;
-    if (!dot || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    gsap.set(dot, { xPercent: -50, yPercent: -50, scale: 0, autoAlpha: 0 });
-    const x = gsap.quickTo(dot, "x", { duration: .35, ease: "power3.out" });
-    const y = gsap.quickTo(dot, "y", { duration: .35, ease: "power3.out" });
-    follow.current = { x, y };
-    const move = (event: PointerEvent) => { x(event.clientX); y(event.clientY); };
-    window.addEventListener("pointermove", move, { passive: true });
-    return () => { window.removeEventListener("pointermove", move); follow.current = null; };
-  }, []);
-  const showCursor = (event: ReactPointerEvent) => {
-    if (!follow.current || event.pointerType !== "mouse") return;
-    gsap.set(cursor.current, { x: event.clientX, y: event.clientY });
-    gsap.to(cursor.current, { scale: 1, autoAlpha: 1, duration: reduced() ? 0 : .35, ease: "back.out(2)", overwrite: "auto" });
-  };
-  const hideCursor = () => {
-    if (!follow.current) return;
-    gsap.to(cursor.current, { scale: 0, autoAlpha: 0, duration: reduced() ? 0 : .25, ease: "power2.in", overwrite: "auto" });
-  };
-
   const subscribe = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const email = String(new FormData(event.currentTarget).get("email") || "").trim();
@@ -119,7 +95,6 @@ export default function BlogFeed({ posts }: { posts: BlogCard[] }) {
 
   return <div ref={root} className="nb-root">
     <div className="nb-lines" aria-hidden="true"><i /><i /><i /></div>
-    <div ref={cursor} className="nb-cursor" aria-hidden="true" />
 
     <section className="nb-hero" aria-labelledby="nb-title">
       <div className="nb-hero-copy">
@@ -169,7 +144,7 @@ export default function BlogFeed({ posts }: { posts: BlogCard[] }) {
 
       {rest.length > 0 && <ul className="nb-grid">
         {rest.map((post, index) => <li className="nb-card" data-col={index % 3} key={post.href}>
-          <a href={post.href} onPointerEnter={showCursor} onPointerLeave={hideCursor}>
+          <a href={post.href}>
             {/* The frame shrinks on hover while the photo keeps its size, so it crops from the bottom like the reference. */}
             <span className="nb-card-media"><span className="nb-card-img"><Image src={post.image} alt={post.alt} fill sizes="(max-width: 809px) 100vw, (max-width: 1199px) 50vw, 33vw" /></span></span>
             <span className="nb-card-copy">

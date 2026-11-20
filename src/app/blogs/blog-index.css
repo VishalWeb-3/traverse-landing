@@ -87,10 +87,7 @@
   .nb-card a:is(:hover, :focus-visible) .nb-card-copy { background: #fff; }
   .nb-card a:is(:hover, :focus-visible) .nb-card-meta { grid-template-rows: 0fr; opacity: 0; }
   .nb-card a:is(:hover, :focus-visible) .nb-card-more { opacity: 1; filter: blur(0); transition-delay: .08s; }
-  .nb-card a:hover { cursor: none; }
 }
-/* Cursor dot that follows the pointer over a card (driven by GSAP quickTo). */
-.nb-cursor { position: fixed; z-index: 60; top: 0; left: 0; width: 36px; height: 36px; border: 2px solid #fff; border-radius: 50%; background: #111; box-shadow: 0 0 0 1px rgba(0, 0, 0, .25); pointer-events: none; visibility: hidden; }
 .nb-empty { grid-column: 1 / -1; display: grid; justify-items: start; gap: 20px; padding: 40px; }
 .nb-empty p { font: 600 30px/1.2 var(--type); letter-spacing: -.04em; }
 .nb-empty button { height: 40px; padding: 0 24px; border: 0; background: var(--nb-ink); color: #fff; font: 600 14px var(--type); letter-spacing: -.04em; text-transform: uppercase; cursor: pointer; }
