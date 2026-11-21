@@ -2,7 +2,7 @@ import fallback from "../../../content/enterprise/enterprise.json";
 import SiteFooter from "../site-footer";
 import KitMotion from "../kit/kit-motion";
 import Accordion from "../kit/kit-accordion";
-import { Band, Button, Cells, Hero, List, Photos, Split, Statement } from "../kit/kit";
+import { Band, Button, Cells, Hero, List, Photos, Split, Statement, VisitTraverse } from "../kit/kit";
 
 type EnterprisePageData = typeof fallback;
 
@@ -44,7 +44,7 @@ export default function EnterpriseContent({ content = fallback }: { content?: En
     </Band>
 
     <Band tone="soft" label="Enterprise questions">
-      <Split xl title={<>Good to<br />know.</>}>
+      <Split xl title={<>Good to <br />know.</>} intro={<VisitTraverse />}>
         <Accordion items={content.questions.map(({ question, answer }) => ({ question, answer }))} />
       </Split>
     </Band>

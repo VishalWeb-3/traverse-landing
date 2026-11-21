@@ -19,7 +19,7 @@
   --k-section: 112px;
   --k-ease: cubic-bezier(.22, 1, .36, 1);
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh / var(--z, 1));
   overflow-x: clip;
   background: var(--k-paper);
   color: var(--k-ink);
@@ -51,8 +51,8 @@
 .kit-signal i:nth-child(1) { height: 6px; } .kit-signal i:nth-child(2) { height: 9px; } .kit-signal i:nth-child(3) { height: 12px; } .kit-signal i:nth-child(4) { height: 14px; }
 .kit-label { display: block; font: 700 11px/1.3 var(--mono); letter-spacing: .02em; text-transform: uppercase; }
 .kit-label em { color: #858585; font-style: normal; font-weight: 400; }
-.kit-h2 { font: 600 clamp(48px, 4.9vw, 70px)/.88 var(--type); letter-spacing: -.06em; text-wrap: balance; }
-.kit-h2--xl { font-size: clamp(56px, 7vw, 102px); line-height: .82; letter-spacing: -.08em; }
+.kit-h2 { font: 600 clamp(48px, calc(4.9vw / var(--z, 1)), 70px)/.88 var(--type); letter-spacing: -.06em; text-wrap: balance; }
+.kit-h2--xl { font-size: clamp(56px, calc(7vw / var(--z, 1)), 102px); line-height: .82; letter-spacing: -.08em; }
 .kit-lead { max-width: 380px; color: var(--k-muted); font: 400 16px/1.45 var(--type); letter-spacing: -.03em; }
 .kit-copy { color: var(--k-muted); font-size: 15px; line-height: 1.55; letter-spacing: -.01em; }
 .kit-copy + .kit-copy { margin-top: 14px; }
@@ -74,8 +74,8 @@
 .kit-hero { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr 40px; min-height: 760px; padding: 0 var(--k-gutter); background: var(--k-white); }
 .kit-hero > :not(.kit-lines) { position: relative; z-index: 1; }
 .kit-hero-copy { grid-column: 2 / 4; align-self: center; padding: 136px 40px 72px 0; }
-.kit-hero h1 { display: flex; flex-wrap: wrap; column-gap: .22em; max-width: 13ch; margin-top: 40px; font: 600 clamp(56px, 6.95vw, 100px)/.86 var(--type); letter-spacing: -.08em; }
-.kit-hero h1.kit-hero-title--long { max-width: 17ch; font-size: clamp(48px, 5.4vw, 80px); line-height: .9; letter-spacing: -.07em; }
+.kit-hero h1 { display: flex; flex-wrap: wrap; column-gap: .22em; max-width: 13ch; margin-top: 40px; font: 600 clamp(56px, calc(6.95vw / var(--z, 1)), 100px)/.86 var(--type); letter-spacing: -.08em; }
+.kit-hero h1.kit-hero-title--long { max-width: 17ch; font-size: clamp(48px, calc(5.4vw / var(--z, 1)), 80px); line-height: .9; letter-spacing: -.07em; }
 .kit-word { display: inline-block; padding-bottom: .06em; will-change: transform, filter; }
 .kit-hero .kit-lead { margin-top: 40px; max-width: 420px; }
 .kit-hero .kit-actions { margin-top: 40px; }
@@ -99,11 +99,11 @@
 .kit-facts a:hover { color: #b0173c; }
 
 /* Photo strip: one image per column, on the hairlines, straight under a hero. */
-.kit-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); height: clamp(260px, 26vw, 400px); margin: 0 var(--k-gutter); background: var(--k-white); }
+.kit-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); height: clamp(260px, calc(26vw / var(--z, 1)), 400px); margin: 0 var(--k-gutter); background: var(--k-white); }
 .kit-photos figure { position: relative; margin: 0; overflow: hidden; background: #ddd; }
 .kit-photos figure + figure { border-left: 1px solid var(--k-line); }
 .kit-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.kit-photos--wide { grid-template-columns: 1fr; height: clamp(300px, 36vw, 560px); }
+.kit-photos--wide { grid-template-columns: 1fr; height: clamp(300px, calc(36vw / var(--z, 1)), 560px); }
 .kit-photos--wide figure { clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 12%); }
 
 /* Split: the homepage services layout. Sticky intro in column one, content across columns two and three. */
@@ -121,8 +121,8 @@
 .kit-row + .kit-row { padding-top: 56px; border-top: 1px solid var(--k-line); }
 .kit-row-head { padding: 0 20px; }
 .kit-row-head .kit-label { margin-bottom: 10px; }
-.kit-row-head h3 { margin-bottom: 32px; font: 600 clamp(30px, 3.47vw, 50px)/1.1 var(--type); letter-spacing: -.05em; text-wrap: balance; }
-.kit-row-media { position: relative; height: clamp(220px, 20vw, 300px); overflow: hidden; background: #ddd; clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 15%); }
+.kit-row-head h3 { margin-bottom: 32px; font: 600 clamp(30px, calc(3.47vw / var(--z, 1)), 50px)/1.1 var(--type); letter-spacing: -.05em; text-wrap: balance; }
+.kit-row-media { position: relative; height: clamp(220px, calc(20vw / var(--z, 1)), 300px); overflow: hidden; background: #ddd; clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 15%); }
 .kit-row-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .kit-row-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; padding: 32px 20px 0; }
 .kit-row-body .kit-copy { max-width: 440px; }
@@ -137,7 +137,7 @@
 .kit-list > li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 24px; padding: 28px 20px; border-bottom: 1px solid rgba(0, 0, 0, .16); }
 .kit-list > li:first-child { padding-top: 0; }
 .kit-list > li > a { display: contents; }
-.kit-list h3 { font: 600 clamp(20px, 1.8vw, 24px)/1.15 var(--type); letter-spacing: -.04em; text-wrap: balance; }
+.kit-list h3 { font: 600 clamp(20px, calc(1.8vw / var(--z, 1)), 24px)/1.15 var(--type); letter-spacing: -.04em; text-wrap: balance; }
 .kit-list p { max-width: 62ch; margin-top: 8px; }
 .kit-list .kit-points { max-width: 62ch; margin-top: 18px; }
 .kit-num { display: grid; place-items: center; width: 34px; height: 34px; background: var(--k-grey); color: var(--k-pink); font: 500 11px var(--mono); font-variant-numeric: tabular-nums; }
@@ -168,7 +168,7 @@
 .kit-cells--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .kit-cell { display: flex; flex-direction: column; min-width: 0; min-height: 300px; padding: 30px 30px 36px; border-bottom: 1px solid var(--k-line); }
 .kit-cells--two .kit-cell { min-height: 240px; padding-left: 20px; }
-.kit-cell h3 { padding-top: 48px; font: 600 clamp(22px, 1.9vw, 27px)/1.12 var(--type); letter-spacing: -.045em; text-wrap: balance; }
+.kit-cell h3 { padding-top: 48px; font: 600 clamp(22px, calc(1.9vw / var(--z, 1)), 27px)/1.12 var(--type); letter-spacing: -.045em; text-wrap: balance; }
 .kit-cell p { margin-top: 12px; }
 .kit-cell .kit-points { margin-top: 20px; }
 
@@ -213,7 +213,7 @@
 .kit-doc-main { padding: 0 20px; }
 .kit-docs { position: relative; }
 .kit-docs::after { position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(100% / 3); right: 0; border-inline: 1px solid var(--k-line); background: var(--k-bg); content: ""; }
-.kit-doc-main h2 { max-width: 20ch; margin-bottom: 24px; font: 600 clamp(30px, 3.2vw, 46px)/1.04 var(--type); letter-spacing: -.05em; text-wrap: balance; }
+.kit-doc-main h2 { max-width: 20ch; margin-bottom: 24px; font: 600 clamp(30px, calc(3.2vw / var(--z, 1)), 46px)/1.04 var(--type); letter-spacing: -.05em; text-wrap: balance; }
 .kit-doc-main .kit-copy { max-width: 66ch; }
 .kit-doc-links { max-width: 66ch; margin-top: 28px; }
 .kit-doc-links li { border-bottom: 1px solid rgba(0, 0, 0, .1); }
@@ -270,8 +270,8 @@
   .kit-dark .kit-lines i:first-child { border-color: rgba(255, 255, 255, .1); }
   .kit-hero { grid-template-rows: 1fr auto; min-height: 0; }
   .kit-hero-copy { padding: 128px 20px 56px; }
-  .kit-hero h1 { margin-top: 28px; font-size: clamp(46px, 13vw, 60px); }
-  .kit-hero h1.kit-hero-title--long { font-size: clamp(38px, 10.4vw, 48px); }
+  .kit-hero h1 { margin-top: 28px; font-size: clamp(46px, calc(13vw / var(--z, 1)), 60px); }
+  .kit-hero h1.kit-hero-title--long { font-size: clamp(38px, calc(10.4vw / var(--z, 1)), 48px); }
   .kit-hero .kit-lead, .kit-hero .kit-actions { margin-top: 28px; }
   .kit-hero-bar { grid-template-columns: 1fr; }
   .kit-hero-bar > :first-child, .kit-hero-bar > :nth-child(2) { grid-column: 1; }
@@ -281,8 +281,8 @@
   .kit-photos--wide { grid-template-columns: 1fr; height: 260px; }
   .kit-btn { height: 50px; }
   .kit-btn > span { width: 36px; height: 36px; }
-  .kit-h2 { font-size: clamp(42px, 12vw, 56px); }
-  .kit-h2--xl { font-size: clamp(50px, 14vw, 72px); }
+  .kit-h2 { font-size: clamp(42px, calc(12vw / var(--z, 1)), 56px); }
+  .kit-h2--xl { font-size: clamp(50px, calc(14vw / var(--z, 1)), 72px); }
   .kit-row-head, .kit-row-body { padding-inline: 0; }
   .kit-row-head h3 { margin-bottom: 24px; }
   .kit-row-media { height: 220px; }
@@ -304,8 +304,100 @@
 
 /* A short block of copy with a list, set large: used where a band has one message (support, contact). */
 .kit-support { max-width: 720px; padding: 0 20px; }
-.kit-support > .kit-copy { font-size: clamp(19px, 1.6vw, 24px); line-height: 1.4; letter-spacing: -.03em; color: inherit; }
+.kit-support > .kit-copy { font-size: clamp(19px, calc(1.6vw / var(--z, 1)), 24px); line-height: 1.4; letter-spacing: -.03em; color: inherit; }
 .kit-dark .kit-support > .kit-copy { color: #f5f5f5; }
 .kit-support .kit-points { margin-top: 40px; }
 .kit-support .kit-points li { padding-block: 16px; font-size: 15px; }
 @media (max-width: 640px) { .kit-support { padding: 0; } }
+
+/* ===== Bug report fixes, Nov 2026 (BUG_WEB ids in comments) ===== */
+
+/* 166: hero copy starts at the left column instead of leaving the first column empty. */
+.kit-hero-copy { grid-column: 1 / 4; padding-left: 40px; }
+@media (max-width: 1100px) { .kit-hero-copy { padding-left: 24px; } }
+@media (max-width: 640px) { .kit-hero-copy { padding-left: 20px; padding-right: 0; } }
+
+/* 171-174, 191: phone hero buttons size to their labels and sit on one line when they fit. */
+@media (max-width: 640px) {
+  .kit-hero .kit-actions { gap: 8px; }
+  .kit-hero .kit-btn { height: 44px; gap: 8px; padding: 0 5px 0 14px; font-size: 12px; }
+  .kit-hero .kit-btn > span { width: 32px; height: 32px; font-size: 14px; }
+  .kit-hero .kit-btn--ghost { padding: 0 13px; gap: 7px; }
+  .kit-hero .kit-btn--ghost > span { width: auto; height: auto; font-size: 13px; }
+}
+
+/* 175: tablets keep the laptop split (intro beside content) instead of stacking. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .kit-split { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .kit-aside { position: sticky; top: 96px; max-width: none; padding: 0 28px 0 0; }
+  .kit-aside .kit-h2 { font-size: clamp(36px, 4.6vw, 48px); }
+  .kit-aside .kit-h2--xl { font-size: clamp(48px, 6.4vw, 66px); }
+}
+
+/* 93, 98: document headings run on one line when there is room. 182-189: larger on tablets, label above. */
+.kit-doc-main h2 { max-width: none; }
+@media (max-width: 1100px) {
+  .kit-doc { grid-template-columns: 1fr; gap: 16px; }
+  .kit-docs::after { left: 0; }
+  .kit-doc-main { padding: 0; }
+}
+@media (min-width: 641px) and (max-width: 1100px) {
+  .kit-doc-main h2 { font-size: clamp(36px, 4.8vw, 46px); }
+  .kit-doc > .kit-label { font-size: 12px; }
+}
+
+/* 193: rows without a tag no longer push the +/- onto a second line on phones. */
+.kit-acc-trigger > span:empty { display: none; }
+.kit-acc-mark { grid-column: -2; }
+
+/* 12, 14: FAQ asides carry the homepage "Visit Traverse VPN" link. */
+.kit-aside .answers-contact { align-items: flex-start; margin-top: 40px; padding-top: 0; }
+.kit-aside .answers-contact > a { width: auto; min-width: 240px; color: #fff; }
+
+/* 112: "Good to know." on one line on phones. */
+@media (max-width: 640px) {
+  .kit-h2--xl br { display: none; }
+  .kit-h2--xl { font-size: clamp(38px, 12.4vw, 60px); }
+}
+
+/* 194: the contact form uses the full content column. */
+.kit-support.kit-form-wrap { max-width: none; padding: 0 40px 0 20px; }
+@media (max-width: 640px) { .kit-support.kit-form-wrap { padding: 0; } }
+
+/* 24: the FAQ search reads as a text field, an underline with a muted placeholder. */
+.kit-hero-bar label input { height: 30px; padding-right: 26px; border-bottom: 1px solid var(--k-ink); text-transform: none; font-weight: 500; letter-spacing: -.02em; }
+.kit-hero-bar label input::placeholder { color: #8a8a87; text-transform: none; }
+.kit-hero-bar label input:focus { outline: none; border-bottom-color: var(--k-pink); }
+.kit-hero-bar label svg { right: 40px; }
+@media (max-width: 900px) { .kit-hero-bar label svg { right: 24px; } }
+
+/* 29, 30: download platforms as compact tiles with each platform's mark, all five in one row on laptops. */
+.kit-platforms { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--k-line); border-left: 1px solid var(--k-line); }
+.kit-platforms li { border-right: 1px solid var(--k-line); border-bottom: 1px solid var(--k-line); }
+.kit-platforms a { display: flex; flex-direction: column; height: 100%; padding: 28px 24px 30px; transition: background-color .3s var(--k-ease); }
+.kit-platforms a:hover { background: var(--k-white); }
+.kit-platform-icon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 28px; border-radius: 16px; background: var(--k-ink); color: #fff; transition: background-color .3s var(--k-ease); }
+.kit-platforms a:hover .kit-platform-icon { background: var(--k-pink); }
+.kit-platform-icon svg { width: 30px; height: 30px; fill: currentColor; }
+.kit-platform-icon svg circle[fill="#111"] { fill: var(--k-ink); }
+.kit-platform-icon .platform-macos { color: #fff; font: 600 11px/1 var(--type); text-align: center; }
+.kit-platform-icon .platform-macos b { font-size: 13px; }
+.kit-platforms h3 { margin-top: 14px; font: 600 24px/1.1 var(--type); letter-spacing: -.05em; }
+.kit-platforms .kit-card-go { padding-top: 24px; }
+.kit-platforms a:hover .kit-card-go span { transform: translate(3px, -3px); }
+@media (max-width: 1100px) { .kit-platforms { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .kit-platforms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kit-platforms a { padding: 22px 16px 24px; }
+  .kit-platform-icon { width: 52px; height: 52px; margin-bottom: 20px; border-radius: 13px; }
+  .kit-platforms h3 { font-size: 20px; }
+}
+@media (max-width: 374px) {
+  .kit-hero .kit-btn { padding-left: 12px; font-size: 11.5px; }
+  .kit-hero .kit-btn--ghost { padding: 0 12px; }
+  .kit-hero .kit-btn--ghost > span { display: none; }
+}
+.kit-platforms li { background: var(--k-bg); }
+@media (max-width: 640px) { .kit-platforms li:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+/* BUG_WEB_194: the form fills its content column on the contact page. */
+.kit-form-wrap .contact-form { max-width: none; }

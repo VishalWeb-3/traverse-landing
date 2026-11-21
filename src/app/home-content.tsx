@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { Fragment, useEffect, useRef, useState, type CSSProperties } from "react";
 import { useTina } from "tinacms/dist/react";
 import { resolveTinaImageUrls } from "./tina-image-url";
 import type { HomepageQuery, HomepageQueryVariables } from "../../tina/__generated__/types";
@@ -117,7 +117,7 @@ function ProjectAnswerItem({ item, index, open, onToggle }: { item: FaqItem; ind
 
 function ProjectAnswers({ faq }: { faq: HomePageContent["faq"] }) {
   const [openIndex, setOpenIndex] = useState(0);
-  return <section className="project-answers section" id="faqs"><GridLines/><div className="answers-layout"><div className="answers-aside"><h2>{faq.headingLine1}<br/>{faq.headingLine2}</h2><p>{faq.intro}</p><div className="answers-contact"><span>MORE ABOUT TRAVERSE?</span><a href="/about-us">Visit Traverse VPN <b aria-hidden="true">↗</b></a></div></div><div className="answers-list">{faq.items.map((item,index)=><ProjectAnswerItem item={item} index={index} open={openIndex === index} onToggle={() => setOpenIndex(openIndex === index ? -1 : index)} key={item.question}/>)}</div></div></section>;
+  return <section className="project-answers section" id="faqs"><GridLines/><div className="answers-layout"><div className="answers-aside"><h2>{faq.headingLine1}{" "}<br/>{faq.headingLine2}</h2><p>{faq.intro}</p><div className="answers-contact"><span>MORE ABOUT TRAVERSE?</span><a href="/about-us">Visit Traverse VPN <b aria-hidden="true">↗</b></a></div></div><div className="answers-list">{faq.items.map((item,index)=><ProjectAnswerItem item={item} index={index} open={openIndex === index} onToggle={() => setOpenIndex(openIndex === index ? -1 : index)} key={item.question}/>)}</div></div></section>;
 }
 
 function HomePage({ content }: { content: HomePageContent }) {
@@ -155,7 +155,8 @@ function HomePage({ content }: { content: HomePageContent }) {
         stagger: { each: 0.14 }, ease: "none",
         scrollTrigger: {
           trigger: section.querySelector(".about-heading h2"),
-          start: "top 85%", end: "bottom 38%", scrub: 0.5, invalidateOnRefresh: true,
+          // Tablets and phones finish the reveal sooner so the heading is never still blurred mid-screen.
+          start: "top 85%", end: () => window.innerWidth <= 1100 ? "bottom 62%" : "bottom 38%", scrub: 0.5, invalidateOnRefresh: true,
         },
       });
     }, section);
@@ -303,7 +304,7 @@ function HomePage({ content }: { content: HomePageContent }) {
 
     <section className="services section" id="services" ref={servicesRef}>
       <GridLines/>
-      <aside className="services-aside"><div className="services-intro"><h2>{content.servicesSection.heading.split(" ").map((part,index)=><span key={part}>{index>0&&<br/>}{part}</span>)}</h2><p>{content.servicesSection.intro}</p></div></aside>
+      <aside className="services-aside"><div className="services-intro"><h2>{content.servicesSection.heading.split(" ").map((part,index)=><Fragment key={part}>{index>0&&<>{" "}<br/></>}<span>{part}</span></Fragment>)}</h2><p>{content.servicesSection.intro}</p></div></aside>
       <div className="service-list">{content.servicesSection.items.map((service) => <article className="service" key={service.number}>
         <div className="service-head"><span>{service.number}</span><h3>{service.title}</h3></div>
         <div className="service-images">{service.images.map((image) => <img loading="lazy" decoding="async" key={image.src} src={image.src} alt={image.alt}/>)}</div>

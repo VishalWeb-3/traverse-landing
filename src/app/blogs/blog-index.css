@@ -136,7 +136,7 @@
   .nb-hero, .nb-results, .nb-subscribe, .nb-controls, .nb-featured, .nb-grid { grid-template-columns: minmax(0, 1fr); }
   .nb-hero { min-height: 0; grid-template-rows: auto 40px; }
   .nb-hero-copy { padding: 136px 0 72px; }
-  .nb-hero h1 { margin-top: 32px; font-size: clamp(52px, 15vw, 64px); }
+  .nb-hero h1 { margin-top: 32px; font-size: clamp(52px, calc(15vw / var(--z, 1)), 64px); }
   .nb-hero .nb-lead { margin-top: 32px; }
   .nb-search { display: none; }
   .nb-select select { padding-left: 20px; }
@@ -159,3 +159,37 @@
 @media (prefers-reduced-motion: reduce) {
   .nb-root *, .nb-root *::before, .nb-root *::after { transition: none !important; }
 }
+
+/* ===== Bug report fixes, Nov 2026 (BUG_WEB ids in comments) ===== */
+
+/* 166: the hero starts at the left column instead of leaving it empty. */
+.nb-hero-copy { grid-column: 1 / 4; padding-left: 40px; }
+@media (max-width: 1199px) { .nb-hero-copy { grid-column: 1 / -1; padding-left: 24px; } }
+@media (max-width: 809px) { .nb-hero-copy { padding-left: 20px; } }
+
+/* 167: the search reads as a field before it is clicked: an underline, a muted placeholder, the icon at its end.
+   It is also shown on phones, under the category filter. */
+.nb-search input { height: 30px; margin: 0 30px; padding: 0 26px 0 0; border-bottom: 1px solid var(--nb-ink); font-weight: 500; letter-spacing: -.02em; text-transform: none; }
+.nb-search input::placeholder { color: #8a8a87; text-transform: none; }
+.nb-search input:focus { outline: none; border-bottom-color: var(--nb-accent, #f22c59); }
+@media (max-width: 809px) {
+  .nb-hero { grid-template-rows: auto auto; }
+  .nb-controls { grid-row: 2; }
+  .nb-search { display: flex; grid-column: 1; height: 52px; }
+  .nb-search input { margin: 0 20px; }
+  .nb-search svg { right: 20px; }
+}
+
+/* 169: card photos keep their 16:10 shape instead of being cropped to a near-square frame.
+   The hover frame still shrinks by the same 103px and the card keeps its total height. */
+.nb-grid { --nb-card-w: calc((100vw - 2 * var(--nb-margin)) / 3 / var(--z, 1)); }
+.nb-card-media, .nb-card-img { height: calc(var(--nb-card-w) / 1.6); }
+.nb-card a { height: calc(var(--nb-card-w) / 1.6 + 144px); }
+@media (hover: hover) { .nb-card a:is(:hover, :focus-visible) .nb-card-media { height: calc(var(--nb-card-w) / 1.6 - 103px); } }
+@media (max-width: 1199px) { .nb-grid { --nb-card-w: calc((100vw - 2 * var(--nb-margin)) / 2 / var(--z, 1)); } }
+@media (max-width: 809px) { .nb-grid { --nb-card-w: calc(100vw - 2 * var(--nb-margin)); } .nb-card a { height: auto; } }
+
+/* 21: the latest article carries a visible link to open it. */
+.nb-featured-read { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; font: 600 14px/1 var(--type); letter-spacing: -.03em; text-transform: uppercase; }
+.nb-featured-read span { color: var(--nb-accent, #f22c59); transition: transform .3s var(--nb-ease); }
+.nb-featured-read:hover span { transform: translate(3px, -3px); }

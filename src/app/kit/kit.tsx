@@ -73,6 +73,11 @@ export function Band({ tone = "paper", id, label, children, flush }: { tone?: Ba
 }
 
 /** Homepage services layout: sticky intro on the left, content across the other two columns. */
+/** The homepage FAQ's "More about Traverse" link, shown beside every FAQ list. */
+export function VisitTraverse() {
+  return <div className="answers-contact"><span>MORE ABOUT TRAVERSE?</span><a href="/about-us">Visit Traverse VPN <b aria-hidden="true">↗</b></a></div>;
+}
+
 export function Split({ label, title, intro, actions, meta, children, xl }: {
   label?: string; title: ReactNode; intro?: ReactNode; actions?: Action[]; meta?: ReactNode; children: ReactNode; xl?: boolean;
 }) {

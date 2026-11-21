@@ -33,7 +33,7 @@ export default function KitMotion() {
       gsap.utils.toArray<HTMLElement>("[data-kit-reveal]").forEach((band) => {
         const intro = band.querySelectorAll(":scope > .kit-split > .kit-aside > *, :scope > .kit-head > * > *, :scope > .kit-head > p, :scope > .kit-statement > h2, :scope > .kit-statement > div > *");
         if (intro.length) gsap.fromTo(intro, { y: 20, autoAlpha: 0 }, { ...shown, duration: .8, stagger: .07, scrollTrigger: { trigger: band, start: "top 80%", once: true } });
-        const items = band.querySelectorAll(".kit-list > li, .kit-acc-item, .kit-cell, .kit-card, .kit-doc, .kit-row-head, .kit-row-body, .n-plan-card");
+        const items = band.querySelectorAll(".kit-list > li, .kit-acc-item, .kit-cell, .kit-card, .kit-platforms > li, .kit-doc, .kit-row-head, .kit-row-body, .n-plan-card");
         items.forEach((item) => gsap.fromTo(item, { y: 28, autoAlpha: 0 }, { ...shown, duration: .8, scrollTrigger: { trigger: item, start: "top 90%", once: true } }));
         band.querySelectorAll<HTMLElement>(".kit-row-media").forEach((media) => {
           const trigger = { trigger: media, start: "top 90%", once: true };

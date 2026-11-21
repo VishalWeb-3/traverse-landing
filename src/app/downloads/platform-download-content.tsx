@@ -2,7 +2,8 @@ import { PLATFORM_DOWNLOADS, type PlatformPageData } from "./platform-data";
 import fallback from "../../../content/download/download.json";
 import SiteFooter from "../site-footer";
 import KitMotion from "../kit/kit-motion";
-import { Band, Button, Cards, Cells, Head, Hero, List, Photos, Points, Split, Statement, pad } from "../kit/kit";
+import { PlatformIcon } from "../site-header";
+import { Band, Button, Cells, Head, Hero, List, Photos, Points, Split, Statement, pad } from "../kit/kit";
 
 const platformArtwork: Record<string, { src: string; alt: string }> = {
   windows: { src: "/images/vpn/photos/airport-work.webp", alt: "Traveler with a laptop at an airport window overlooking a plane" },
@@ -11,6 +12,8 @@ const platformArtwork: Record<string, { src: string; alt: string }> = {
   android: { src: "/images/vpn/photos/city-phone.webp", alt: "Woman looking at her phone in a busy city at night" },
   ios: { src: "/images/vpn/photos/cafe-phone.webp", alt: "Person using a phone at a café table" },
 };
+
+const platformIcon: Record<string, string> = { macos: "mac", ios: "apple" };
 
 export default function PlatformDownloadContent({ platform, content = fallback }: { platform: PlatformPageData | null; content?: typeof fallback }) {
   if (!platform) return <>
@@ -25,15 +28,12 @@ export default function PlatformDownloadContent({ platform, content = fallback }
 
     <Band tone="white" id="platforms" label="Find your app">
       <Head label="Find your app" title={<>Download Traverse<br />for your device.</>} intro="Choose a platform to see the app details, setup steps, and compatibility information." />
-      <Cards items={content.platforms.map((item, index) => ({
-        href: item.href,
-        image: platformArtwork[item.key] ?? { src: "/images/vpn/photos/travel-desk.webp", alt: "" },
-        meta: pad(index + 1),
-        metaFaint: item.family,
-        title: item.name,
-        text: `${item.family} app`,
-        go: "App details",
-      }))} />
+      <ul className="kit-platforms">{content.platforms.map((item, index) => <li key={item.key}><a href={item.href}>
+        <span className="kit-platform-icon" aria-hidden="true"><PlatformIcon platform={platformIcon[item.key] ?? item.key} /></span>
+        <span className="kit-meta">{pad(index + 1)}<span /><em>{item.family}</em></span>
+        <h3>{item.name}</h3>
+        <span className="kit-card-go">App details <span aria-hidden="true">↗</span></span>
+      </a></li>)}</ul>
     </Band>
 
     <Band label="Get connected">

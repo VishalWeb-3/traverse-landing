@@ -127,6 +127,7 @@ export default function BlogFeed({ posts }: { posts: BlogCard[] }) {
           <div>
             <Meta post={featured} />
             <h2><a href={featured.href}>{featured.title}</a></h2>
+            <a className="nb-featured-read" href={featured.href}>Read article <span aria-hidden="true">↗</span></a>
           </div>
           <div className="nb-featured-foot">
             <p className="nb-excerpt">{featured.excerpt}</p>

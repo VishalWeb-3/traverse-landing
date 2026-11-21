@@ -7,7 +7,7 @@ import SiteFooter from "../site-footer";
 import { useGetAppHref } from "../../lib/get-app-link";
 import KitMotion from "../kit/kit-motion";
 import Accordion from "../kit/kit-accordion";
-import { Band, Hero, Split } from "../kit/kit";
+import { Band, Hero, Split, VisitTraverse } from "../kit/kit";
 
 type PlansPageData = typeof fallback;
 type Plan = PlansPageData["plans"][number];
@@ -143,7 +143,7 @@ export default function PlansContent({ content = fallback }: { content?: PlansPa
     />
     <PricingTable plans={orderedPlans} />
     <Band tone="soft" id="plan-questions" label="Plan questions">
-      <Split xl title={<>Good to<br />know.</>}>
+      <Split xl title={<>Good to <br />know.</>} intro={<VisitTraverse />}>
         <Accordion items={content.faqItems.map(({ question, answer }) => ({ question, answer }))} />
       </Split>
     </Band>

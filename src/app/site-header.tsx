@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-function PlatformIcon({ platform }: { platform: string }) {
+export function PlatformIcon({ platform }: { platform: string }) {
   if (platform === "windows") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 6.4 14 4.7v10.6H2V6.4Zm14-2 14-2v12.9H16V4.4ZM2 17h12v10.5L2 25.8V17Zm14 0h14v13l-14-2V17Z"/></svg>;
   if (platform === "android") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m8 7-2.4-3.6M24 7l2.4-3.6M5 13a11 11 0 0 1 22 0H5Zm3 2h16v9a3 3 0 0 1-3 3h-1v4h-3v-4h-2v4h-3v-4h-1a3 3 0 0 1-3-3v-9Z"/><circle cx="11" cy="10" r="1" fill="#111"/><circle cx="21" cy="10" r="1" fill="#111"/></svg>;
   if (platform === "apple") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23.2 17.1c0-3.5 2.9-5.2 3-5.3-1.7-2.5-4.3-2.8-5.2-2.8-2.2-.2-4.3 1.3-5.4 1.3s-2.8-1.3-4.6-1.2c-2.4 0-4.6 1.4-5.8 3.5-2.5 4.3-.6 10.6 1.8 14.1 1.2 1.7 2.6 3.6 4.4 3.5 1.8-.1 2.5-1.1 4.7-1.1 2.2 0 2.8 1.1 4.7 1 2 0 3.2-1.7 4.4-3.4a15 15 0 0 0 2-4c-.1 0-4-1.6-4-5.6ZM19.7 6.8A7 7 0 0 0 21.3 2a7.2 7.2 0 0 0-4.5 2.3 6.7 6.7 0 0 0-1.7 4.6 6 6 0 0 0 4.6-2.1Z"/></svg>;
@@ -41,6 +41,52 @@ export default function SiteHeader() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
+  // The bar is transparent, so its text colour follows whatever section is behind it.
+  const headerRef = useRef<HTMLElement>(null);
+  const [onDark, setOnDark] = useState(false);
+  useEffect(() => {
+    let frame = 0;
+    const photoTone = new Map<string, boolean>();
+    // Average brightness of a photo, read once from a 12px copy (all photos are same-origin).
+    const isDarkPhoto = (img: HTMLImageElement) => {
+      const key = img.currentSrc || img.src;
+      if (!photoTone.has(key) && img.complete && img.naturalWidth) {
+        try {
+          const canvas = document.createElement("canvas");
+          canvas.width = canvas.height = 12;
+          const ctx = canvas.getContext("2d", { willReadFrequently: true });
+          ctx?.drawImage(img, 0, 0, 12, 12);
+          const data = ctx?.getImageData(0, 0, 12, 12).data ?? [];
+          let sum = 0;
+          for (let i = 0; i < data.length; i += 4) sum += .2126 * data[i] + .7152 * data[i + 1] + .0722 * data[i + 2];
+          photoTone.set(key, sum / (data.length / 4) < 135);
+        } catch { photoTone.set(key, true); }
+      }
+      return photoTone.get(key) ?? true;
+    };
+    const check = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const header = headerRef.current;
+        if (!header) return;
+        // Sample behind the wordmark, the part of the bar whose colour changes.
+        const rect = (header.querySelector(".brand") ?? header).getBoundingClientRect();
+        const behind = document.elementsFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2).find((el) => !header.contains(el));
+        if (behind instanceof HTMLImageElement) { setOnDark(isDarkPhoto(behind)); return; }
+        let dark = false;
+        for (let el: Element | null = behind ?? null; el; el = el.parentElement) {
+          const [r, g, b, a = 1] = (getComputedStyle(el).backgroundColor.match(/[\d.]+/g) ?? []).map(Number);
+          if (a > .5) { dark = .2126 * r + .7152 * g + .0722 * b < 110; break; }
+        }
+        setOnDark(dark);
+      });
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", check); window.removeEventListener("resize", check); };
+  }, [pathname]);
+
   useEffect(() => {
     setOpen(false);
     setDownloadOpen(false);
@@ -55,7 +101,7 @@ export default function SiteHeader() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
-  return <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+  return <header ref={headerRef} className={`site-header${scrolled ? " scrolled" : ""}${onDark ? " on-dark" : " on-light"}`}>
     <div className="brand-group"><a className="brand" href={`${homeHref}#home`} aria-label="Traverse VPN home"><span className="vpn-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5 20 6v5.4c0 5-3.2 8.4-8 10.1-4.8-1.7-8-5.1-8-10.1V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Traverse</span></a></div>
     <nav className="desktop-nav" aria-label="Main navigation">
       <a href="/features" aria-current={pathname === "/features" ? "page" : undefined}>Features</a>
